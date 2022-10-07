@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import AuthForm from './components/AuthForm';
-import Home from './components/Home';
-import { me, logout } from './store';
-import Navbar from './components/Navbar';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import AuthForm from "./components/AuthForm";
+import Home from "./components/Home";
+import { me, logout } from "./store";
+import Navbar from "./components/Navbar";
+// import "./Routing";
 
 const App = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
@@ -22,6 +23,7 @@ const App = () => {
   return (
     <div>
       <Navbar handleClick={handleClick} isLoggedIn={isLoggedIn} />
+      {/* <Routing /> */}
       <Routes>
         <Route exact path="/" element={isLoggedIn ? <Home /> : <AuthForm />} />
         <Route path="/login" element={isLoggedIn ? <Home /> : <AuthForm />} />
