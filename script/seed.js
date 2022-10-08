@@ -1,10 +1,33 @@
 "use strict";
+const axios = require ("axios")
+// const REACT_APP_HARVARD_TOKEN = require ("../.env")
 
 const {
   db,
   models: { User },
 } = require("../server/db");
 
+
+async function fetchObjects(){
+  const {data} = await axios.get(`https://api.harvardartmuseums.org/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`);
+  return data;
+}
+
+async function mapObjects(){
+  const objectArr = await fetchObjects();
+  for(let i = 0; i < objectArr.records.length; i++){
+    console.log(objectArr.records[i]["id"])
+    await Promise.all([
+      Object.create({
+        objectid: objectArr.records[i]["id"],
+        primaryimageurl: "www.google.com"/*objectArr.records[i]["primaryimageurl"]*/,
+        title: "work"/*objectArr.records[i]["titles"][0]["title"]*/,
+        description: "hello"/*objectArr.records[i]["description"]*/,
+        artist: "artist"/*objectArr.records[i]["people"]["name"][0]*/,
+      })
+    ])
+  }
+}
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
@@ -31,6 +54,8 @@ async function seed() {
       password: "123",
     }),
   ]);
+
+  await mapObjects();
 
   // console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`);
