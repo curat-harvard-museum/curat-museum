@@ -4,7 +4,7 @@ const axios = require ("axios")
 
 const {
   db,
-  models: { User },
+  models: { User, Object, Comment },
 } = require("../server/db");
 
 
