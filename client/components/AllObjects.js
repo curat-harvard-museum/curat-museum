@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-// import apiClient from "../../../http-common";
+import apiClient from "../../http-common";
 
 function AllObjects() {
   const { data, refetch: getAllObjects } = useQuery(
