@@ -1,3 +1,4 @@
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../../http-common";
 
@@ -6,7 +7,7 @@ function AllObjects() {
     ["query-objects"],
     async () => {
       return await apiClient.get(
-        `/object?apikey=${process.env.REACT_APP_HARVARD_TOKEN}&page=27&size=100`
+        `/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=27&size=100`
       );
     },
     {
