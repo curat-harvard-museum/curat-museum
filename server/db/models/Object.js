@@ -10,7 +10,7 @@ const Object = db.define("object", {
     },
   },
   primaryimageurl: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   },
   title: {
     type: Sequelize.STRING

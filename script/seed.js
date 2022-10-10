@@ -9,21 +9,21 @@ const {
 
 
 async function fetchObjects(){
-  const {data} = await axios.get(`https://api.harvardartmuseums.org/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`);
+  const {data} = await axios.get(`https://api.harvardartmuseums.org/object?primaryimageurl!==null&people!==null&description!==null&title!==null&before=1900&apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&size=100`);
   return data;
 }
 
 async function mapObjects(){
   const objectArr = await fetchObjects();
   for(let i = 0; i < objectArr.records.length; i++){
-    console.log(objectArr.records[i]["id"])
+    console.log(objectArr.records[i].people.name)
     await Promise.all([
       Object.create({
-        objectid: objectArr.records[i]["id"],
-        primaryimageurl: "www.google.com"/*objectArr.records[i]["primaryimageurl"]*/,
-        title: "work"/*objectArr.records[i]["titles"][0]["title"]*/,
-        description: "hello"/*objectArr.records[i]["description"]*/,
-        artist: "artist"/*objectArr.records[i]["people"]["name"][0]*/,
+        objectid: objectArr.records[i].id,
+        primaryimageurl: objectArr.records[i].primaryimageurl,
+        title: objectArr.records[i].title,
+        description: objectArr.records[i].description,
+        artist: objectArr.records[i].people.name,
       })
     ])
   }
