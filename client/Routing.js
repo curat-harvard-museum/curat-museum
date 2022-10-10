@@ -5,7 +5,7 @@ import { me, logout } from "./store";
 
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
-import AuthForm from "./components/AuthForm";
+import { Login, Signup } from "./components/AuthForm";
 import Profile from "./components/Profile";
 import AllObjects from "./components/AllObjects";
 
@@ -13,9 +13,9 @@ function Routing() {
   return (
     <Routes>
       <Route path="*" element={<Layout />}>
-        <Route path="login" element={<AuthForm />} />
+        <Route path="login" element={<Login />} />
         <Route path="collection" element={<AllObjects />} />
-        <Route path="signup" element={<AuthForm />} />
+        <Route path="signup" element={<Signup />} />
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
       </Route>
