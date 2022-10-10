@@ -36,7 +36,6 @@ export const authenticate =
         password,
       });
       window.localStorage.setItem(TOKEN, res.data.token);
-      // navigate("/home");
       dispatch(me());
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));

@@ -10,9 +10,8 @@ const AuthForm = (props) => {
   const location = useLocation().pathname;
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
-  // const navigate = useNavigate();
 
-  const handleSubmit = (evt, navigate) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
