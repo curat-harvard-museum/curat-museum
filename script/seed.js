@@ -123,7 +123,11 @@ const [object1, object2, object3, object4] = await Promise.all(objects2.map(obje
   return Object.create(object)
 }))
 
-
+await user1.addObject(object2)
+await user1.addObject(object3)
+await user2.addObject(object4)
+await user3.addObject(object1)
+await user4.addObject(object3)
 
   // console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`);
