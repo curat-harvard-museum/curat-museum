@@ -10,13 +10,13 @@ const Comment = db.define("comment", {
       notEmpty: true,
     },
   },
-  objectId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-  },
+  // objectId: {
+  //   type: Sequelize.INTEGER,
+  //   allowNull: false,
+  //   validate: {
+  //     notEmpty: true,
+  //   },
+  // },
   commentBody: {
     type: Sequelize.TEXT,
     allowNull: false,
