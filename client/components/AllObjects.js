@@ -7,11 +7,8 @@ function AllObjects() {
     ["query-objects"],
     async () => {
       return await apiClient.get(
-        `/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=27&size=100`
+        `/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=83&size=100`
       );
-    },
-    {
-      enabled: true,
     }
   );
 
@@ -22,21 +19,29 @@ function AllObjects() {
   return (
     <>
       <div className="grid-container">
-        {/* <button onClick={handleGetObjects}>View Full Collection</button> */}
-        {data?.data.records.map((record) => (
-          <p key={record.id}>
-            {record.primaryimageurl ? (
-              <img
-                className="single-grid-image"
-                key={record.id}
-                src={record.primaryimageurl}
-                alt="{record.title} by {record.people[0].name} "
-              ></img>
-            ) : (
-              <div className="no-image"></div>
-            )}
-          </p>
-        ))}
+        {data?.data.records
+          .filter((record) => record.primaryimageurl)
+          .map((record) => (
+            <div key={record.id}>
+              <>
+                <img
+                  className="single-grid-image"
+                  key={record.id}
+                  src={record.primaryimageurl}
+                  alt="{record.title} by {record.people[0].name} "
+                ></img>
+                <div className="caption-text title-caption-text">
+                  {record.title}
+                </div>
+                <div className="caption-text person-caption-text">
+                  {/* {record.people[0].name ? record.people[0].name : null} */}
+                </div>
+                <div className="caption-text classification-caption-text">
+                  {record.classification}
+                </div>
+              </>
+            </div>
+          ))}
       </div>
     </>
   );
