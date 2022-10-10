@@ -1,7 +1,7 @@
 "use strict";
 const axios = require ("axios")
 // const HARVARD_TOKEN = require ("../.env")
-
+const { randEmail, randUserName } = require ('@ngneat/falso')
 const {
   db,
   models: { User, Object, Comment },
@@ -17,7 +17,7 @@ async function fetchObjects(){
 async function mapObjects(){
   const objectArr = await fetchObjects();
   for(let i = 0; i < objectArr.records.length; i++){
-    console.log(objectArr.records[i].people[0])
+    // console.log(objectArr.records[i].people[0])
     await Promise.all([
       // if(objectArr.records[i].primaryimageurl !== null && objectArr.records[i].title !== null && objectArr.records[i].description !== null && objectArr.records[i].people.name !== null){
         Object.create({
@@ -56,6 +56,10 @@ async function seed() {
       password: "123",
     }),
   ]);
+
+  for(let i = 0; i < 20; i++){
+    await User.create({username: randUserName(), email: randEmail(), password: "123"})
+  }
 
   await mapObjects();
 
