@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import apiClient from "../../../http-common";
-
-import "./AllObjects.css";
+// import apiClient from "../../../http-common";
 
 function AllObjects() {
   const { data, refetch: getAllObjects } = useQuery(
@@ -22,13 +20,13 @@ function AllObjects() {
 
   return (
     <>
-      <div className="container">
+      <div className="grid-container">
         {/* <button onClick={handleGetObjects}>View Full Collection</button> */}
         {data?.data.records.map((record) => (
           <p key={record.id}>
             {record.primaryimageurl ? (
               <img
-                className="imageTile"
+                className="single-grid-image"
                 key={record.id}
                 src={record.primaryimageurl}
                 alt="{record.title} by {record.people[0].name} "

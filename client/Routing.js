@@ -7,13 +7,14 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import AuthForm from "./components/AuthForm";
 import Profile from "./components/Profile";
+import AllObjects from "./components/AllObjects";
 
 function Routing() {
   return (
     <Routes>
       <Route path="*" element={<Layout />}>
         <Route path="login" element={<AuthForm />} />
-        {/* <Route path="/collection" element={<AllObjects />} /> */}
+        <Route path="/collection" element={<AllObjects />} />
         <Route path="signup" element={<AuthForm />} />
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
