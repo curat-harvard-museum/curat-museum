@@ -1,10 +1,35 @@
 "use strict";
+const axios = require ("axios")
+// const HARVARD_TOKEN = require ("../.env")
 
 const {
   db,
-  models: { User },
+  models: { User, Object, Comment },
 } = require("../server/db");
+if(process.env.NODE_ENV !== 'production') require('../.env')
 
+async function fetchObjects(){
+  // console.log("PROCESS.ENV.HARVARD_TOKEN", PROCESS.ENV.HARVARD_TOKEN)
+  const {data} = await axios.get(`https://api.harvardartmuseums.org/object?q=peoplecount:1&person?&apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&size=100`);
+  return data;
+}
+
+async function mapObjects(){
+  const objectArr = await fetchObjects();
+  for(let i = 0; i < objectArr.records.length; i++){
+    console.log(objectArr.records[i].people[0])
+    await Promise.all([
+      // if(objectArr.records[i].primaryimageurl !== null && objectArr.records[i].title !== null && objectArr.records[i].description !== null && objectArr.records[i].people.name !== null){
+        Object.create({
+        objectid: objectArr.records[i].id,
+        primaryimageurl: objectArr.records[i].primaryimageurl,
+        title: objectArr.records[i].title,
+        description: objectArr.records[i].description,
+        artist: objectArr.records[i].people[0].name,
+      })
+    ])
+  }}
+// }
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
@@ -31,6 +56,8 @@ async function seed() {
       password: "123",
     }),
   ]);
+
+  await mapObjects();
 
   // console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`);

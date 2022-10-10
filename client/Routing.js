@@ -6,6 +6,7 @@ import { me, logout } from "./store";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import AuthForm from "./components/AuthForm";
+import Profile from "./components/Profile";
 
 function Routing() {
   return (
@@ -15,7 +16,7 @@ function Routing() {
         {/* <Route path="/collection" element={<AllObjects />} /> */}
         <Route path="signup" element={<AuthForm />} />
         <Route path="home" element={<Home />} />
-        {/* <Route path="/profile" element={isLoggedIn ? <Profile /> : <AuthForm />} /> */}
+        <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   );
