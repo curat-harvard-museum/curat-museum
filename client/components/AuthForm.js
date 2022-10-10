@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { authenticate } from '../store';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { authenticate } from "../store";
 
 /**
  * COMPONENT
@@ -10,13 +10,15 @@ const AuthForm = (props) => {
   const location = useLocation().pathname;
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
+  // const navigate = useNavigate();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt, navigate) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
+    const email = evt.target.email.value;
     const password = evt.target.password.value;
-    dispatch(authenticate(username, password, formName));
+    dispatch(authenticate(username, email, password, formName));
   };
 
   return (
@@ -29,6 +31,12 @@ const AuthForm = (props) => {
           <input name="username" type="text" />
         </div>
         <div>
+          <label htmlFor="email">
+            <small>Email</small>
+          </label>
+          <input name="email" type="text" />
+        </div>
+        <div>
           <label htmlFor="password">
             <small>Password</small>
           </label>
@@ -36,7 +44,7 @@ const AuthForm = (props) => {
         </div>
         <div>
           <button type="submit">
-            {location === '/login' ? 'Login' : 'Sign Up'}
+            {location === "/login" ? "Login" : "Sign Up"}
           </button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}

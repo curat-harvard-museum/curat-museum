@@ -12,6 +12,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="collection">View Collection</Link>
           <Link to="colorSearch">colorSearch</Link>
           <input type="text" placeholder="Search the collection" />
+          <Link to="/profile">Profile</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>

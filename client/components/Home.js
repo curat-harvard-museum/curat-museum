@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 
 /**
  * COMPONENT
@@ -9,7 +9,12 @@ export const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      {/* <h3>Welcome, {username}</h3> */}
+      <img
+        src="/assets/images/harvardgallery.jpeg"
+        alt=""
+        style={{ width: "100%" }}
+      />
     </div>
   );
 };
