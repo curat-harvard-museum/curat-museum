@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../../http-common";
+import { Link } from "react-router-dom";
 
 function AllObjects() {
   const { data, refetch: getAllObjects } = useQuery(
@@ -22,11 +23,10 @@ function AllObjects() {
         {data?.data.records
           .filter((record) => record.primaryimageurl)
           .map((record) => (
-            <div key={record.id}>
+            <Link key={record.id} to={`/object/${record.id}`}>
               <>
                 <img
                   className="single-grid-image"
-                  key={record.id}
                   src={record.primaryimageurl}
                   alt="{record.title} by {record.people[0].name} "
                 ></img>
@@ -40,7 +40,7 @@ function AllObjects() {
                   {record.classification}
                 </div>
               </>
-            </div>
+            </Link>
           ))}
       </div>
     </>
