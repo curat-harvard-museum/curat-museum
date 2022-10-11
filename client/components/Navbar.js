@@ -2,8 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>Curat Museum</h1>
+  <div className="logo-navbar">
+    <Link to="/home">
+      {/* <h2>Curat Museum</h2> */}
+      <img
+        className="logo"
+        src="/assets/images/logo.png"
+        style={{ width: "20rem" }}
+      />
+    </Link>
+
     <nav>
       {isLoggedIn ? (
         <div>

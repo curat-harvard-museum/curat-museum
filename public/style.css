@@ -68,3 +68,9 @@ font-weight: 400;
   overflow: hidden;
 }
 
+.logo-navbar {
+  width: 100%;
+  text-align: center;
+  display:inline-block;
+}
+
