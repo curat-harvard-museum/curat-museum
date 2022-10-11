@@ -4,7 +4,7 @@ const axios = require ("axios")
 const { randEmail, randUserName } = require ('@ngneat/falso')
 const {
   db,
-  models: { User, Object, Comment },
+  models: { User, Object, Comment, userObject },
 } = require("../server/db");
 if(process.env.NODE_ENV !== 'production') require('../.env')
 
