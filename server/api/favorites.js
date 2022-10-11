@@ -2,6 +2,8 @@ const router = require('express').Router()
 const { models: { User, Object }} = require('../db')
 module.exports = router
 
+//get all objects by user id , use object id to call api?
+//use req.params.id on front end to make api call
 router.get('/', async (req, res, next) => {
   try {
     const objects = await Object.findAll({
