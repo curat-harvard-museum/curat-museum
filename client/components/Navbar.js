@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1>Curat</h1>
+    <h1>Curat Museum</h1>
     <nav>
       {isLoggedIn ? (
         <div>
