@@ -11,36 +11,41 @@ function SingleObjectView() {
     );
   });
 
-  console.log(data);
+  console.log(data?.data);
 
-  //   return (
-  //     <>
-  //       <div className="grid-container">
-  //         {data?.data.record
-  //           .map((record) => (
-  //             <div key={record.id}>
-  //               <>
-  //                 <img
-  //                   className="single-image"
-  //                   key={record.id}
-  //                   src={record.primaryimageurl}
-  //                   alt="{record.title} by {record.people[0].name} "
-  //                 ></img>
-  //                 <div className="caption-text title-caption-text">
-  //                   {record.title}
-  //                 </div>
-  //                 <div className="caption-text person-caption-text">
-  //                   {/* {record.people[0].name ? record.people[0].name : null} */}
-  //                 </div>
-  //                 <div className="caption-text classification-caption-text">
-  //                   {record.classification}
-  //                 </div>
-  //               </>
-  //             </div>
-  //           ))}
-  //       </div>
-  //     </>
-  //   );
+  return (
+    <>
+      <div>
+        {/* {data?.data.colors
+          .filter((color) => color)
+          .map((color) => (
+            <div
+              key={color.color}
+              className="single-color-circle"
+              style="color:`${color.color}`"
+            ></div>
+          ))} */}
+        {
+          <div>
+            <img
+              className="single-image"
+              src={data?.data.primaryimageurl}
+              alt="{data?.data.title} by {data?.data.people[0].name} "
+            ></img>
+            <div className="caption-text title-caption-text">
+              {data?.data.title}
+            </div>
+            <div className="caption-text person-caption-text">
+              {data?.data.people[0].name ? data?.data.people[0].name : null}
+            </div>
+            <div className="caption-text classification-caption-text">
+              {data?.data.classification}
+            </div>
+          </div>
+        }
+      </div>
+    </>
+  );
 }
 
 export default SingleObjectView;
