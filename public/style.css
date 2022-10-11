@@ -60,3 +60,11 @@ font-weight: 400;
   font-weight: 400;
 }
 
+.exhibition-image {
+  object-fit: cover;
+  border: 1px;
+  max-height: 15rem;
+  max-width: 15rem;
+  overflow: hidden;
+}
+
