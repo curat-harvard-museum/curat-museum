@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../../http-common";
+import { Badge, Box } from "@chakra-ui/react";
 
 function Exhibitions() {
   const { data, refetch: getExhibitions } = useQuery(
@@ -18,29 +19,58 @@ function Exhibitions() {
 
   return (
     <>
-      <h2>Current Exhibitions</h2>
-      <div className="grid-container">
+      <div className="exhibition-container">
         {data?.data.records.map((record) => (
           <div key={record.id}>
             <>
-              {record.primaryimageurl ? (
-                <img
-                  className="exhibition-image"
-                  key={record.id}
-                  src={record.primaryimageurl}
-                  alt="{record.title} by {record.people[0].name} "
-                ></img>
-              ) : null}
-              <div>{record.title}</div>
-              <br></br>
-              End Date: {record.enddate}
-              <br></br>
-              Gallery Location:
-              <li>Name: {record.venues[0].galleries[0].name}</li>
-              <li>Floor: {record.venues[0].galleries[0].floor}</li>
-              <li>
-                Gallery Number: {record.venues[0].galleries[0].gallerynumber}
-              </li>
+              <Box
+                maxW="sm"
+                borderWidth="1px"
+                borderRadius="lg"
+                overflow="hidden"
+                // display="grid"
+                // gridGap={2}
+                // gridAutoFlow="row dense"
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="space-between"
+              >
+                {record.primaryimageurl ? (
+                  <img
+                    className="exhibition-image"
+                    key={record.id}
+                    src={record.primaryimageurl}
+                    alt="{record.title} by {record.people[0].name} "
+                  ></img>
+                ) : null}
+                <Badge borderRadius="full" px="2" colorScheme="gray">
+                  Current Exhibition
+                </Badge>
+                <Box
+                  mt="1"
+                  fontWeight="semibold"
+                  as="h4"
+                  lineHeight="tight"
+                  //   noOfLines={1}
+                >
+                  {record.title}
+                </Box>
+                <Box
+                  color="gray.500"
+                  fontWeight="semibold"
+                  letterSpacing="wide"
+                  fontSize="xs"
+                  textTransform="uppercase"
+                  ml="2"
+                >
+                  Floor: {record.venues[0].galleries[0].floor} &bull; Gallery
+                  Location: {record.venues[0].galleries[0].name} (
+                  {record.venues[0].galleries[0].gallerynumber})
+                </Box>
+                <Box as="span" ml="2" color="gray.600" fontSize="sm">
+                  End Date: {record.enddate}
+                </Box>
+              </Box>
             </>
           </div>
         ))}

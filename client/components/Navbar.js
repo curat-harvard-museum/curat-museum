@@ -8,11 +8,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       <img
         className="logo"
         src="/assets/images/logo.png"
-        style={{ width: "20rem" }}
+        // style={{ width: "80%" }}
       />
     </Link>
-
-    <nav>
+    <nav className="navbar">
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links when user is logged in */}
