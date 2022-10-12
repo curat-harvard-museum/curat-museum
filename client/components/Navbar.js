@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>Curat</h1>
-    <nav>
+  <div className="logo-navbar">
+    <Link to="/home">
+      <img className="logo" src="/assets/images/logo.png" />
+    </Link>
+    <nav className="navbar">
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links when user is logged in */}
@@ -25,7 +27,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="colorSearch">colorSearch</Link>
           <input type="text" placeholder="Search the collection" />
           <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/register">Register</Link>
         </div>
       )}
     </nav>

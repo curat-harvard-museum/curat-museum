@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import store from "./store";
 import App from "./App";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const root = ReactDOM.createRoot(document.getElementById("app"));
 
@@ -12,14 +13,16 @@ const queryClient = new QueryClient();
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <Router>
-          <Routes>
-            <Route path="*" element={<App />} />
-          </Routes>
-        </Router>
-      </Provider>
-    </QueryClientProvider>
+    <ChakraProvider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <Router>
+            <Routes>
+              <Route path="*" element={<App />} />
+            </Routes>
+          </Router>
+        </Provider>
+      </QueryClientProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );

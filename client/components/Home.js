@@ -17,6 +17,7 @@ export const Home = (props) => {
         style={{ width: "100%" }}
       />
       <hr />
+      <br></br>
       <Exhibitions />
     </div>
   );
