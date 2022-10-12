@@ -15,7 +15,9 @@ function SingleObjectView() {
     .filter((color) => color)
     .map((color) => color.color);
 
-  // console.log(typeof colorsObject);
+  console.log(data?.data.color);
+
+  console.log(typeof colorsObject);
 
   return (
     <>
@@ -25,10 +27,10 @@ function SingleObjectView() {
             <div
               key={key}
               className="single-color-circle"
-              style={`color: ${value}`}
+              style={`background-color: ${value}`}
             ></div>
           ));
-        }, "1000")} */}
+        }, "2000")} */}
         {/* {colorsArray.map((color) => (
           <div
             key={color.color}
