@@ -51,9 +51,9 @@ User.authenticate = async function ({ username, password }) {
   return user.generateToken();
 };
 
+//finds user and also eagerly loads objects the user favorited
 User.findByToken = async function (token) {
   try {
-    console.log('db.models', db.models)
     const { id } = await jwt.verify(token, process.env.JWT);
     const user = await User.findByPk(id, {
       include: [db.models.object]

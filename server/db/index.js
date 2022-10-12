@@ -3,7 +3,7 @@ const db = require("./db");
 const User = require("./models/User");
 const Comment = require("./models/Comment");
 const Object = require("./models/Object");
-// const UserObject = require("./models/UserObject")
+
 
 User.belongsToMany(Comment, { through: "user-comment" });
 Comment.belongsToMany(User, { through: "user-comment" });
@@ -19,6 +19,5 @@ module.exports = {
     User,
     Comment,
     Object,
-    // UserObject
   },
 };
