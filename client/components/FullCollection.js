@@ -1,10 +1,13 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "react-query";
 import apiClient from "../../http-common";
+import { Link } from "react-router-dom";
 
 function AllObjects() {
   const { data, refetch: getAllObjects } = useQuery(
     ["query-objects"],
+
     async () => {
       return await apiClient.get(
         `/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=83&size=100`
@@ -16,17 +19,18 @@ function AllObjects() {
     getAllObjects();
   }
 
+  console.log(data?.data.info.next);
+
   return (
     <>
       <div className="grid-container">
         {data?.data.records
           .filter((record) => record.primaryimageurl)
           .map((record) => (
-            <div key={record.id}>
+            <Link key={record.id} to={`/object/${record.id}`}>
               <>
                 <img
                   className="single-grid-image"
-                  key={record.id}
                   src={record.primaryimageurl}
                   alt="{record.title} by {record.people[0].name} "
                 ></img>
@@ -40,7 +44,7 @@ function AllObjects() {
                   {record.classification}
                 </div>
               </>
-            </div>
+            </Link>
           ))}
       </div>
     </>
