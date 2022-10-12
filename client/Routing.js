@@ -7,7 +7,8 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import AuthForm from "./components/AuthForm";
 import Profile from "./components/Profile";
-import AllObjects from "./components/AllObjects";
+import AllObjects from "./components/FullCollection";
+import SingleObjectView from "./components/SingleObjectView";
 
 function Routing() {
   return (
@@ -18,6 +19,7 @@ function Routing() {
         <Route path="signup" element={<AuthForm />} />
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="object/:id" element={<SingleObjectView />} />
       </Route>
     </Routes>
   );
