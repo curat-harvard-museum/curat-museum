@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../../http-common";
 import { Badge, Box } from "@chakra-ui/react";
