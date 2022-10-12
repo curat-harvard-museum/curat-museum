@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 /**
  * COMPONENT
  */
-export const Profile = (props) => {
+const Profile = (props) => {
   const username = useSelector((state) => state.auth.username);
 
   return (
