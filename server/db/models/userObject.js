@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const userObject = db.define("userObject", {
+const UserObject = db.define("UserObject", {
   objectId: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -30,4 +30,4 @@ const userObject = db.define("userObject", {
   }
 });
 
-module.exports = userObject;
+module.exports = UserObject;
