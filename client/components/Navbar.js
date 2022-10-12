@@ -32,7 +32,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="colorSearch">colorSearch</Link>
           <input type="text" placeholder="Search the collection" />
           <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/register">Register</Link>
         </div>
       )}
     </nav>

@@ -28,31 +28,19 @@ function Exhibitions() {
                 borderWidth="1px"
                 borderRadius="lg"
                 overflow="hidden"
-                // display="grid"
-                // gridGap={2}
-                // gridAutoFlow="row dense"
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="space-between"
               >
                 {record.primaryimageurl ? (
                   <img
                     className="exhibition-image"
                     key={record.id}
                     src={record.primaryimageurl}
-                    alt="{record.title} by {record.people[0].name} "
+                    alt="{record.title} by {record.people[0].name}"
                   ></img>
                 ) : null}
                 <Badge borderRadius="full" px="2" colorScheme="gray">
                   Current Exhibition
                 </Badge>
-                <Box
-                  mt="1"
-                  fontWeight="semibold"
-                  as="h4"
-                  lineHeight="tight"
-                  //   noOfLines={1}
-                >
+                <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
                   {record.title}
                 </Box>
                 <Box

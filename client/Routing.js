@@ -15,7 +15,7 @@ function Routing() {
       <Route path="*" element={<Layout />}>
         <Route path="login" element={<AuthForm />} />
         <Route path="collection" element={<AllObjects />} />
-        <Route path="signup" element={<AuthForm />} />
+        <Route path="register" element={<AuthForm />} />
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
       </Route>

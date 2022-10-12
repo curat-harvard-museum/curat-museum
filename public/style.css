@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 a {
@@ -73,9 +75,6 @@ font-weight: 400;
 
 .exhibition-image {
   object-fit: cover;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   border: 1px;
   max-height: 15rem;
   max-width: 15rem;
@@ -93,7 +92,3 @@ font-weight: 400;
 .logo {
   width: 11rem;
 }
-
-/* .navbar {
-  text-align: right;
-} */
