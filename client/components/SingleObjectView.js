@@ -11,20 +11,31 @@ function SingleObjectView() {
     );
   });
 
-  console.log(data?.data);
+  const colorsObject = data?.data.colors
+    .filter((color) => color)
+    .map((color) => color.color);
+
+  console.log(typeof colorsObject);
 
   return (
     <>
       <div>
-        {/* {data?.data.colors
-          .filter((color) => color)
-          .map((color) => (
+        {setTimeout(() => {
+          Object.entries(colorsObject).map(([key, value]) => (
             <div
-              key={color.color}
+              key={key}
               className="single-color-circle"
-              style="color:`${color.color}`"
+              style="color: {value}"
             ></div>
-          ))} */}
+          ));
+        }, "1000")}
+        {/* {colorsArray.map((color) => (
+          <div
+            key={color.color}
+            className="single-color-circle"
+            style="color:`${color.color}`"
+          ></div>
+        ))} */}
         {
           <div>
             <img
