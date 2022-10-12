@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../../http-common";
-import { Badge, Box } from "@chakra-ui/react";
+import { Badge, Box, Image } from "@chakra-ui/react";
 
 function Exhibitions() {
   const { data, refetch: getExhibitions } = useQuery(
@@ -25,17 +25,22 @@ function Exhibitions() {
             <>
               <Box
                 maxW="sm"
-                borderWidth="1px"
-                borderRadius="lg"
+                // borderWidth="1px"
+                // borderRadius="md"
                 overflow="hidden"
+                height="400px"
               >
                 {record.primaryimageurl ? (
-                  <img
+                  <Image
+                    borderRadius="md"
+                    margin-left="auto"
+                    margin-right="auto"
+                    width="100%"
                     className="exhibition-image"
                     key={record.id}
                     src={record.primaryimageurl}
                     alt="{record.title} by {record.people[0].name}"
-                  ></img>
+                  ></Image>
                 ) : null}
                 <Badge borderRadius="full" px="2" colorScheme="gray">
                   Current Exhibition
