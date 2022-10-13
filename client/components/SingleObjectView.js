@@ -11,7 +11,7 @@ function SingleObjectView() {
     );
   });
 
-  const colorsObject = data?.pages[0].records;
+  // const colorsObject = data?.pages[0].records;
 
   // console.log(data?.data.color.map((color) => color));
 

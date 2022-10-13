@@ -16,14 +16,20 @@ function AllObjects() {
 
   const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } =
     useInfiniteQuery(["objects"], ({ pageParam = 1 }) => fetchPage(pageParam), {
-      getNextPageParam: (lastPage, allPages) => lastPage.nextCursor,
-      getPreviousPageParam: (firstPage, allPages) => firstPage.prevCursor,
-
+      getNextPageParam: (lastPage) => {
+        const { page, total_pages: totalPages } = lastPage.data;
+        return page < totalPages ? page + 1 : undefined;
+      // getNextPageParam: (lastPage, allPages) => lastPage.nextCursor,
+      // getPreviousPageParam: (firstPage, allPages) => firstPage.prevCursor,
       // getNextPageParam: (lastPage, allPages) => {
-      //   const nextPage = allPages.length + 1;
+      // // const allPagesLength = data?.pages[0].info.pages  
+      // const nextPage = allPagesLength + 1;
       //   return lastPage.items.length !== 0 ? nextPage : undefined;
-      // },
-    });
+      }
+    })
+  }
+
+  console.log("pages data", data?.pages[0].info)
 
   useEffect(() => {
     let fetching = false;
@@ -61,7 +67,7 @@ function AllObjects() {
     return () => observer.unobserve(element);
   }, [fetchNextPage, hasNextPage, handleObserver]);
 
-  // console.log("data", data?.pages[0].records);
+  console.log("data", data?.pages[0].records);
 
   return (
     <>
