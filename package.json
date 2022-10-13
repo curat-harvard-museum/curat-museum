@@ -2,6 +2,10 @@
   "name": "curat-museum",
   "version": "2.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
+  "engines": {
+    "node": "18.7.0",
+    "npm": "8.15.0"
+  },
   "main": "index.js",
   "scripts": {
     "build": "webpack",
