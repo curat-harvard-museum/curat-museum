@@ -25,8 +25,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* The navbar will show these links when user is !loggedin */}
           <Link to="/home">Home</Link>
           <Link to="collection">View Collection</Link>
-          {/* <Link to="colorSearch">colorSearch</Link> */}
+          <Link to="colorSearch">colorSearch</Link>
           {/* <input type="text" placeholder="Search the collection" /> */}
+          <Link to="references">References</Link>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </div>
