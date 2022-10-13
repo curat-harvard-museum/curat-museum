@@ -10,6 +10,7 @@ import {
   Stack,
   Box,
   Avatar,
+  Text,
 } from "@chakra-ui/react";
 
 /**
@@ -60,19 +61,19 @@ const AuthForm = (props) => {
               <br></br>
               <div>
                 <label htmlFor="username">
-                  <medium>Username</medium>
+                  <Text fontSize="md">Username</Text>
                 </label>
                 <Input name="username" type="text" />
               </div>
               <div>
                 <label htmlFor="email">
-                  <medium>Email</medium>
+                  <Text fontSize="md">Email</Text>
                 </label>
                 <Input name="email" type="text" />
               </div>
               <div>
                 <label htmlFor="password">
-                  <medium>Password</medium>
+                  <Text fontSize="md">Password</Text>
                 </label>
                 <Input name="password" type={show ? "text" : "password"} />
                 <Button h="1.75rem" size="sm" onClick={handleClick}>
