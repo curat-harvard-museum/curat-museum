@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
 
@@ -7,28 +7,29 @@ function SingleObjectView() {
   const { id } = useParams();
   const { data } = useQuery(["query-single-object"], async () => {
     return await apiClient.get(
-      `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=83&size=100`
+      `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
 
-  const colorsObject = data?.data.colors
-    .filter((color) => color)
-    .map((color) => color.color);
+  // const colorsObject = data?.pages[0].records;
 
-  // console.log(typeof colorsObject);
+  // console.log(data?.data.color.map((color) => color));
+
+  console.log("colorsObject", data?.pages);
 
   return (
     <>
       <div>
         {/* {setTimeout(() => {
-          Object.entries(colorsObject).map(([key, value]) => (
+          colorsObject.filter((color) => color)
+          .map((color) => color.color) => (
             <div
               key={key}
               className="single-color-circle"
-              style={`color: ${value}`}
+              style={`background-color: ${value}`}
             ></div>
           ));
-        }, "1000")} */}
+        }, "2000")} */}
         {/* {colorsArray.map((color) => (
           <div
             key={color.color}
