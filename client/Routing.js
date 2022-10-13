@@ -9,6 +9,7 @@ import AuthForm from "./components/AuthForm";
 import Profile from "./components/Profile";
 import AllObjects from "./components/FullCollection";
 import SingleObjectView from "./components/SingleObjectView";
+import References from "./components/References";
 
 function Routing() {
   return (
@@ -20,6 +21,7 @@ function Routing() {
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
         <Route path="object/:id" element={<SingleObjectView />} />
+        <Route path="references" element={<References />} />
       </Route>
     </Routes>
   );
