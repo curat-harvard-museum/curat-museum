@@ -13,7 +13,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/home">Home</Link>
           <Link to="collection">View Collection</Link>
           <Link to="colorSearch">colorSearch</Link>
-          <input type="text" placeholder="Search the collection" />
+          {/* <input type="text" placeholder="Search the collection" /> */}
+          <Link to="references">References</Link>
           <Link to="/profile">Profile</Link>
           <a href="#" onClick={handleClick}>
             Logout
@@ -24,8 +25,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* The navbar will show these links when user is !loggedin */}
           <Link to="/home">Home</Link>
           <Link to="collection">View Collection</Link>
-          <Link to="colorSearch">colorSearch</Link>
-          <input type="text" placeholder="Search the collection" />
+          {/* <Link to="colorSearch">colorSearch</Link> */}
+          {/* <input type="text" placeholder="Search the collection" /> */}
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </div>

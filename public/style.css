@@ -48,8 +48,8 @@ form div {
 }
 
 .title-caption-text {
-color: rgba(0, 0, 0, 0.65);
-font-weight: 400;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 400;
 }
 
 .person-caption-text {
@@ -91,4 +91,45 @@ font-weight: 400;
 
 .logo {
   width: 11rem;
+}
+
+.reference-header {
+  padding: 2rem;
+}
+
+.video-box {
+  width: 80vw;
+  padding: 2rem;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem auto 4rem auto;
+  justify-content: space-evenly;
+  border-radius: 5px;
+}
+
+iframe {
+  position: relative;
+  background-color: black;
+  margin: 2rem auto 0rem auto;
+  width: 300px;
+  height: auto;
+  margin-top: -1.5rem;
+}
+
+.video-description {
+  text-align: start;
+  width: 250px;
+  height: fit-content;
+  margin: 0 auto;
+  font-size: .8rem;
+}
+
+.video-container {
+  height: fit-content;
+  background-color: white;
+  padding: 3rem 1rem 1rem 1rem;
+  width: 350px;
+  box-shadow: 2px 2px 5px silver;
+  margin: 3rem auto;
 }
