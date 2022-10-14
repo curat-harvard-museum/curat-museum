@@ -1,39 +1,8 @@
 import React, { useEffect, useRef, useCallback } from "react";
-<<<<<<< HEAD
-import { useQuery } from "@tanstack/react-query";
-=======
->>>>>>> main
 import { useInfiniteQuery } from "react-query";
 import { Link } from "react-router-dom";
 
 function AllObjects() {
-<<<<<<< HEAD
-  const size = 10;
-  const observerElem = useRef(null);
-
-  const fetchObjects = async (page) => {
-    const response = await fetch(
-      `https://api.harvardartmuseums.org/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=${page}&size=${size}`
-    );
-    return response.json();
-  };
-
-  const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } =
-    useInfiniteQuery(
-      "query-objects",
-      ({ pageParam = 1 }) => fetchObjects(pageParam),
-      {
-        getNextPageParam: (lastPage, allPages) => {
-          const nextPage = allPages.length + 1;
-          return lastPage.items.length !== 0 ? nextPage : undefined;
-        },
-      }
-    );
-
-  const handleObserver = useCallback(
-    (entries) => {
-      const [target] = entries;
-=======
   const observerElem = useRef(null);
   const fetchObjects = async ({ pageParam = 1 }) => {
     const res = await fetch(
@@ -77,7 +46,6 @@ function AllObjects() {
   const handleObserver = useCallback(
     (records) => {
       const [target] = records;
->>>>>>> main
       if (target.isIntersecting && hasNextPage) {
         fetchNextPage();
       }
@@ -88,14 +56,6 @@ function AllObjects() {
   useEffect(() => {
     const element = observerElem.current;
     const option = { threshold: 0 };
-<<<<<<< HEAD
-
-    const observer = new IntersectionObserver(handleObserver, option);
-    observer.observe(element);
-    return () => observer.unobserve(element);
-  }, [fetchNextPage, hasNextPage, handleObserver]);
-=======
->>>>>>> main
 
     const observer = new IntersectionObserver(handleObserver, option);
     observer.observe(element);
@@ -105,13 +65,8 @@ function AllObjects() {
   return (
     <>
       <div className="grid-container">
-<<<<<<< HEAD
-        {isSuccess &&
-          data?.data.records
-=======
         {data?.pages.map((collection) =>
           collection.records
->>>>>>> main
             .filter((record) => record.primaryimageurl)
             .map((record) => (
               <Link key={record.id} to={`/object/${record.id}`}>
@@ -124,27 +79,16 @@ function AllObjects() {
                   <div className="caption-text title-caption-text">
                     {record.title}
                   </div>
-<<<<<<< HEAD
-                  <div className="caption-text person-caption-text">
-                    {/* {record.people[0].name ? record.people[0].name : null} */}
-                  </div>
-=======
                   <div className="caption-text person-caption-text"></div>
->>>>>>> main
                   <div className="caption-text classification-caption-text">
                     {record.classification}
                   </div>
                 </>
               </Link>
-<<<<<<< HEAD
-            ))}
-        <div className="loader" ref={observerElem}>
-=======
             ))
         )}
 
         <div ref={observerElem}>
->>>>>>> main
           {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
         </div>
       </div>
