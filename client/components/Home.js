@@ -1,10 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Exhibitions from "./Exhibitions";
+import BackToTopButton from "./BackToTopButton";
 
-/**
- * COMPONENT
- */
 const Home = (props) => {
   const username = useSelector((state) => state.auth.username);
 
@@ -18,6 +16,7 @@ const Home = (props) => {
       <hr />
       <br></br>
       <Exhibitions />
+      <BackToTopButton />
     </div>
   );
 };

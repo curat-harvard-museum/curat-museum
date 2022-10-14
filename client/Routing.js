@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, Outlet, useNavigate } from "react-router-dom";
+import { Route, Routes, Outlet, useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { me, logout } from "./store";
 
@@ -14,6 +14,7 @@ import References from "./components/References";
 function Routing() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="home" />} />
       <Route path="*" element={<Layout />}>
         <Route path="login" element={<AuthForm />} />
         <Route path="collection" element={<AllObjects />} />

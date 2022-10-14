@@ -2,16 +2,13 @@ import React from "react";
 import { Button, Flex } from "@chakra-ui/react";
 import Videos from "./Videos";
 import Audios from "./Audios";
+import BackToTopButton from "./BackToTopButton";
 
-/**
- * COMPONENT
- */
 const References = (props) => {
   return (
     <div className="reference-header">
       <Flex justifyContent="center" alignItems="center">
         <Button
-          /* flex={1} */
           px={4}
           fontSize={"sm"}
           rounded={"full"}
@@ -22,7 +19,6 @@ const References = (props) => {
           <a href="#videos">Videos</a>
         </Button>
         <Button
-          /* flex={1} */
           px={4}
           fontSize={"sm"}
           rounded={"full"}
@@ -36,6 +32,7 @@ const References = (props) => {
 
       <Videos />
       <Audios />
+      <BackToTopButton />
     </div>
   );
 };
