@@ -3,6 +3,7 @@ import { useInfiniteQuery } from "react-query";
 import { Link, useSearchParams } from "react-router-dom";
 import FilterButtons from "./FilterButtons";
 import Search from "./Search";
+import BackToTopButton from "./BackToTopButton";
 
 function AllObjects() {
   let [searchParams] = useSearchParams();
@@ -95,7 +96,10 @@ function AllObjects() {
                   <div className="caption-text title-caption-text">
                     {record.title}
                   </div>
-                  <div className="caption-text person-caption-text"></div>
+                  <div className="caption-text person-caption-text">
+                    {" "}
+                    {record.people ? record.people[0].name : null}
+                  </div>
                   <div className="caption-text classification-caption-text">
                     {record.classification}
                   </div>
@@ -107,6 +111,7 @@ function AllObjects() {
         <div ref={observerElem}>
           {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
         </div>
+        <BackToTopButton />
       </div>
     </>
   );

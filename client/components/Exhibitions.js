@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { Badge, Box, Image } from "@chakra-ui/react";
 
