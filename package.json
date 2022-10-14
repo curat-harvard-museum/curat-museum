@@ -2,6 +2,10 @@
   "name": "curat-museum",
   "version": "2.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
+  "engines": {
+    "node": "18.7.0",
+    "npm": "8.15.0"
+  },
   "main": "index.js",
   "scripts": {
     "build": "webpack",
@@ -25,12 +29,12 @@
     "@emotion/styled": "^11.10.4",
     "@ngneat/falso": "^6.1.0",
     "@tanstack/react-query": "^4.10.3",
+    "axios": "^1.1.2",
     "bcrypt": "^5.0.0",
     "compression": "^1.7.3",
     "dotenv": "^16.0.3",
     "express": "^4.16.4",
     "framer-motion": "^7.5.3",
-    "fsevents": "^2.3.2",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
@@ -42,7 +46,6 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
     "@babel/register": "^7.12.10",
-    "axios": "^0.21.1",
     "axios-mock-adapter": "^1.16.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.2.0",
@@ -63,5 +66,8 @@
     "supertest": "^4.0.2",
     "webpack": "^5.15.0",
     "webpack-cli": "^4.3.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   }
 }

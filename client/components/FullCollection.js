@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { useInfiniteQuery } from "react-query";
 import { Link } from "react-router-dom";
+import BackToTopButton from "./BackToTopButton";
 
 function AllObjects() {
   const observerElem = useRef(null);
@@ -91,6 +92,7 @@ function AllObjects() {
         <div ref={observerElem}>
           {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
         </div>
+        <BackToTopButton />
       </div>
     </>
   );
