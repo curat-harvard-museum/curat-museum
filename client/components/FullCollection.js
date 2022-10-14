@@ -79,7 +79,10 @@ function AllObjects() {
                   <div className="caption-text title-caption-text">
                     {record.title}
                   </div>
-                  <div className="caption-text person-caption-text"></div>
+                  <div className="caption-text person-caption-text">
+                    {" "}
+                    {record.people ? record.people[0].name : null}
+                  </div>
                   <div className="caption-text classification-caption-text">
                     {record.classification}
                   </div>

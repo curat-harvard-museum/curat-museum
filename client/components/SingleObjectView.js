@@ -11,38 +11,21 @@ function SingleObjectView() {
     );
   });
 
-  // const colorsObject = data?.pages[0].records;
+  console.log("just data of diff types", data?.data.colors);
 
-<<<<<<< HEAD
-  console.log(data?.data.color);
-
-  console.log(typeof colorsObject);
-=======
   // console.log(data?.data.color.map((color) => color));
-
-  console.log("colorsObject", data?.pages);
->>>>>>> main
 
   return (
     <>
       <div>
-        {/* {setTimeout(() => {
-          colorsObject.filter((color) => color)
-          .map((color) => color.color) => (
+        {data?.data.colors.map((color) => (
+          <div key={color.color}>
             <div
-              key={key}
               className="single-color-circle"
-              style={`background-color: ${value}`}
+              style={{ backgroundColor: `${color.color}` }}
             ></div>
-          ));
-        }, "2000")} */}
-        {/* {colorsArray.map((color) => (
-          <div
-            key={color.color}
-            className="single-color-circle"
-            style="color:`${color.color}`"
-          ></div>
-        ))} */}
+          </div>
+        ))}
         {
           <div>
             <img
@@ -54,7 +37,7 @@ function SingleObjectView() {
               {data?.data.title}
             </div>
             <div className="caption-text person-caption-text">
-              {data?.data.people[0].name ? data?.data.people[0].name : null}
+              {data?.data.people ? data?.data.people[0].name : null}
             </div>
             <div className="caption-text classification-caption-text">
               {data?.data.classification}
