@@ -11,8 +11,6 @@ function SingleObjectView() {
     );
   });
 
-  console.log("just data of diff types", data?.data.colors);
-
   // console.log(data?.data.color.map((color) => color));
 
   return (
