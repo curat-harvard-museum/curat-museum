@@ -24,15 +24,26 @@ const FavoriteButton = (props) => {
         console.log('data', data)
         console.log('props', props)
         let favBool = data
+
+        const handleSubmit = (evt) => {
+            evt.preventDefault();
+            // const formName = evt.target.name;
+            // const username = evt.target.username.value;
+            // const email = evt.target.email.value;
+            // const password = evt.target.password.value;
+            // dispatch(authenticate(username, email, password, formName));
+            console.log("evt.target", evt.target)
+          };
+
     if (username === undefined) {
         return (
             <p><span>
-                <a href="/login">Log in to favorite this recipe!</a>
+                <a href="/login">Log in to favorite this object!</a>
             </span></p>);
     }
     return(
 
-        <Button h="1.75rem" size="sm" onClick={handleClick}>
+        <Button h="1.75rem" size="sm" onClick={handleClick} onSubmit={handleSubmit}>
                   {favorite ? "Like" : "Unlike"}
                 </Button>
     )

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-  models: { User },
+  models: { User, Object },
 } = require("../db");
 module.exports = router;
 
@@ -32,3 +32,15 @@ router.get("/me", async (req, res, next) => {
     next(ex);
   }
 });
+
+router.put("/:id/favorite", async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const object = await Object.findByPk(req.params.id);
+    user.objectId = object;
+    await user.save();
+    res.send(user)
+  } catch (ex){
+    next(ex);
+  }
+})

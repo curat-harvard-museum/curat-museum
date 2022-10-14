@@ -58,7 +58,7 @@ User.findByToken = async function (token) {
     const user = await User.findByPk(id, {
       include: [db.models.object]
     });
-    // console.log('user.dataValues.objects', user.dataValues.objects)
+    // console.log('user', user)
     if (!user) {
       throw "nooo";
     }
