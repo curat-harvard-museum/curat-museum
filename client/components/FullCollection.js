@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { useInfiniteQuery } from "react-query";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import FilterButtons from "./FilterButtons";
+import Search from "./Search";
 
 function AllObjects() {
+  let [searchParams] = useSearchParams();
+  const classification = searchParams.get("classification");
   const observerElem = useRef(null);
   const fetchObjects = async ({ pageParam = 1 }) => {
     const res = await fetch(
-      `https://api.harvardartmuseums.org/object?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=${pageParam}`
+      `https://api.harvardartmuseums.org/object?classification=${classification}&apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=${pageParam}`
     );
     return await res.json();
   };
@@ -62,8 +66,20 @@ function AllObjects() {
     return () => observer.unobserve(element);
   }, [fetchNextPage, hasNextPage, handleObserver]);
 
+  const menuItems = [
+    ...new Set(
+      data?.pages.map((collection) =>
+        collection.records
+          .filter((record) => record.primaryimageurl)
+          .map((record) => record.classification)
+      )
+    ),
+  ];
+
   return (
     <>
+      <Search />
+      <FilterButtons />
       <div className="grid-container">
         {data?.pages.map((collection) =>
           collection.records

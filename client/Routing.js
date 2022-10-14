@@ -10,7 +10,6 @@ import Profile from "./components/Profile";
 import AllObjects from "./components/FullCollection";
 import SingleObjectView from "./components/SingleObjectView";
 import References from "./components/References";
-import CollectionSearch from "./components/CollectionSearch";
 
 function Routing() {
   return (
@@ -20,7 +19,6 @@ function Routing() {
         <Route path="collection" element={<AllObjects />} />
         <Route path="register" element={<AuthForm />} />
         <Route path="home" element={<Home />} />
-        <Route path="search" element={<CollectionSearch />} />
         <Route path="profile" element={<Profile />} />
         <Route path="object/:id" element={<SingleObjectView />} />
         <Route path="references" element={<References />} />
