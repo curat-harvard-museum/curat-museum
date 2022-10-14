@@ -7,11 +7,13 @@ import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
 import {PlusSquareIcon, MinusIcon} from "@chakra-ui/icons";
 import { Button } from '@chakra-ui/react';
+import { connect } from "react-redux";
 
 const FavoriteButton = (props) => {
     const username = useSelector((state) => state.auth.username);
-    const [favorite, setFavorite] = useState(false)
-    const handleClick = () => setFavorite(!favorite);
+    const [like, setLike] = useState(false)
+    const [favorites, setFavorites] = useState([])
+    const handleClick = () => setLike(!like);
     console.log('username', username)
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -25,16 +27,6 @@ const FavoriteButton = (props) => {
         console.log('props', props)
         let favBool = data
 
-        const handleSubmit = (evt) => {
-            evt.preventDefault();
-            // const formName = evt.target.name;
-            // const username = evt.target.username.value;
-            // const email = evt.target.email.value;
-            // const password = evt.target.password.value;
-            // dispatch(authenticate(username, email, password, formName));
-            console.log("evt.target", evt.target)
-          };
-
     if (username === undefined) {
         return (
             <p><span>
@@ -43,8 +35,8 @@ const FavoriteButton = (props) => {
     }
     return(
 
-        <Button h="1.75rem" size="sm" onClick={handleClick} onSubmit={handleSubmit}>
-                  {favorite ? "Like" : "Unlike"}
+        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {like ? "Like" : "Unlike"}
                 </Button>
     )
     
@@ -54,4 +46,13 @@ const SetStateAndToggle = (props) => {
 
 }
 
-export default FavoriteButton
+const mapStateToProps = state => ({
+    username: state.auth.username,
+    userId: state.auth.id
+})
+
+const mapDispatchToProps = dispatch => (
+    {addToFavs: object => dispatch(addToFavs(object))}
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteButton)

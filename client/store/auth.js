@@ -73,9 +73,18 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
       return action.auth;
-    case UPDATE_USER:
-      return action.user;  
+    // case UPDATE_USER:
+    //   return action.user;  
     default:
       return state;
   }
+}
+
+export const favoritesReducer = (state = [], action) => {
+ switch(action.type){
+   case UPDATE_USER:
+     return state.concat(action.user);
+  default: 
+    return state;
+ }
 }
