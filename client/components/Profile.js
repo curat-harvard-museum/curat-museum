@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const Profile = (props) => {
   const username = useSelector((state) => state.auth.username);
   const favorites = useSelector((state) => state.auth.objects);
-  console.log('favorites', favorites)
+  // console.log('favorites', favorites)
 
   return (
     <>
