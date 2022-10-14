@@ -133,3 +133,44 @@ iframe {
   box-shadow: 2px 2px 5px silver;
   margin: 3rem auto;
 }
+
+.audio-box {
+  width: 80vw;
+  padding: 2rem;
+  /* background-color: #f4f1ea; */
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 4rem auto 4rem auto;
+  border-radius: 5px;
+}
+
+
+.audio-image {
+    width: 500px;
+    height: auto;
+    margin: 2rem;
+    margin-left: 7.5rem;
+    box-shadow: 2px 2px 5px silver;
+}
+
+.sound-box {
+    background-color: white;
+    width: 400px;
+    height: auto;
+    padding-bottom: 1rem;
+    font-size: .75rem;
+    box-shadow: 2px 2px 5px silver;
+    float: right;
+    margin-top: 2.05rem;
+}
+
+.audio-controls {
+    padding-top: 2rem;
+}
+
+.transcript {
+    width: 75%;
+    margin: 1rem auto;
+}
