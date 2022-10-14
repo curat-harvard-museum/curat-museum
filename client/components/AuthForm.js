@@ -13,10 +13,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-/**
- * COMPONENT
- */
-
 const AuthForm = (props) => {
   const location = useLocation().pathname;
   const dispatch = useDispatch();
