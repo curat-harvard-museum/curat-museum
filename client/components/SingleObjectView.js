@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton";
 
 function SingleObjectView() {
   const { id } = useParams();
@@ -42,6 +43,7 @@ function SingleObjectView() {
             </div>
           </div>
         }
+        <FavoriteButton />
       </div>
     </>
   );
