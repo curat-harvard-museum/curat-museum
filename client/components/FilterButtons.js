@@ -9,7 +9,7 @@ const fetchObjects = async () => {
   return await res.json();
 };
 
-const FilterButtons = () => {
+const FilterButtons = ({ classification }) => {
   let [searchParams, setSearchParams] = useSearchParams();
 
   function handleClick(event) {
