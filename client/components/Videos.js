@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Heading } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
 
 export default function Videos() {
   const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const apiLink = `https://api.harvardartmuseums.org/video/?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&size=100&`;
+  const apiLink = `https://api.harvardartmuseums.org/video/?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&size=100`;
 
   const fetchVideo = async () => {
     await fetch(apiLink)
@@ -42,7 +42,7 @@ export default function Videos() {
             </div>
           ))
         ) : (
-          <h1>Loading....</h1>
+          <Text>Loading....</Text>
         )}
       </div>
     </div>
