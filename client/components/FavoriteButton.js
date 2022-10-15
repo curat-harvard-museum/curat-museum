@@ -36,7 +36,7 @@ const FavoriteButton = (props) => {
     return(
 
         <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {like ? "Like" : "Unlike"}
+                  {like ? "Unlike" : "Like"}
                 </Button>
     )
     
