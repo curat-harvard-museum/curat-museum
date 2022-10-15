@@ -4,7 +4,15 @@ import { Link, useSearchParams } from "react-router-dom";
 import FilterButtons from "./FilterButtons";
 import Search from "./Search";
 import BackToTopButton from "./BackToTopButton";
-import { Tab, Tabs, TabPanel, TabList, TabPanels } from "@chakra-ui/react";
+import {
+  Tab,
+  Tabs,
+  TabPanel,
+  TabList,
+  TabPanels,
+  SimpleGrid,
+  Box,
+} from "@chakra-ui/react";
 
 function AllObjects() {
   const observerElem = useRef(null);
@@ -120,30 +128,32 @@ function AllObjects() {
           </TabPanel>
         </TabPanels>
       </Tabs>
-      <div className="grid-container">
+      <SimpleGrid columns={[1, null, 2, null, 4]} spacing="5rem">
         {data?.pages.map((collection) =>
           collection.records
             .filter((record) => record.primaryimageurl)
             .map((record) => (
-              <Link key={record.id} to={`/object/${record.id}`}>
-                <>
-                  <img
-                    className="single-grid-image"
-                    src={record.primaryimageurl}
-                    alt="{record.title} by {record.people[0].name} "
-                  ></img>
-                  <div className="caption-text title-caption-text">
-                    {record.title}
-                  </div>
-                  <div className="caption-text person-caption-text">
-                    {" "}
-                    {record.people ? record.people[0].name : null}
-                  </div>
-                  <div className="caption-text classification-caption-text">
-                    {record.classification}
-                  </div>
-                </>
-              </Link>
+              <Box key={record.id}>
+                <Link to={`/object/${record.id}`}>
+                  <>
+                    <img
+                      className="single-grid-image"
+                      src={record.primaryimageurl}
+                      alt="{record.title} by {record.people[0].name} "
+                    ></img>
+                    <div className="caption-text title-caption-text">
+                      {record.title}
+                    </div>
+                    <div className="caption-text person-caption-text">
+                      {" "}
+                      {record.people ? record.people[0].name : null}
+                    </div>
+                    <div className="caption-text classification-caption-text">
+                      {record.classification}
+                    </div>
+                  </>
+                </Link>
+              </Box>
             ))
         )}
 
@@ -151,7 +161,7 @@ function AllObjects() {
           {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
         </div>
         <BackToTopButton />
-      </div>
+      </SimpleGrid>
     </>
   );
 }
