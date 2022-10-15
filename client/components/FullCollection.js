@@ -14,31 +14,36 @@ import {
   Box,
 } from "@chakra-ui/react";
 
+const validApiParams = [
+  "century",
+  "color",
+  "culture",
+  "gallery",
+  "classification",
+  "medium",
+  "period",
+  "place",
+  "technique",
+];
+
 function AllObjects() {
   const observerElem = useRef(null);
-  let [searchParams] = useSearchParams();
-  const classification = searchParams.get("classification");
-  const century = searchParams.get("century");
-  const culture = searchParams.get("culture");
+  const [searchParams] = useSearchParams();
+
+  const onlyValidParams = [...searchParams]
+    .filter(([key, value]) => validApiParams.includes(key) && Boolean(value))
+    .sort(
+      (a, b) => validApiParams.indexOf(a[0]) - validApiParams.indexOf(b[0])
+    );
+
+  const formattedParamsString = new URLSearchParams(onlyValidParams).toString();
 
   const fetchObjects = async ({ pageParam = 1 }) => {
     const res = await fetch(
-      `https://api.harvardartmuseums.org/object?classification=${classification}&apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=${pageParam}`
+      `https://api.harvardartmuseums.org/object?${formattedParamsString}&apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=${pageParam}`
     );
     return await res.json();
   };
-
-  // const fetchObjects = async ({ pageParam = 1 }) => {
-  //   const res = await fetch(
-  //     `https://api.harvardartmuseums.org/object?${
-  //       classification ? `classification=${classification}&` : ""
-  //     }
-  //     ${century ? `century=${century}&` : ""}
-  //     ${culture ? `culture=${culture}&` : ""}
-  //     apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&page=${pageParam}`
-  //   );
-  //   return await res.json();
-  // };
 
   const {
     data,
@@ -48,7 +53,7 @@ function AllObjects() {
     isFetching,
     isFetchingNextPage,
     status,
-  } = useInfiniteQuery(["objects"], fetchObjects, {
+  } = useInfiniteQuery(["objects", formattedParamsString], fetchObjects, {
     getNextPageParam: (lastPage, pages) => {
       const nextPage = pages.length + 1;
       return nextPage;
@@ -112,20 +117,16 @@ function AllObjects() {
           <Tab>Gallery</Tab>
           <Tab>Medium</Tab>
           <Tab>Period</Tab>
-          <Tab>Artist</Tab>
           <Tab>Place</Tab>
           <Tab>Technique</Tab>
+          {/* <Tab>Remove Filters</Tab> */}
         </TabList>
         <TabPanels>
-          <TabPanel>
-            <FilterButtons filterType={"classification"} />
-          </TabPanel>
-          <TabPanel>
-            <FilterButtons filterType={"century"} />
-          </TabPanel>
-          <TabPanel>
-            <FilterButtons filterType={"culture"} />
-          </TabPanel>
+          {validApiParams.map((param) => (
+            <TabPanel>
+              <FilterButtons filterType={param} />
+            </TabPanel>
+          ))}
         </TabPanels>
       </Tabs>
       <SimpleGrid columns={[1, null, 2, null, 4]} spacing="5rem">
