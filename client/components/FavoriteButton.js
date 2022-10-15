@@ -8,12 +8,13 @@ import { useParams } from "react-router-dom";
 import {PlusSquareIcon, MinusIcon} from "@chakra-ui/icons";
 import { Button } from '@chakra-ui/react';
 import { connect } from "react-redux";
+// import {addToFavs} from ''
 
 const FavoriteButton = (props) => {
     const username = useSelector((state) => state.auth.username);
     const [like, setLike] = useState(false)
     const [favorites, setFavorites] = useState([])
-    const handleClick = () => setLike(!like);
+    // const handleClick = () => setLike(!like);
     console.log('username', username)
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -35,8 +36,8 @@ const FavoriteButton = (props) => {
     }
     return(
 
-        <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {like ? "Unlike" : "Like"}
+        <Button h="1.75rem" size="sm" onClick={() => addToFavs(id)}>
+                  {/* {like ? "Unlike" : "Like"} */}
                 </Button>
     )
     
