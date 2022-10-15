@@ -1,32 +1,42 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useSearchParams } from "react-router-dom";
+import { Button, Wrap, WrapItem } from "@chakra-ui/react";
 
-const fetchObjects = async () => {
-  const res = await fetch(
-    `https://api.harvardartmuseums.org/classification?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
-  );
-  return await res.json();
-};
-
-const FilterButtons = ({ classification }) => {
+const FilterButtons = ({ filterType }) => {
+  const fetchObjects = async () => {
+    const res = await fetch(
+      `https://api.harvardartmuseums.org/${filterType}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
+    );
+    return await res.json();
+  };
   let [searchParams, setSearchParams] = useSearchParams();
 
   function handleClick(event) {
     event.preventDefault();
-    setSearchParams({ classification: event.target.value });
+    setSearchParams({ [filterType]: event.target.value });
     window.location.reload(false);
   }
-  const { data } = useQuery(["classifications"], fetchObjects);
+  let { data } = useQuery(["filterType", filterType], fetchObjects);
 
   return (
     <>
       <div>
-        {data?.records.map((record) => (
-          <button key={record.id} onClick={handleClick} value={record.name}>
-            {record.name}
-          </button>
-        ))}
+        <Wrap spacing={4}>
+          {data?.records.map((record) => (
+            <WrapItem key={record.id}>
+              <Button
+                colorScheme="gray"
+                size="sm"
+                variant="ghost"
+                onClick={handleClick}
+                value={record.name}
+              >
+                {record.name}
+              </Button>
+            </WrapItem>
+          ))}
+        </Wrap>
       </div>
     </>
   );
