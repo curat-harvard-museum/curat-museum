@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Heading, Text, Divider, Image, Box, AspectRatio } from '@chakra-ui/react'
 
 const Profile = (props) => {
   const username = useSelector((state) => state.auth.username);
@@ -8,14 +9,17 @@ const Profile = (props) => {
 
   return (
     <>
-      <h3>Welcome, {username}</h3>
+      <Heading as='h4' size='md'>Welcome, {username}</Heading>
       <div>
         {favorites?.map((favorite) => (
           <div key={favorite.objectid}>
-            <div>Title: {favorite.title}</div>
-            <div>Artist: {favorite.artist}</div>
-            <img src={favorite.primaryimageurl}></img>
-            <div>Description: {favorite.description}</div>
+            <div><Heading as='h5' size='sm'>Title: {favorite.title}</Heading></div>
+            <div><Heading as='h5' size='sm'>Artist: {favorite.artist}</Heading></div>
+            <AspectRatio maxW='400px' ratio={4 / 3}>
+  <Image boxSize='400px' src={favorite.primaryimageurl} alt='Favorite Primary Image URL' />
+            </AspectRatio>
+            <div><Text fontSize='sm'>Description: {favorite.description}</Text></div>
+            <Divider />
           </div>
         ))}
       </div>
