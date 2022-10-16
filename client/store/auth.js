@@ -50,12 +50,12 @@ export const authenticate =
     }
   };
 
-export const updateUser = (user) = async (dispatch) => {
-  const {data} = await axios.put(`/api/users/${user.id}/favorite`, 
-  user
-  );
-  return async (dispatch(me()))
-}
+// export const updateUser = (id) = async (dispatch) => {
+//   const {data} = await axios.put(`/auth/:id/favorite`, 
+//   id
+//   );
+//   return async (dispatch(me()))
+// }
 
 export const logout = (navigate) => {
   window.localStorage.removeItem(TOKEN);
