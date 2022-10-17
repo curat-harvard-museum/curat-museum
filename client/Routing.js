@@ -30,6 +30,7 @@ function Routing() {
 
 const Layout = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const { auth } = useSelector(state => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ const Layout = () => {
   };
   return (
     <div>
-      <Navbar handleClick={handleClick} isLoggedIn={isLoggedIn} />
+      <Navbar handleClick={handleClick} isLoggedIn={isLoggedIn} auth={ auth }/>
       <Outlet />
     </div>
   );

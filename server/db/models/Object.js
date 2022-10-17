@@ -23,4 +23,11 @@ const Object = db.define("object", {
   }
 });
 
+Object.makeFavorite = function(artwork, userId){
+  //is object in database?
+  //if not create it..
+  //const user = await db.models.user.findByPk(userId);
+  //await user.addObject(object);
+}
+
 module.exports = Object;

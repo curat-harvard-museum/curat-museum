@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, auth }) => (
   <div className="logo-navbar">
     <Link to="home">
       <img className="logo" src="/assets/images/logo.png" />
@@ -15,7 +15,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="colorSearch">colorSearch</Link>
           {/* <input type="text" placeholder="Search the collection" /> */}
           <Link to="references">References</Link>
-          <Link to="profile">Profile</Link>
+          <Link to="profile">Profile ({ auth.objects.length})</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>

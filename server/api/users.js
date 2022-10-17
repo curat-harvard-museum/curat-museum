@@ -27,6 +27,8 @@ router.get('/:id', async(req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
+    //res.send(await User.addFavorite({ id: req.params.id, artwork: req.body }));
+    //or res.send(await req.user.addFavorite(req.body));
     const artwork = req.body;
     // console.log("user id", user.id)
     // console.log("artwork", artwork)

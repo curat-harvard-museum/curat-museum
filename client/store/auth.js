@@ -43,12 +43,13 @@ export const authenticate =
     }
   };
 
-export const updateUser = (userId, artwork) => async (dispatch) => {
-  console.log(userId)
-  const {data} = await axios.put(`/api/users/${userId}`, 
-  artwork
-  );
-  return dispatch(setAuth(data))
+export const updateUser = (artwork) => {
+  return async (dispatch, getState) => {
+    const {data} = await axios.put(`/api/users/${getState().auth.id}`, 
+      artwork
+    );
+    return dispatch(setAuth(data))
+  }
 }
 
 export const logout = (navigate) => {

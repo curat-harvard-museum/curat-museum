@@ -26,6 +26,22 @@ const User = db.define("user", {
 
 module.exports = User;
 
+User.addFavorite = async({ id, artwork }) => {
+  const [object, created] = await db.models.object.findOrCreate({
+    where: {
+      objectid: artwork.objectid,
+      primaryimageurl: artwork.primaryimageurl,
+      title: artwork.title,
+      description: artwork.description,
+      artist: artwork.people ? artwork.people[0].name : null,
+    },
+  });
+  const user = await User.findByPk(id, {include: Object})
+  await user.addObject(object)
+  await user.reload()
+  return user;
+};
+
 /**
  * instanceMethods
  */
