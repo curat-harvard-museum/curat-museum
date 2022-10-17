@@ -5,15 +5,6 @@ import FilterButtons from "./FilterButtons";
 import Search from "./Search";
 import BackToTopButton from "./BackToTopButton";
 import {
-  Drawer,
-  Button,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
   SimpleGrid,
   Box,
   Text,
@@ -43,7 +34,7 @@ function AllObjects() {
   const observerElem = useRef(null);
   const [searchParams] = useSearchParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [placement, setPlacement] = React.useState("left");
+  const [placement, setPlacement] = React.useState("right");
 
   const onlyValidParams = [...searchParams]
     .filter(([key, value]) => validApiParams.includes(key) && Boolean(value))
@@ -136,57 +127,45 @@ function AllObjects() {
         w="100%"
         justify="center"
       >
-        <Button justify="left" onClick={onOpen}>
-          Filter Collection
-        </Button>
-        <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
-            <DrawerBody>
-              <Accordion allowToggle>
-                <AccordionItem>
-                  {/* <Wrap>
-                    <WrapItem> */}
-                  <AccordionButton>Century</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Color</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Culture</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Gallery</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Classification</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Medium</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Period</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Place</AccordionButton>
-                  {/* </WrapItem>
-                    <WrapItem> */}
-                  <AccordionButton>Technique</AccordionButton>
-                  {/* </WrapItem>
-                    {/* <Tab>Remove Filters</Tab> */}
-                  {/* </Wrap> */}
-
-                  {validApiParams.map((param) => (
-                    <AccordionPanel key={param}>
-                      <FilterButtons filterType={param} />
-                    </AccordionPanel>
-                  ))}
-                </AccordionItem>
-              </Accordion>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
+        <Accordion allowToggle>
+          <AccordionItem>
+            <Wrap>
+              <WrapItem>
+                <AccordionButton>Century</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Color</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Culture</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Gallery</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Type</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Medium</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Period</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Place</AccordionButton>
+              </WrapItem>
+              <WrapItem>
+                <AccordionButton>Technique</AccordionButton>
+              </WrapItem>
+              {/* Remove Filters */}
+            </Wrap>
+            {validApiParams.map((param) => (
+              <AccordionPanel key={param}>
+                <FilterButtons filterType={param} />
+              </AccordionPanel>
+            ))}
+          </AccordionItem>
+        </Accordion>
       </Flex>
       <SimpleGrid columns={[1, null, 2, null, 4]} spacing="5rem">
         {data?.pages.map((collection) =>
