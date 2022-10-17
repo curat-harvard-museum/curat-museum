@@ -196,6 +196,7 @@ function AllObjects() {
           </AccordionItem>
         </Accordion>
       </Flex>
+      //comment
       <SimpleGrid columns={[1, null, 2, null, 4]} spacing="5rem">
         {data?.pages.map((collection) =>
           collection.records
