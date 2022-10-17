@@ -4,8 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth, { favoritesReducer } from './auth'
 
-const reducer = combineReducers({ auth,
-  favorites: favoritesReducer }
+const reducer = combineReducers({ auth }
   )
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

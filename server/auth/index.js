@@ -37,7 +37,7 @@ router.put("/:id/favorite", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const object = await Object.findByPk(req.params.id);
-    user.objectId = object;
+    user.objectId = object.id;
     await user.save();
     res.send(user)
   } catch (ex){
