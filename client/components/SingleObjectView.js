@@ -11,7 +11,7 @@ function SingleObjectView() {
     );
   });
 
-  // console.log(data?.data.color.map((color) => color));
+  console.log(data?.data);
 
   return (
     <>
