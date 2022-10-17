@@ -3,6 +3,8 @@ import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
 
+import { Box, Text, Flex, Stack, Circle, Image } from "@chakra-ui/react";
+
 function SingleObjectView() {
   const { id } = useParams();
   const { data } = useQuery(["query-single-object"], async () => {
@@ -11,35 +13,76 @@ function SingleObjectView() {
     );
   });
 
-  console.log("the data", data?.data);
+  console.log(data?.data.images.map((image) => image.idsid));
 
   return (
     <>
       <div>
-        {data?.data.colors.map((color) => (
-          <div key={color.color}>
-            <div
-              className="single-color-circle"
-              style={{ backgroundColor: `${color.color}` }}
-            ></div>
-          </div>
-        ))}
         {
           <div>
-            <img
+            <Image
               className="single-image"
-              src={data?.data.primaryimageurl}
-              alt="{data?.data.title} by {data?.data.people[0].name} "
-            ></img>
-            <div className="caption-text title-caption-text">
-              {data?.data.title}
-            </div>
-            <div className="caption-text person-caption-text">
-              {data?.data.people ? data?.data.people[0].name : null}
-            </div>
-            <div className="caption-text classification-caption-text">
-              {data?.data.classification}
-            </div>
+              src={`${data?.data.primaryimageurl}`}
+              alt={`${data?.data.title}`}
+            ></Image>
+            {data?.data.colors.map((color) => (
+              <Circle
+                key={color.color}
+                position="relative"
+                w="80px"
+                h="80px"
+                bg={`${color.color}`}
+              ></Circle>
+            ))}
+            <Text>Title</Text>
+            <Text>{data?.data.titles ? data?.data.titles[0].title : null}</Text>
+            <Text>Artist</Text>
+            <Text>{data?.data.people ? data?.data.people[0].name : null}</Text>
+
+            {data?.data.images.map((image) => (
+              <Image
+                w="15rem"
+                h="15rem"
+                src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
+              ></Image>
+            ))}
+
+            <Text>Century</Text>
+            <Text>{data?.data.century ? data?.data.century : null}</Text>
+
+            <Text>Date of Completion</Text>
+            <Text>{data?.data.dated ? data?.data.dated : null}</Text>
+
+            <Text>Culture</Text>
+            <Text>{data?.data.culture ? data?.data.culture : null}</Text>
+
+            <Text>Classification</Text>
+            <Text>
+              {data?.data.classification ? data?.data.classification : null}
+            </Text>
+
+            <Text>Medium/Technique</Text>
+            <Text>{data?.data.medium ? data?.data.medium : null}</Text>
+            <Text>{data?.data.technique ? data?.data.technique : null}</Text>
+
+            {data?.data.gallery ? (
+              <Text>
+                Location Floor
+                {data?.data.gallery.floor}
+                {data?.data.gallery.name}
+                {data?.data.gallery.number}
+              </Text>
+            ) : null}
+
+            <Text>Associated Exhibitions</Text>
+            <Text></Text>
+
+            <Text>Related Artworks</Text>
+            <Text></Text>
+
+            <Text>{data?.data.title ? data?.data.title : null}</Text>
+            <Text>{data?.data.people ? data?.data.people[0].name : null}</Text>
+            <Text>{data?.data.classification}</Text>
           </div>
         }
       </div>
