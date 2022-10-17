@@ -59,7 +59,6 @@ const Profile = (props) => {
         <Box>
           {favorite.description}
           <Box as='span' color='gray.600' fontSize='sm'>
-            / wk
           </Box>
         </Box>
 

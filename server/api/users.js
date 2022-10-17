@@ -28,8 +28,8 @@ router.get('/:id', async(req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const artwork = req.body;
-    console.log("user id", user.id)
-    console.log("artwork", artwork)
+    // console.log("user id", user.id)
+    // console.log("artwork", artwork)
     const [object, created] = await Object.findOrCreate({
       where: {
         objectid: artwork.objectid,
@@ -42,7 +42,7 @@ router.put("/:id", async (req, res, next) => {
     const user = await User.findByPk(req.params.id, {include: Object})
     await user.addObject(object)
     await user.reload()
-    console.log("user updated", user)
+    // console.log("user updated", user)
     res.json(user);
   } catch (error) {
     next(error);
