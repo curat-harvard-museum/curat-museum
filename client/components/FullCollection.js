@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useInfiniteQuery } from "react-query";
 import { Link, useSearchParams } from "react-router-dom";
 import FilterButtons from "./FilterButtons";
@@ -12,6 +12,15 @@ import {
   TabPanels,
   SimpleGrid,
   Box,
+  Text,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  Flex,
+  Spacer,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 
 const validApiParams = [
@@ -109,26 +118,84 @@ function AllObjects() {
   return (
     <>
       {/* <Search /> */}
-      <Tabs variant="soft-rounded" colorScheme="gray">
-        <TabList>
-          <Tab>Classification</Tab>
-          <Tab>Century</Tab>
-          <Tab>Culture</Tab>
-          <Tab>Gallery</Tab>
-          <Tab>Medium</Tab>
-          <Tab>Period</Tab>
-          <Tab>Place</Tab>
-          <Tab>Technique</Tab>
-          {/* <Tab>Remove Filters</Tab> */}
-        </TabList>
-        <TabPanels>
-          {validApiParams.map((param) => (
-            <TabPanel>
-              <FilterButtons filterType={param} />
-            </TabPanel>
-          ))}
-        </TabPanels>
-      </Tabs>
+      <Flex
+        sx={{
+          position: "-webkit-sticky",
+          /* Safari */ position: "sticky",
+          top: "0",
+        }}
+        backgroundColor="rgba(255, 
+ 255, 255, 0.8)"
+        backdropFilter="saturate(180%) blur(5px)"
+        w="100%"
+        justify="center"
+      >
+        <Accordion allowToggle>
+          <AccordionItem>
+            <Tabs variant="line" colorScheme="gray">
+              <TabList>
+                <Wrap>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Century</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Color</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Culture</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Gallery</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Type</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Medium</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Period</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Place</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  <WrapItem>
+                    <AccordionButton>
+                      <Tab>Technique</Tab>
+                    </AccordionButton>
+                  </WrapItem>
+                  {/* <Tab>Remove Filters</Tab> */}
+                </Wrap>
+              </TabList>
+              <TabPanels>
+                {validApiParams.map((param) => (
+                  <AccordionPanel key={param}>
+                    <TabPanel>
+                      <FilterButtons filterType={param} />
+                    </TabPanel>
+                  </AccordionPanel>
+                ))}
+              </TabPanels>
+            </Tabs>
+          </AccordionItem>
+        </Accordion>
+      </Flex>
       <SimpleGrid columns={[1, null, 2, null, 4]} spacing="5rem">
         {data?.pages.map((collection) =>
           collection.records
@@ -142,16 +209,15 @@ function AllObjects() {
                       src={record.primaryimageurl}
                       alt="{record.title} by {record.people[0].name} "
                     ></img>
-                    <div className="caption-text title-caption-text">
-                      {record.title}
-                    </div>
-                    <div className="caption-text person-caption-text">
-                      {" "}
+                    <Text color="black" fontSize=".875rem">
                       {record.people ? record.people[0].name : null}
-                    </div>
-                    <div className="caption-text classification-caption-text">
+                    </Text>
+                    <Text color="gray.500" noOfLines={2} fontSize=".875rem">
+                      {record.title}
+                    </Text>
+                    <Text as="b" color="gray.400" fontSize=".875rem">
                       {record.classification}
-                    </div>
+                    </Text>
                   </>
                 </Link>
               </Box>
