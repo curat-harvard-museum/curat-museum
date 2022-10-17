@@ -23,16 +23,17 @@ const FavoriteButton = (props) => {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
-  const handleClick = (evt) => {
+  const handleClick = (userId) => {
     // setLike(!like);
-    dispatch(updateUser(userId, data));
+    // dispatch(updateUser(userId, data))
+    console.log('userId', userId)
   };
 
-  console.log("user", user);
-  console.log("username", username);
+//   console.log("user", user);
+//   console.log("username", username);
   const { id } = useParams();
-  console.log("id", id);
-  console.log("props", props);
+//   console.log("id", id);
+//   console.log("props", props);
   // let fav = data.data.objectid
   // console.log("fav", fav)
 
@@ -52,7 +53,6 @@ const FavoriteButton = (props) => {
   );
 };
 
-const SetStateAndToggle = (props) => {};
 
 const mapStateToProps = (state) => ({
   username: state.auth.username,

@@ -44,6 +44,7 @@ export const authenticate =
   };
 
 export const updateUser = (userId, artwork) => async (dispatch) => {
+  console.log(userId)
   const {data} = await axios.put(`/api/users/${userId}`, 
   artwork
   );
