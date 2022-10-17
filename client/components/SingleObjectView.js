@@ -11,7 +11,7 @@ function SingleObjectView() {
     );
   });
 
-  console.log(data?.data);
+  console.log("the data", data?.data);
 
   return (
     <>

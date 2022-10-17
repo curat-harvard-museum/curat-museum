@@ -5,11 +5,15 @@ import FilterButtons from "./FilterButtons";
 import Search from "./Search";
 import BackToTopButton from "./BackToTopButton";
 import {
-  Tab,
-  Tabs,
-  TabPanel,
-  TabList,
-  TabPanels,
+  Drawer,
+  Button,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
   SimpleGrid,
   Box,
   Text,
@@ -38,6 +42,8 @@ const validApiParams = [
 function AllObjects() {
   const observerElem = useRef(null);
   const [searchParams] = useSearchParams();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [placement, setPlacement] = React.useState("left");
 
   const onlyValidParams = [...searchParams]
     .filter(([key, value]) => validApiParams.includes(key) && Boolean(value))
@@ -130,71 +136,57 @@ function AllObjects() {
         w="100%"
         justify="center"
       >
-        <Accordion allowToggle>
-          <AccordionItem>
-            <Tabs variant="line" colorScheme="gray">
-              <TabList>
-                <Wrap>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Century</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Color</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Culture</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Gallery</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Type</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Medium</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Period</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Place</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Technique</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  {/* <Tab>Remove Filters</Tab> */}
-                </Wrap>
-              </TabList>
-              <TabPanels>
-                {validApiParams.map((param) => (
-                  <AccordionPanel key={param}>
-                    <TabPanel>
+        <Button justify="left" onClick={onOpen}>
+          Filter Collection
+        </Button>
+        <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+            <DrawerBody>
+              <Accordion allowToggle>
+                <AccordionItem>
+                  {/* <Wrap>
+                    <WrapItem> */}
+                  <AccordionButton>Century</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Color</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Culture</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Gallery</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Classification</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Medium</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Period</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Place</AccordionButton>
+                  {/* </WrapItem>
+                    <WrapItem> */}
+                  <AccordionButton>Technique</AccordionButton>
+                  {/* </WrapItem>
+                    {/* <Tab>Remove Filters</Tab> */}
+                  {/* </Wrap> */}
+
+                  {validApiParams.map((param) => (
+                    <AccordionPanel key={param}>
                       <FilterButtons filterType={param} />
-                    </TabPanel>
-                  </AccordionPanel>
-                ))}
-              </TabPanels>
-            </Tabs>
-          </AccordionItem>
-        </Accordion>
+                    </AccordionPanel>
+                  ))}
+                </AccordionItem>
+              </Accordion>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
       </Flex>
       <SimpleGrid columns={[1, null, 2, null, 4]} spacing="5rem">
         {data?.pages.map((collection) =>
