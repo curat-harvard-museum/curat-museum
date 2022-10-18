@@ -12,6 +12,7 @@ const SET_AUTH = "SET_AUTH";
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
+
 /**
  * THUNK CREATORS
  */
@@ -42,6 +43,14 @@ export const authenticate =
     }
   };
 
+export const updateUser = (userId, artwork) => async (dispatch) => {
+  console.log(userId)
+  const {data} = await axios.put(`/api/users/${userId}`, 
+  artwork
+  );
+  return dispatch(setAuth(data))
+}
+
 export const logout = (navigate) => {
   window.localStorage.removeItem(TOKEN);
   navigate("/home");
@@ -57,8 +66,17 @@ export const logout = (navigate) => {
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
-      return action.auth;
+      return action.auth; 
     default:
       return state;
   }
 }
+
+// export const favoritesReducer = (state = [], action) => {
+//  switch(action.type){
+//    case UPDATE_USER:
+//      return state.concat(action.user);
+//   default: 
+//     return state;
+//  }
+// }

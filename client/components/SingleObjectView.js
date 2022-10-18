@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton";
 
 import { Box, Text, Flex, Stack, Circle, Image } from "@chakra-ui/react";
 
@@ -12,8 +13,6 @@ function SingleObjectView() {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
-
-  console.log(data?.data);
 
   return (
     <>
@@ -116,6 +115,7 @@ function SingleObjectView() {
             </Text>
           </Box>
         }
+        <FavoriteButton />
       </div>
     </>
   );
