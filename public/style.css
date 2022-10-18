@@ -78,7 +78,7 @@ form div {
 }
 
 .reference-header {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .video-box {
@@ -106,7 +106,7 @@ iframe {
   width: 250px;
   height: fit-content;
   margin: 0 auto;
-  font-size: .8rem;
+  font-size: 1rem;
 }
 
 .video-container {
@@ -165,4 +165,19 @@ iframe {
 
 .sticky {
   position: fixed;
+}
+
+.graph-chart {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.navbar {
+  font-size: 18px;
+  padding-right: 5rem;
+  float: right;
 }

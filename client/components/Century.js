@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { Heading, Text } from "@chakra-ui/react";
 
 ChartJS.register(
   CategoryScale,
@@ -36,13 +37,18 @@ function Century() {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
       },
-      title: {
-        display: true,
-        text: "Century",
+    },
+    layout: {
+      padding: {
+        left: 50,
+        right: 50,
+        top: 0,
+        bottom: 0,
       },
     },
   };
@@ -59,8 +65,17 @@ function Century() {
   };
 
   return (
-    <div style={{ width: "1200px" }}>
-      <Bar options={options} data={data} />
+    <div>
+      <Heading textAlign={"center"}>Century</Heading>
+      <br></br>
+      <Text textAlign={"center"} size="sm">
+        We have different types of artworks that ranges over 47 centuries. Come
+        check out our collection!
+      </Text>
+      <br></br>
+      <div className="graph-chart">
+        <Bar options={options} data={data} />
+      </div>
     </div>
   );
 }
