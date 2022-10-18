@@ -35,6 +35,7 @@ const Profile = (props) => {
             Favorite
           </Badge>
           <Box
+            maxW="sm"
             color='gray.500'
             fontWeight='semibold'
             letterSpacing='wide'
