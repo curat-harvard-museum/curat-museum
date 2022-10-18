@@ -24,6 +24,7 @@
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.11",
     "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -40,6 +41,7 @@
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
     "react-chartjs-2": "^4.3.1",
+    "react-icons": "^4.6.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-infinite-scroll-hook": "^4.0.3",
     "react-query": "^3.39.2",

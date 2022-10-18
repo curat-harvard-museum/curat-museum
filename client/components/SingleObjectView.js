@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton";
 
 function SingleObjectView() {
   const { id } = useParams();
@@ -10,8 +11,6 @@ function SingleObjectView() {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
-
-  console.log(data?.data);
 
   return (
     <>
@@ -42,6 +41,7 @@ function SingleObjectView() {
             </div>
           </div>
         }
+        <FavoriteButton />
       </div>
     </>
   );
