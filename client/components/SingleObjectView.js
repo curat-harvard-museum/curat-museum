@@ -46,8 +46,7 @@ const SingleObjectView = ({ makeFavorite, auth }) => {
             </div>
           </div>
         }
-        <Button onClick={() => makeFavorite(data.data)}>Like</Button>
-        {isFavorite && <p>Unlike</p>}
+        <Button onClick={() => makeFavorite(data.data)}>{isFavorite ? "Unlike" : "Like"}</Button>
       </div>
     </>
   );
