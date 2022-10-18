@@ -1,15 +1,14 @@
 // import React, { useState, useEffect } from "react";
 // import audioObject from "./AudioObject";
-// import { Heading, Text } from "@chakra-ui/react";
-// // import {
-// //   Center,
-// //   Flex,
-// //   Heading,
-// //   Image,
-// //   Stack,
-// //   Text,
-// //   useColorModeValue,
-// // } from "@chakra-ui/react";
+// import {
+//   Center,
+//   Flex,
+//   Heading,
+//   Image,
+//   Stack,
+//   Text,
+//   useColorModeValue,
+// } from "@chakra-ui/react";
 
 // export default function Audio() {
 //   const apiLink = `https://api.harvardartmuseums.org/audio?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`;
