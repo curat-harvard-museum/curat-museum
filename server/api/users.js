@@ -55,7 +55,7 @@ router.delete("/:id", async(req, res, next) => {
     // console.log("artwork", artwork)
     const user = await User.findByPk(req.params.id, {include: Object})
     // console.log("user id", user.id)
-    const [object] = await Object.findAll({
+    const object = await Object.findOne({
       where: {
         objectid: artwork.objectid
       },

@@ -2,10 +2,10 @@ import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { updateUser } from "../store/auth";
 import { Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import {
   Box,
@@ -19,7 +19,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-function SingleObjectView({ makeFavorite, auth }) {
+function SingleObjectView({ makeFavorite, auth, isLoggedIn, handleClick }) {
   const { id } = useParams();
   const { data } = useQuery(["query-single-object"], async () => {
     return await apiClient.get(
@@ -29,6 +29,9 @@ function SingleObjectView({ makeFavorite, auth }) {
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
   // console.log(isFavorite);
+
+  const user = useSelector((state) => state.auth);
+  const [username] = user
 
   return (
     <>
@@ -51,6 +54,8 @@ function SingleObjectView({ makeFavorite, auth }) {
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
             ></Image>
+            {username ? 
+            (
             <Button
               alignSelf="flex-end"
               marginBottom="8rem"
@@ -58,6 +63,10 @@ function SingleObjectView({ makeFavorite, auth }) {
             >
               {isFavorite ? "Unlike" : "Like"}
             </Button>
+             ) : (
+            // <a href="/login"><Button>Like</Button></a> 
+            "Login"
+            )}
           </Box>
         </GridItem>
 
@@ -68,7 +77,7 @@ function SingleObjectView({ makeFavorite, auth }) {
             py="5rem"
             gap="2rem"
           >
-            {data?.data.colors.map((color) => (
+            {data?.data?.colors?.map((color) => (
               <Circle
                 key={color.color}
                 w="6rem"
@@ -83,7 +92,7 @@ function SingleObjectView({ makeFavorite, auth }) {
         </GridItem>
 
         <GridItem rowSpan={2} columnSpan={2} area={"additional"}>
-          {data?.data.images.map((image) => (
+          {data?.data?.images?.map((image) => (
             <Image
               key={image.imageid}
               w="auto"
@@ -100,23 +109,23 @@ function SingleObjectView({ makeFavorite, auth }) {
             </Text>
             <Divider />
 
-            <Text>{data?.data.titles[0].title}</Text>
+            <Text>{data?.data?.titles[0]?.title}</Text>
 
             <Box height="1rem" />
 
-            {data?.data.people ? (
+            {data?.data?.people ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Artist
                 </Text>
                 <Divider />
-                <Text>{data?.data.people[0].name}</Text>
+                <Text>{data?.data?.people[0].name}</Text>
               </>
             ) : null}
 
             <Box height="1rem" />
 
-            {data?.data.century ? (
+            {data?.data?.century ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Century
@@ -127,7 +136,7 @@ function SingleObjectView({ makeFavorite, auth }) {
             ) : null}
             <Box height="1rem" />
 
-            {data?.data.dated ? (
+            {data?.data?.dated ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Date of Completion
@@ -139,7 +148,7 @@ function SingleObjectView({ makeFavorite, auth }) {
 
             <Box height="1rem" />
 
-            {data?.data.culture ? (
+            {data?.data?.culture ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Culture
@@ -151,7 +160,7 @@ function SingleObjectView({ makeFavorite, auth }) {
 
             <Box height="1rem" />
 
-            {data?.data.classification ? (
+            {data?.data?.classification ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Classification
@@ -163,7 +172,7 @@ function SingleObjectView({ makeFavorite, auth }) {
 
             <Box height="1rem" />
 
-            {data?.data.medium ? (
+            {data?.data?.medium ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Medium/Technique
@@ -176,7 +185,7 @@ function SingleObjectView({ makeFavorite, auth }) {
               </>
             ) : null}
 
-            {data?.data.gallery ? (
+            {data?.data?.gallery ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Location
@@ -191,7 +200,7 @@ function SingleObjectView({ makeFavorite, auth }) {
 
             <Box height="1rem" />
 
-            {data?.data.exhibitions ? (
+            {data?.data?.exhibitions ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Associated Exhibitions

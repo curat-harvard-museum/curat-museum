@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 const TOKEN = "token";
 
@@ -6,11 +6,17 @@ const TOKEN = "token";
  * ACTION TYPES
  */
 const SET_AUTH = "SET_AUTH";
+const DELETE_ARTWORK = "DELETE_ARTWORK";
 
 /**
  * ACTION CREATORS
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
+
+const _deleteArtwork = (artwork) => ({
+  type: DELETE_ARTWORK,
+  artwork
+})
 
 
 /**
@@ -52,6 +58,13 @@ export const updateUser = (artwork) => {
   }
 }
 
+export const deleteArtwork = (artwork) => {
+  return async(dispatch, getState) => {
+    const {data} = await axios.delete(`/api/users/${getState().auth.id}`)
+    return dispatch(_deleteArtwork(artwork))
+  }
+}
+
 export const logout = (navigate) => {
   window.localStorage.removeItem(TOKEN);
   navigate("/home");
@@ -67,8 +80,19 @@ export const logout = (navigate) => {
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
-      return action.auth; 
+      return action.auth;
+    // case DELETE_ARTWORK:
+    //   return  
     default:
       return state;
+  }
+}
+
+export function favoritesReducer(favorites = [], action) {
+  switch (action.type){
+    case DELETE_ARTWORK:
+      return favorites.filter((favorite) => favorite.id !== action.favorite.id);
+    default: 
+      return favorites;
   }
 }
