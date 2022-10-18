@@ -180,11 +180,11 @@ function AllObjects() {
       > */}
 
       <Box
-        padding={4}
+        padding={2}
         // w="100%"
         maxW="100%"
         mx="auto"
-        sx={{ columnCount: [1, null, 2, null, 3, null, 4], columnGap: "3rem" }}
+        sx={{ columnCount: [1, 2, 3, 4], columnGap: "3rem" }}
       >
         {data?.pages.map((collection) =>
           collection.records
@@ -192,26 +192,22 @@ function AllObjects() {
             .map((record) => (
               // <Box key={record.id}>
               <Link key={record.id} to={`/object/${record.id}`}>
-                <>
+                <Box w="100%" mb={10} d="inline-block">
                   <Image
                     src={record.primaryimageurl}
                     alt="{record.title} by {record.people[0].name} "
-                    // w="100%"
-                    mb={10}
-                    // d="inline-block"
                   ></Image>
-                  <Text color="black" fontSize=".875rem">
+                  <Text color="black" fontSize="1rem">
                     {record.people ? record.people[0].name : null}
                   </Text>
-                  <Text color="gray.500" noOfLines={2} fontSize=".875rem">
+                  <Text color="gray.500" noOfLines={2} fontSize="1rem">
                     {record.title}
                   </Text>
-                  <Text as="b" color="gray.400" fontSize=".875rem">
+                  <Text as="b" color="gray.400" fontSize="1rem">
                     {record.classification}
                   </Text>
-                </>
+                </Box>
               </Link>
-              // </Box>
             ))
         )}
       </Box>

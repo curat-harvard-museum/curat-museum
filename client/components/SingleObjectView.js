@@ -51,6 +51,13 @@ function SingleObjectView({ makeFavorite, auth }) {
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
             ></Image>
+            <Button
+              alignSelf="flex-end"
+              marginBottom="8rem"
+              onClick={() => makeFavorite(data.data)}
+            >
+              {isFavorite ? "Unlike" : "Like"}
+            </Button>
           </Box>
         </GridItem>
 
@@ -213,9 +220,6 @@ function SingleObjectView({ makeFavorite, auth }) {
             ) : null} */}
           </VStack>
         </GridItem>
-        <Button onClick={() => makeFavorite(data.data)}>
-          {isFavorite ? "Unlike" : "Like"}
-        </Button>
       </Grid>
     </>
   );
