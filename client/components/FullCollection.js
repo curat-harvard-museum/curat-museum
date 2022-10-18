@@ -2,21 +2,24 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useInfiniteQuery } from "react-query";
 import { Link, useSearchParams } from "react-router-dom";
 import FilterButtons from "./FilterButtons";
-import Search from "./Search";
 import BackToTopButton from "./BackToTopButton";
 import {
-  Tab,
-  Tabs,
-  TabPanel,
-  TabList,
-  TabPanels,
-  SimpleGrid,
-  Box,
-  Text,
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
+  SimpleGrid,
+  Box,
+  Image,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Text,
+  useDisclosure,
   Flex,
   Spacer,
   Wrap,
@@ -25,9 +28,8 @@ import {
 
 const validApiParams = [
   "century",
-  "color",
   "culture",
-  "gallery",
+  // "gallery",
   "classification",
   "medium",
   "period",
@@ -38,6 +40,8 @@ const validApiParams = [
 function AllObjects() {
   const observerElem = useRef(null);
   const [searchParams] = useSearchParams();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [placement, setPlacement] = React.useState("left");
 
   const onlyValidParams = [...searchParams]
     .filter(([key, value]) => validApiParams.includes(key) && Boolean(value))
@@ -115,6 +119,13 @@ function AllObjects() {
     ),
   ];
 
+  function capitalizeFirstLetter(str) {
+    const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+    return capitalized;
+  }
+
+  console.log(data?.pages.map((collection) => collection.records));
+
   return (
     <>
       {/* <Search /> */}
@@ -130,105 +141,81 @@ function AllObjects() {
         w="100%"
         justify="center"
       >
-        <Accordion allowToggle>
-          <AccordionItem>
-            <Tabs variant="line" colorScheme="gray">
-              <TabList>
-                <Wrap>
-                  <WrapItem>
+        <Box
+          onClick={onOpen}
+          borderBottomWidth="1px"
+          marginTop="75px"
+          marginBottom="30px"
+          display="flex"
+          paddingBottom="2px"
+        >
+          Collection Filters
+        </Box>
+        <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+            <Accordion allowToggle>
+              {validApiParams.map((param) => (
+                <DrawerBody key={param}>
+                  <AccordionItem>
                     <AccordionButton>
-                      <Tab>Century</Tab>
+                      {capitalizeFirstLetter(param)}
                     </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Color</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Culture</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Gallery</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Type</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Medium</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Period</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Place</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  <WrapItem>
-                    <AccordionButton>
-                      <Tab>Technique</Tab>
-                    </AccordionButton>
-                  </WrapItem>
-                  {/* <Tab>Remove Filters</Tab> */}
-                </Wrap>
-              </TabList>
-              <TabPanels>
-                {validApiParams.map((param) => (
-                  <AccordionPanel key={param}>
-                    <TabPanel>
+                    <AccordionPanel>
                       <FilterButtons filterType={param} />
-                    </TabPanel>
-                  </AccordionPanel>
-                ))}
-              </TabPanels>
-            </Tabs>
-          </AccordionItem>
-        </Accordion>
+                    </AccordionPanel>
+                  </AccordionItem>
+                </DrawerBody>
+              ))}
+            </Accordion>
+          </DrawerContent>
+        </Drawer>
       </Flex>
-      <SimpleGrid columns={[1, null, 2, null, 4]} spacing="5rem">
+
+      {/* <SimpleGrid
+        columns={[1, null, 2, null, 4]}
+        spacingX="5rem"
+        spacingY="5rem"
+      > */}
+
+      <Box
+        padding={2}
+        // w="100%"
+        maxW="100%"
+        mx="auto"
+        sx={{ columnCount: [1, 2, 3, 4], columnGap: "3rem" }}
+      >
         {data?.pages.map((collection) =>
           collection.records
             .filter((record) => record.primaryimageurl)
             .map((record) => (
-              <Box key={record.id}>
-                <Link to={`/object/${record.id}`}>
-                  <>
-                    <img
-                      className="single-grid-image"
-                      src={record.primaryimageurl}
-                      alt="{record.title} by {record.people[0].name} "
-                    ></img>
-                    <Text color="black" fontSize=".875rem">
-                      {record.people ? record.people[0].name : null}
-                    </Text>
-                    <Text color="gray.500" noOfLines={2} fontSize=".875rem">
-                      {record.title}
-                    </Text>
-                    <Text as="b" color="gray.400" fontSize=".875rem">
-                      {record.classification}
-                    </Text>
-                  </>
-                </Link>
-              </Box>
+              // <Box key={record.id}>
+              <Link key={record.id} to={`/object/${record.id}`}>
+                <Box w="100%" mb={10} d="inline-block">
+                  <Image
+                    src={record.primaryimageurl}
+                    alt="{record.title} by {record.people[0].name} "
+                  ></Image>
+                  <Text color="black" fontSize="1rem">
+                    {record.people ? record.people[0].name : null}
+                  </Text>
+                  <Text color="gray.500" noOfLines={2} fontSize="1rem">
+                    {record.title}
+                  </Text>
+                  <Text as="b" color="gray.400" fontSize="1rem">
+                    {record.classification}
+                  </Text>
+                </Box>
+              </Link>
             ))
         )}
-
-        <div ref={observerElem}>
-          {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
-        </div>
-        <BackToTopButton />
-      </SimpleGrid>
+      </Box>
+      <div ref={observerElem}>
+        {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
+      </div>
+      <BackToTopButton />
+      {/* </SimpleGrid> */}
     </>
   );
 }
