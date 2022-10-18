@@ -43,14 +43,6 @@ function Century() {
         position: "top",
       },
     },
-    layout: {
-      padding: {
-        left: 50,
-        right: 50,
-        top: 0,
-        bottom: 0,
-      },
-    },
   };
 
   const data = {
