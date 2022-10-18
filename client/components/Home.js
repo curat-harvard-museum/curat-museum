@@ -9,7 +9,7 @@ const Home = (props) => {
   return (
     <div>
       <img
-        src="/assets/images/harvardgallery.jpeg"
+        src="/assets/images/curat-background.png"
         alt=""
         style={{ width: "100%" }}
       />

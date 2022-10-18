@@ -37,7 +37,7 @@ export default function Videos() {
                 className="iframe"
               ></iframe>
               <div className="video-description">
-                <p>{video.description}</p>
+                <Text size="sm">{video.description}</Text>
               </div>
             </div>
           ))
