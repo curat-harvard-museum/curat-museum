@@ -48,3 +48,11 @@ router.put("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+router.delete("/:id", async(req, res, next) => {
+  try {
+    const artwork = req.body
+  } catch {
+    next(error)
+  }
+})
