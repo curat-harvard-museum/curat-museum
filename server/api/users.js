@@ -49,10 +49,42 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
+// router.put("favorites/:id", async(req, res, next) => {
+//   try {
+//     const artwork = req.body
+//      console.log("user id", user.id)
+//     console.log("artwork", artwork)
+//     const object = await Object.findAll({
+//       where: {
+//         objectid: artwork.objectid
+//       },
+//     })
+//     console.log("object", object)
+//     const user = await User.findByPk(req.params.id, {include: Object})
+//     await user.removeObject(object)
+//     await user.reload()
+//     console.log("user updated", user)
+//     res.json(user);
+//   } catch {
+//     next(error);
+//   }
+// })
+
 router.delete("/:id", async(req, res, next) => {
   try {
     const artwork = req.body
-  } catch {
-    next(error)
+    console.log("artwork", artwork)
+    const user = await User.findByPk(req.params.id, {include: Object})
+    console.log("user id", user.id)
+    const [object] = await Object.findAll({
+      where: {
+        objectid: artwork.objectid
+      },
+    })
+    console.log("object", object)
+    await object.destroy()
+    res.send(user)
+  } catch(error){
+    next (error)
   }
 })
