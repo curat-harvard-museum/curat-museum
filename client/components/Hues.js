@@ -1,6 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { Heading, Text } from "@chakra-ui/react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -11,10 +12,6 @@ function Hues() {
     plugins: {
       legend: {
         position: "top",
-      },
-      title: {
-        display: true,
-        text: "Hues",
       },
     },
   };
@@ -66,8 +63,17 @@ function Hues() {
   };
 
   return (
-    <div style={{ height: "600px" }}>
-      <Doughnut options={options} data={data} />
+    <div>
+      <Heading textAlign={"center"}>Hue</Heading>
+      <br></br>
+      <Text textAlign={"center"} size="sm">
+        Did you know that our collection consist of the following 10 hues and
+        over 147 colors? Check out each artwork to see which colors are used.
+      </Text>
+      <br></br>
+      <div className="graph-chart">
+        <Doughnut options={options} data={data} />
+      </div>
     </div>
   );
 }
