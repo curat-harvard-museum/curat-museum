@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
 import FavoriteButton from "./FavoriteButton";
+import { Link } from "react-router-dom";
 
 import {
   Box,
@@ -24,7 +25,7 @@ function SingleObjectView() {
     );
   });
 
-  console.log(data?.data.images);
+  console.log(data?.data);
 
   return (
     <>
@@ -71,7 +72,7 @@ function SingleObjectView() {
           </Flex>
         </GridItem>
 
-        {/* <GridItem rowSpan={2} area={"additional"}>
+        <GridItem rowSpan={2} columnSpan={2} area={"additional"}>
           {data?.data.images.map((image) => (
             <Image
               key={image.imageid}
@@ -80,7 +81,7 @@ function SingleObjectView() {
               src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
             ></Image>
           ))}
-        </GridItem> */}
+        </GridItem>
 
         <GridItem rowSpan={2} colSpan={1} area={"content"}>
           <VStack marginLeft="5rem" spacing={1} align="stretch">
@@ -171,39 +172,44 @@ function SingleObjectView() {
                   Location
                 </Text>
                 <Divider />
+                <Text key={data?.data.gallery.id}>
+                  Level {data?.data.gallery.floor}, {data?.data.gallery.name}
+                  {data?.data.gallery.number}
+                </Text>
               </>
             ) : null}
 
             <Box height="1rem" />
 
-            {data?.data.gallery ? (
-              <Text key={data?.data.gallery.id}>
-                Level {data?.data.gallery.floor}, {data?.data.gallery.name}
-                {data?.data.gallery.number}
-              </Text>
+            {data?.data.exhibitions ? (
+              <>
+                <Text as="b" color="gray.300" fontSize="1.25rem">
+                  Associated Exhibitions
+                </Text>
+                <Divider />
+                {data?.data.exhibitions.map((exhibition) => (
+                  <Text key={exhibition.exhibitionid}>{exhibition.title}</Text>
+                ))}
+              </>
             ) : null}
 
             <Box height="1rem" />
 
-            <Text as="b" color="gray.300" fontSize="1.25rem">
-              Associated Exhibitions
-            </Text>
-            <Divider />
-            {data?.data.exhibitions
-              ? data?.data.exhibitions.map((exhibition) => (
-                  <Text key={exhibition.exhibitionid}>{exhibition.title}</Text>
-                ))
-              : null}
-
-            <Box height="1rem" />
-
-            <Text as="b" color="gray.300" fontSize="1.25rem">
-              Related Artworks
-            </Text>
-            <Divider />
+            {/* {data?.data.related ? (
+              <>
+                <Text as="b" color="gray.300" fontSize="1.25rem">
+                  Related Works
+                </Text>
+                <Divider />
+                {data?.data.related.map((work) => (
+                  <Link to={`/object/${work.objectid}`}>
+                    <Box>{`${work.relationship} to this work`}</Box>
+                  </Link>
+                ))}
+              </>
+            ) : null} */}
           </VStack>
         </GridItem>
-
         <FavoriteButton />
       </Grid>
     </>

@@ -172,42 +172,54 @@ function AllObjects() {
           </DrawerContent>
         </Drawer>
       </Flex>
-      <SimpleGrid
+
+      {/* <SimpleGrid
         columns={[1, null, 2, null, 4]}
         spacingX="5rem"
         spacingY="5rem"
+      > */}
+
+      <Box
+        padding={4}
+        // w="100%"
+        maxW="100%"
+        mx="auto"
+        sx={{ columnCount: [1, null, 2, null, 3, null, 4], columnGap: "3rem" }}
       >
         {data?.pages.map((collection) =>
           collection.records
             .filter((record) => record.primaryimageurl)
             .map((record) => (
-              <Box key={record.id}>
-                <Link to={`/object/${record.id}`}>
-                  <>
-                    <Image
-                      src={record.primaryimageurl}
-                      alt="{record.title} by {record.people[0].name} "
-                    ></Image>
-                    <Text color="black" fontSize=".875rem">
-                      {record.people ? record.people[0].name : null}
-                    </Text>
-                    <Text color="gray.500" noOfLines={2} fontSize=".875rem">
-                      {record.title}
-                    </Text>
-                    <Text as="b" color="gray.400" fontSize=".875rem">
-                      {record.classification}
-                    </Text>
-                  </>
-                </Link>
-              </Box>
+              // <Box key={record.id}>
+              <Link key={record.id} to={`/object/${record.id}`}>
+                <>
+                  <Image
+                    src={record.primaryimageurl}
+                    alt="{record.title} by {record.people[0].name} "
+                    // w="100%"
+                    mb={10}
+                    // d="inline-block"
+                  ></Image>
+                  <Text color="black" fontSize=".875rem">
+                    {record.people ? record.people[0].name : null}
+                  </Text>
+                  <Text color="gray.500" noOfLines={2} fontSize=".875rem">
+                    {record.title}
+                  </Text>
+                  <Text as="b" color="gray.400" fontSize=".875rem">
+                    {record.classification}
+                  </Text>
+                </>
+              </Link>
+              // </Box>
             ))
         )}
-
-        <div ref={observerElem}>
-          {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
-        </div>
-        <BackToTopButton />
-      </SimpleGrid>
+      </Box>
+      <div ref={observerElem}>
+        {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
+      </div>
+      <BackToTopButton />
+      {/* </SimpleGrid> */}
     </>
   );
 }
