@@ -2,7 +2,9 @@ import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { useParams } from "react-router-dom";
-import FavoriteButton from "./FavoriteButton";
+import { connect } from "react-redux";
+import { updateUser } from "../store/auth";
+import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import {
@@ -17,7 +19,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-function SingleObjectView() {
+function SingleObjectView({ makeFavorite, auth }) {
   const { id } = useParams();
   const { data } = useQuery(["query-single-object"], async () => {
     return await apiClient.get(
@@ -25,7 +27,8 @@ function SingleObjectView() {
     );
   });
 
-  console.log(data?.data);
+  const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
+  // console.log(isFavorite);
 
   return (
     <>
@@ -210,10 +213,20 @@ function SingleObjectView() {
             ) : null} */}
           </VStack>
         </GridItem>
-        <FavoriteButton />
+        <Button onClick={() => makeFavorite(data.data)}>
+          {isFavorite ? "Unlike" : "Like"}
+        </Button>
       </Grid>
     </>
   );
 }
 
-export default SingleObjectView;
+const mapDispatch = (dispatch) => {
+  return {
+    makeFavorite: (artwork) => {
+      dispatch(updateUser(artwork));
+    },
+  };
+};
+
+export default connect((state) => state, mapDispatch)(SingleObjectView);
