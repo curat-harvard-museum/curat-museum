@@ -26,12 +26,13 @@ function SingleObjectView({ makeFavorite, auth, isLoggedIn, handleClick }) {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
+  // const { auth } = useSelector(state => state);
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
   // console.log(isFavorite);
 
-  const user = useSelector((state) => state.auth);
-  const [username] = user
+  // const user = useSelector((state) => state.auth);
+  // const [username] = user
 
   return (
     <>
@@ -54,7 +55,7 @@ function SingleObjectView({ makeFavorite, auth, isLoggedIn, handleClick }) {
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
             ></Image>
-            {username ? 
+            {auth.username ? 
             (
             <Button
               alignSelf="flex-end"
@@ -64,8 +65,7 @@ function SingleObjectView({ makeFavorite, auth, isLoggedIn, handleClick }) {
               {isFavorite ? "Unlike" : "Like"}
             </Button>
              ) : (
-            // <a href="/login"><Button>Like</Button></a> 
-            "Login"
+            <a href="/login"><Button>Like</Button></a> 
             )}
           </Box>
         </GridItem>
