@@ -30,6 +30,8 @@ function SingleObjectView({ makeFavorite, auth }) {
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
   // console.log(isFavorite);
 
+  console.log(data?.data);
+
   return (
     <>
       <Grid
@@ -44,7 +46,7 @@ function SingleObjectView({ makeFavorite, auth }) {
         templateColumns="repeat(2, 1fr)"
         gap="1"
       >
-        <GridItem rowSpan={2} area={"main"}>
+        <GridItem marginTop="5rem" rowSpan={2} area={"main"}>
           <Box display="flex" flexWrap="wrap" justifyContent="center">
             <Image
               className="single-image"
@@ -62,35 +64,38 @@ function SingleObjectView({ makeFavorite, auth }) {
         </GridItem>
 
         <GridItem rowSpan={1} colSpan={2} area={"colors"}>
-          <Flex
-            justifyContent="space-between"
-            flexWrap="wrap"
-            py="5rem"
-            gap="2rem"
+          <Grid
+            width="100%"
+            autoFlow="column"
+            templateColumns="repeat(auto-fit, minmax(0px, 1fr))"
+            templateRows="5rem"
+            gap="0.5rem"
           >
             {data?.data.colors.map((color) => (
-              <Circle
-                key={color.color}
-                w="6rem"
-                h="6rem"
-                // w={`${color.percent * 800}px`}
-                // h={`${color.percent * 800}px`}
-                // size={`${color.percent * 100}px`}
-                bg={`${color.color}`}
-              ></Circle>
+              <Box>
+                <Circle
+                  key={color.color}
+                  w="100%"
+                  h="100%"
+                  bg={`${color.color}`}
+                ></Circle>
+              </Box>
             ))}
-          </Flex>
+          </Grid>
         </GridItem>
 
-        <GridItem rowSpan={2} columnSpan={2} area={"additional"}>
-          {data?.data.images.map((image) => (
-            <Image
-              key={image.imageid}
-              w="auto"
-              h="30rem"
-              src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
-            ></Image>
-          ))}
+        <GridItem rowSpan={2} columnspan={2} area={"additional"}>
+          <Box>
+            {/* {data?.data.images.map((image) => ( */}
+            {data?.data.images ? (
+              <Image
+                w="auto"
+                h="30rem"
+                src={`https://ids.lib.harvard.edu/ids/iiif/${data?.data.images[0]?.idsid}/full/full/0/default.jpg`}
+              ></Image>
+            ) : null}
+            {/* ))} */}
+          </Box>
         </GridItem>
 
         <GridItem rowSpan={2} colSpan={1} area={"content"}>
