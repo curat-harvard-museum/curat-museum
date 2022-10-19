@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { updateUser } from "../store/auth";
 import { Button } from "@chakra-ui/react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, Navigate, useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -65,7 +65,7 @@ function SingleObjectView({ makeFavorite, auth, isLoggedIn, handleClick }) {
               {isFavorite ? "Unlike" : "Like"}
             </Button>
              ) : (
-            <a href="/register"><Button>Like</Button></a> 
+              <Button as={Navigate} to={"register"} >Like</Button> 
             )}
           </Box>
         </GridItem>
