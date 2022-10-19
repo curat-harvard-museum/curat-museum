@@ -1,15 +1,17 @@
 import React from "react";
 import Exhibitions from "./Exhibitions";
 import BackToTopButton from "./BackToTopButton";
-import { Divider } from "@chakra-ui/react";
+import { Divider, Image } from "@chakra-ui/react";
 
 const Home = (props) => {
   return (
     <div>
-      <img
+      <Image
         src="/assets/images/curat-background.png"
         alt=""
-        style={{ width: "100%" }}
+        w="100%"
+        marginLeft="5vw"
+        marginRight="5vw"
       />
       <br></br>
       <Divider />

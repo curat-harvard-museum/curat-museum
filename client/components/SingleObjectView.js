@@ -73,13 +73,8 @@ function SingleObjectView({ makeFavorite, auth }) {
           >
             {data?.data.colors
               ? data?.data.colors.map((color) => (
-                  <Box>
-                    <Circle
-                      key={color.color}
-                      w="100%"
-                      h="100%"
-                      bg={`${color.color}`}
-                    ></Circle>
+                  <Box key={color.color}>
+                    <Circle w="100%" h="100%" bg={`${color.color}`}></Circle>
                   </Box>
                 ))
               : null}
@@ -91,6 +86,7 @@ function SingleObjectView({ makeFavorite, auth }) {
             {/* {data?.data.images.map((image) => ( */}
             {data?.data.images ? (
               <Image
+                objectFit="cover"
                 w="auto"
                 h="30rem"
                 src={`https://ids.lib.harvard.edu/ids/iiif/${data?.data.images[0]?.idsid}/full/full/0/default.jpg`}
