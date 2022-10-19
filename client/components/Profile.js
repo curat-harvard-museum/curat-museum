@@ -79,7 +79,7 @@ const dispatch = useDispatch()
           </Box>
         </Box>
 <Box display='flex' mt='2' alignItems='center'>
-<Button onClick={() => console.log("favorite", favorite)/*removeFavorite(favorite)*/}>Unlike</Button>
+<Button onClick={() => removeFavorite(favorite.objectid)}>Unlike</Button>
 </Box>
         {/* <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
@@ -106,8 +106,8 @@ const dispatch = useDispatch()
 // export default Profile;
 const mapDispatch = (dispatch) => {
   return {
-    removeFavorite: (favorite) => {
-      dispatch(deleteArtwork(favorite));
+    removeFavorite: (favoriteId) => {
+      dispatch(deleteArtwork(favoriteId));
     },
   };
 };

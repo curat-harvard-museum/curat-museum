@@ -49,19 +49,22 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async(req, res, next) => {
+router.delete("/:userId/:artworkId", async(req, res, next) => {
   try {
-    const artwork = req.body
-    // console.log("artwork", artwork)
-    const user = await User.findByPk(req.params.id, {include: Object})
+    const {userId, artworkId} = req.params
+    console.log("artworkId", artworkId)
+    console.log("userId", userId)
+    const user = await User.findByPk(userId, {include: Object})
     // console.log("user id", user.id)
+    console.log("user", user)
     const object = await Object.findOne({
       where: {
-        objectid: artwork.objectid
+        objectid: artworkId
       },
     })
     // console.log("object", object)
     await object.destroy()
+    await user.reload()
     res.send(user)
   } catch(error){
     next (error)

@@ -6,17 +6,17 @@ const TOKEN = "token";
  * ACTION TYPES
  */
 const SET_AUTH = "SET_AUTH";
-const DELETE_ARTWORK = "DELETE_ARTWORK";
+// const DELETE_ARTWORK = "DELETE_ARTWORK";
 
 /**
  * ACTION CREATORS
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
-const _deleteArtwork = (artwork) => ({
-  type: DELETE_ARTWORK,
-  artwork
-})
+// const _deleteArtwork = (artwork) => ({
+//   type: DELETE_ARTWORK,
+//   artwork
+// })
 
 
 /**
@@ -60,10 +60,10 @@ export const updateUser = (artwork) => {
   };
 };
 
-export const deleteArtwork = (artwork) => {
+export const deleteArtwork = (artworkId) => {
   return async(dispatch, getState) => {
-    const {data} = await axios.delete(`/api/users/${getState().auth.id}`)
-    return dispatch(_deleteArtwork(artwork))
+    const {data} = await axios.delete(`/api/users/${getState().auth.id}/${artworkId}`)
+    return dispatch(setAuth(data));
   }
 }
 
@@ -90,11 +90,11 @@ export default function (state = {}, action) {
   }
 }
 
-export function favoritesReducer(favorites = [], action) {
-  switch (action.type){
-    case DELETE_ARTWORK:
-      return favorites.filter((favorite) => favorite.id !== action.favorite.id);
-    default: 
-      return favorites;
-  }
-}
+// export function favoritesReducer(favorites = [], action) {
+//   switch (action.type){
+//     case DELETE_ARTWORK:
+//       return favorites.filter((favorite) => favorite.id !== action.favorite.id);
+//     default: 
+//       return favorites;
+//   }
+// }

@@ -65,7 +65,7 @@ function SingleObjectView({ makeFavorite, auth, isLoggedIn, handleClick }) {
               {isFavorite ? "Unlike" : "Like"}
             </Button>
              ) : (
-              <Link to="/register"><Button>Like</Button></Link> 
+              <Link to="/register"><Button>Register to Like</Button></Link> 
             )}
           </Box>
         </GridItem>
