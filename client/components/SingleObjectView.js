@@ -88,7 +88,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
             py="5rem"
             gap="2rem"
           >
-            {data?.data?.colors?.map((color) => (
+            {data?.data.colors.map((color) => (
               <Circle
                 key={color.color}
                 w="6rem"
@@ -103,7 +103,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
         </GridItem>
 
         <GridItem rowSpan={2} columnSpan={2} area={"additional"}>
-          {data?.data?.images?.map((image) => (
+          {data?.data.images.map((image) => (
             <Image
               key={image.imageid}
               w="auto"
@@ -120,11 +120,11 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
             </Text>
             <Divider />
 
-            <Text>{data?.data?.titles[0]?.title}</Text>
+            <Text>{data?.data.titles[0].title}</Text>
 
             <Box height="1rem" />
 
-            {data?.data?.people ? (
+            {data?.data.people ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Artist
@@ -136,7 +136,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
 
             <Box height="1rem" />
 
-            {data?.data?.century ? (
+            {data?.data.century ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Century
@@ -147,7 +147,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
             ) : null}
             <Box height="1rem" />
 
-            {data?.data?.dated ? (
+            {data?.data.dated ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Date of Completion
@@ -159,7 +159,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
 
             <Box height="1rem" />
 
-            {data?.data?.culture ? (
+            {data?.data.culture ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Culture
@@ -171,7 +171,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
 
             <Box height="1rem" />
 
-            {data?.data?.classification ? (
+            {data?.data.classification ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Classification
@@ -183,7 +183,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
 
             <Box height="1rem" />
 
-            {data?.data?.medium ? (
+            {data?.data.medium ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Medium/Technique
@@ -196,7 +196,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
               </>
             ) : null}
 
-            {data?.data?.gallery ? (
+            {data?.data.gallery ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Location
@@ -211,7 +211,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite, isLoggedIn, hand
 
             <Box height="1rem" />
 
-            {data?.data?.exhibitions ? (
+            {data?.data.exhibitions ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
                   Associated Exhibitions
