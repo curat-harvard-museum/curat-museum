@@ -28,9 +28,6 @@ function SingleObjectView({ makeFavorite, auth }) {
   });
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
-  // console.log(isFavorite);
-
-  console.log(data?.data);
 
   return (
     <>
@@ -46,9 +43,16 @@ function SingleObjectView({ makeFavorite, auth }) {
         templateColumns="repeat(2, 1fr)"
         gap="1"
       >
-        <GridItem marginTop="5rem" rowSpan={2} area={"main"}>
+        <GridItem
+          marginTop="5rem"
+          marginLeft="2rem"
+          marginRight="2rem"
+          rowSpan={2}
+          area={"main"}
+        >
           <Box display="flex" flexWrap="wrap" justifyContent="center">
             <Image
+              marginTop="2rem"
               className="single-image"
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
@@ -70,6 +74,8 @@ function SingleObjectView({ makeFavorite, auth }) {
             templateColumns="repeat(auto-fit, minmax(0px, 1fr))"
             templateRows="5rem"
             gap="0.5rem"
+            marginTop="2rem"
+            marginBottom="2rem"
           >
             {data?.data.colors
               ? data?.data.colors.map((color) => (
@@ -84,12 +90,14 @@ function SingleObjectView({ makeFavorite, auth }) {
         <GridItem rowSpan={2} columnspan={2} area={"additional"}>
           <Box>
             {/* {data?.data.images.map((image) => ( */}
-            {data?.data.images ? (
+            {data?.data.images[1] ? (
               <Image
-                objectFit="cover"
-                w="auto"
-                h="30rem"
-                src={`https://ids.lib.harvard.edu/ids/iiif/${data?.data.images[0]?.idsid}/full/full/0/default.jpg`}
+                marginLeft="auto"
+                marginRight="auto"
+                marginTop="2rem"
+                w="25rem"
+                h="auto"
+                src={`https://ids.lib.harvard.edu/ids/iiif/${data?.data.images[1]?.idsid}/full/full/0/default.jpg`}
               ></Image>
             ) : null}
             {/* ))} */}
@@ -98,12 +106,16 @@ function SingleObjectView({ makeFavorite, auth }) {
 
         <GridItem rowSpan={2} colSpan={1} area={"content"}>
           <VStack marginLeft="5rem" spacing={1} align="stretch">
-            <Text as="b" color="gray.300" fontSize="1.25rem">
-              Title
-            </Text>
-            <Divider />
+            {data?.data.title ? (
+              <>
+                <Text as="b" color="gray.300" fontSize="1.25rem">
+                  Title
+                </Text>
+                <Divider />
 
-            <Text>{data?.data.titles[0].title}</Text>
+                <Text>{data?.data.titles[0]?.title}</Text>
+              </>
+            ) : null}
 
             <Box height="1rem" />
 
@@ -113,7 +125,7 @@ function SingleObjectView({ makeFavorite, auth }) {
                   Artist
                 </Text>
                 <Divider />
-                <Text>{data?.data.people[0].name}</Text>
+                <Text>{data?.data.people[0]?.name}</Text>
               </>
             ) : null}
 
