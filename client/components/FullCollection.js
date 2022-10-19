@@ -35,6 +35,8 @@ const validApiParams = [
   "period",
   "place",
   "technique",
+  "person",
+  "gallery",
 ];
 
 function AllObjects() {
@@ -124,8 +126,6 @@ function AllObjects() {
     return capitalized;
   }
 
-  console.log(data?.pages.map((collection) => collection.records));
-
   return (
     <>
       {/* <Search /> */}
@@ -153,7 +153,7 @@ function AllObjects() {
         </Box>
         <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
-          <DrawerContent>
+          <DrawerContent overflowY="auto">
             <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
             <Accordion allowToggle>
               {validApiParams.map((param) => (
@@ -173,30 +173,27 @@ function AllObjects() {
         </Drawer>
       </Flex>
 
-      {/* <SimpleGrid
+      <SimpleGrid
         columns={[1, null, 2, null, 4]}
         spacingX="5rem"
         spacingY="5rem"
-      > */}
-
-      <Box
-        padding={2}
-        // w="100%"
-        maxW="100%"
-        mx="auto"
-        sx={{ columnCount: [1, 2, 3, 4], columnGap: "3rem" }}
       >
         {data?.pages.map((collection) =>
           collection.records
             .filter((record) => record.primaryimageurl)
             .map((record) => (
-              // <Box key={record.id}>
-              <Link key={record.id} to={`/object/${record.id}`}>
-                <Box w="100%" mb={10} d="inline-block">
+              <Box
+                as={Link}
+                key={record.id}
+                to={`/object/${record.id}`}
+                w="100%"
+              >
+                <Box mb={10} d="inline-block" sx={{ breakInside: "avoid" }}>
                   <Image
+                    w="100%"
                     src={record.primaryimageurl}
                     alt="{record.title} by {record.people[0].name} "
-                  ></Image>
+                  />
                   <Text color="black" fontSize="1rem">
                     {record.people ? record.people[0].name : null}
                   </Text>
@@ -207,15 +204,14 @@ function AllObjects() {
                     {record.classification}
                   </Text>
                 </Box>
-              </Link>
+              </Box>
             ))
         )}
-      </Box>
-      <div ref={observerElem}>
-        {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
-      </div>
-      <BackToTopButton />
-      {/* </SimpleGrid> */}
+        <div ref={observerElem}>
+          {isFetchingNextPage && hasNextPage ? "loading..." : "fin."}
+        </div>
+        <BackToTopButton />
+      </SimpleGrid>
     </>
   );
 }

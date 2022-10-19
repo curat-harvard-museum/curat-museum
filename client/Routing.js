@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { Route, Routes, Outlet, useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { me, logout } from "./store";
+import { Show, Hide } from "@chakra-ui/react";
 
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import NavbarMobile from "./components/NavbarMobile";
 import AuthForm from "./components/AuthForm";
 import Profile from "./components/Profile";
 import AllObjects from "./components/FullCollection";
@@ -32,7 +34,7 @@ function Routing() {
 
 const Layout = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
-  const { auth } = useSelector(state => state);
+  const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,7 +47,16 @@ const Layout = () => {
   };
   return (
     <div>
-      <Navbar handleClick={handleClick} isLoggedIn={isLoggedIn} auth={auth} />
+      <Show breakpoint="(min-width: 823px)">
+        <Navbar handleClick={handleClick} isLoggedIn={isLoggedIn} auth={auth} />
+      </Show>
+      <Show breakpoint="(max-width: 823px)">
+        <NavbarMobile
+          handleClick={handleClick}
+          isLoggedIn={isLoggedIn}
+          auth={auth}
+        />
+      </Show>
       <Outlet />
     </div>
   );
