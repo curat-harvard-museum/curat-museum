@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import apiClient from "../../http-common";
-import { Heading, Text, Divider, Image, Box, Badge, Button } from '@chakra-ui/react'
-import { connect } from "react-redux";
-import { updateUser, deleteArtwork } from "../store/auth";
+import { Heading, Image, Box, Badge, Button } from '@chakra-ui/react'
+import { deleteArtwork } from "../store/auth";
 
 
-const Profile = ({removeFavorite, auth}) => {
+const Profile = ({removeFavorite }) => {
   const username = useSelector((state) => state.auth.username);
   const favorites = useSelector((state) => state.auth.objects);
-  // console.log('favorites', favorites)
 const dispatch = useDispatch()
   const { id } = useParams();
   // const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
