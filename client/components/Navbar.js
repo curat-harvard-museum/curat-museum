@@ -1,12 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Flex, Image } from "@chakra-ui/react";
 
 const Navbar = ({ handleClick, isLoggedIn, auth }) => (
-  <div className="logo-navbar">
+  <Flex align="center">
     <Link to="home">
-      <img className="logo" src="/assets/images/logo.png" />
+      <Image
+        marginBottom="2rem"
+        marginTop="2rem"
+        marginLeft="3rem"
+        boxSize="130px"
+        className="logo"
+        src="/assets/images/logo.png"
+      />
     </Link>
-    <nav className="navbar">
+    <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links when user is logged in */}
@@ -34,7 +42,7 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
       )}
     </nav>
     <hr />
-  </div>
+  </Flex>
 );
 
 export default Navbar;
