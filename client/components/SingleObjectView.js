@@ -18,7 +18,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
+function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
   const { id } = useParams();
   const { data } = useQuery(["query-single-object"], async () => {
     return await apiClient.get(
@@ -28,11 +28,11 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
   // const { auth } = useSelector(state => state);
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
+
   // console.log(isFavorite);
 
   // const user = useSelector((state) => state.auth);
   // const [username] = user
-  // console.log(data?.data);
 
   return (
     <>
@@ -48,9 +48,16 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
         templateColumns="repeat(2, 1fr)"
         gap="1"
       >
-        <GridItem marginTop="5rem" rowSpan={2} area={"main"}>
+        <GridItem
+          marginTop="5rem"
+          marginLeft="2rem"
+          marginRight="2rem"
+          rowSpan={2}
+          area={"main"}
+        >
           <Box display="flex" flexWrap="wrap" justifyContent="center">
             <Image
+              marginTop="2rem"
               className="single-image"
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
@@ -88,16 +95,13 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
             templateColumns="repeat(auto-fit, minmax(0px, 1fr))"
             templateRows="5rem"
             gap="0.5rem"
+            marginTop="2rem"
+            marginBottom="2rem"
           >
             {data?.data.colors
               ? data?.data.colors.map((color) => (
-                  <Box>
-                    <Circle
-                      key={color.color}
-                      w="100%"
-                      h="100%"
-                      bg={`${color.color}`}
-                    ></Circle>
+                  <Box key={color.color}>
+                    <Circle w="100%" h="100%" bg={`${color.color}`}></Circle>
                   </Box>
                 ))
               : null}
@@ -107,11 +111,14 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
         <GridItem rowSpan={2} columnspan={2} area={"additional"}>
           <Box>
             {/* {data?.data.images.map((image) => ( */}
-            {data?.data.images ? (
+            {data?.data.images[1] ? (
               <Image
-                w="auto"
-                h="30rem"
-                src={`https://ids.lib.harvard.edu/ids/iiif/${data?.data.images[0]?.idsid}/full/full/0/default.jpg`}
+                marginLeft="auto"
+                marginRight="auto"
+                marginTop="2rem"
+                w="25rem"
+                h="auto"
+                src={`https://ids.lib.harvard.edu/ids/iiif/${data?.data.images[1]?.idsid}/full/full/0/default.jpg`}
               ></Image>
             ) : null}
             {/* ))} */}
@@ -120,12 +127,16 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
 
         <GridItem rowSpan={2} colSpan={1} area={"content"}>
           <VStack marginLeft="5rem" spacing={1} align="stretch">
-            <Text as="b" color="gray.300" fontSize="1.25rem">
-              Title
-            </Text>
-            <Divider />
+            {data?.data.title ? (
+              <>
+                <Text as="b" color="gray.300" fontSize="1.25rem">
+                  Title
+                </Text>
+                <Divider />
 
-            <Text>{data?.data.titles[0].title}</Text>
+                <Text>{data?.data.titles[0]?.title}</Text>
+              </>
+            ) : null}
 
             <Box height="1rem" />
 
@@ -135,7 +146,8 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
                   Artist
                 </Text>
                 <Divider />
-                <Text>{data?.data?.people[0].name}</Text>
+
+                <Text>{data?.data.people[0]?.name}</Text>
               </>
             ) : null}
 
@@ -253,11 +265,11 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
 const mapDispatch = (dispatch) => {
   return {
     makeFavorite: (artwork) => {
-      dispatch(updateUser(artwork))
+      dispatch(updateUser(artwork));
     },
     removeFavorite: (favoriteId) => {
-      dispatch(deleteArtwork(favoriteId))
-    }
+      dispatch(deleteArtwork(favoriteId));
+    },
   };
 };
 

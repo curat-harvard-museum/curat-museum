@@ -177,6 +177,8 @@ function AllObjects() {
         columns={[1, null, 2, null, 4]}
         spacingX="5rem"
         spacingY="5rem"
+        marginLeft="85px"
+        marginRight="85px"
       >
         {data?.pages.map((collection) =>
           collection.records
