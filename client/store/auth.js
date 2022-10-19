@@ -7,10 +7,13 @@ const TOKEN = "token";
  */
 const SET_AUTH = "SET_AUTH";
 
+
 /**
  * ACTION CREATORS
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
+
+
 
 /**
  * THUNK CREATORS
@@ -53,6 +56,13 @@ export const updateUser = (artwork) => {
   };
 };
 
+export const deleteArtwork = (artworkId) => {
+  return async(dispatch, getState) => {
+    const {data} = await axios.delete(`/api/users/${getState().auth.id}/${artworkId}`)
+    return dispatch(setAuth(data));
+  }
+}
+
 export const logout = (navigate) => {
   window.localStorage.removeItem(TOKEN);
   navigate("/home");
@@ -68,8 +78,10 @@ export const logout = (navigate) => {
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
-      return action.auth;
+      return action.auth; 
     default:
       return state;
   }
 }
+
+

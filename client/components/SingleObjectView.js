@@ -1,11 +1,10 @@
 import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
-import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateUser } from "../store/auth";
+import { updateUser, deleteArtwork } from "../store/auth";
 import { Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import {
   Box,
@@ -19,18 +18,21 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-function SingleObjectView({ makeFavorite, auth }) {
+function SingleObjectView({ makeFavorite, auth, removeFavorite}) {
   const { id } = useParams();
   const { data } = useQuery(["query-single-object"], async () => {
     return await apiClient.get(
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
+  // const { auth } = useSelector(state => state);
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
   // console.log(isFavorite);
 
-  console.log(data?.data);
+  // const user = useSelector((state) => state.auth);
+  // const [username] = user
+  // console.log(data?.data);
 
   return (
     <>
@@ -53,13 +55,29 @@ function SingleObjectView({ makeFavorite, auth }) {
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
             ></Image>
-            <Button
-              alignSelf="flex-end"
-              marginBottom="8rem"
-              onClick={() => makeFavorite(data.data)}
-            >
-              {isFavorite ? "Unlike" : "Like"}
-            </Button>
+            {auth.username ? (
+              isFavorite ? (
+                <Button
+                  alignSelf="flex-end"
+                  marginBottom="8rem"
+                  onClick={() => removeFavorite(data.data.objectid)}
+                >
+                  Unlike
+                </Button>
+              ) : (
+                <Button
+                  alignSelf="flex-end"
+                  marginBottom="8rem"
+                  onClick={() => makeFavorite(data.data)}
+                >
+                  Like
+                </Button>
+              )
+            ) : (
+              <Link to="/register">
+                <Button>Register to Like</Button>
+              </Link>
+            )}
           </Box>
         </GridItem>
 
@@ -117,7 +135,7 @@ function SingleObjectView({ makeFavorite, auth }) {
                   Artist
                 </Text>
                 <Divider />
-                <Text>{data?.data.people[0].name}</Text>
+                <Text>{data?.data?.people[0].name}</Text>
               </>
             ) : null}
 
@@ -235,8 +253,11 @@ function SingleObjectView({ makeFavorite, auth }) {
 const mapDispatch = (dispatch) => {
   return {
     makeFavorite: (artwork) => {
-      dispatch(updateUser(artwork));
+      dispatch(updateUser(artwork))
     },
+    removeFavorite: (favoriteId) => {
+      dispatch(deleteArtwork(favoriteId))
+    }
   };
 };
 
