@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import apiClient from "../../http-common";
 import { Heading, Image, Box, Badge, Button } from '@chakra-ui/react'
 import { deleteArtwork } from "../store/auth";
+import BackToTopButton from "./BackToTopButton";
 
 
 const Profile = ({removeFavorite }) => {
@@ -97,6 +98,7 @@ const dispatch = useDispatch()
     </div>
         ))}
       </div>
+        <BackToTopButton />
     </>
   );
 };
