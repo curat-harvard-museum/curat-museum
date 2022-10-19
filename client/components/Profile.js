@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Heading, Text, Divider, Image, Box, Badge } from '@chakra-ui/react'
+import { Heading, Text, Divider, Image, Box, Badge, Button } from '@chakra-ui/react'
 
 const Profile = (props) => {
   const username = useSelector((state) => state.auth.username);
@@ -62,7 +62,9 @@ const Profile = (props) => {
           <Box as='span' color='gray.600' fontSize='sm'>
           </Box>
         </Box>
-
+<Box display='flex' mt='2' alignItems='center'>
+<Button>Unlike</Button>
+</Box>
         {/* <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
             .fill('')

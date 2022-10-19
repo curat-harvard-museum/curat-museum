@@ -59,7 +59,7 @@ async function fetchObjects() {
  *      match the models, and populates the database.
  */
 // console.log("User magic methods", User.prototype);
-//setObjects(), addObject(), addObjects()
+//setObjects(), addObject(), addObjects(), removeObject(), removeObjects()
 // console.log("Object magic methods", Object.prototype);
 //setUsers(), addUsers(), addUser()
 

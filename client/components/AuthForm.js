@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { authenticate } from "../store";
 import {
   Flex,
@@ -19,6 +19,7 @@ const AuthForm = (props) => {
   const error = useSelector((state) => state.auth.error);
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+  const navigate = useNavigate();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -26,7 +27,7 @@ const AuthForm = (props) => {
     const username = evt.target.username.value;
     const email = evt.target.email.value;
     const password = evt.target.password.value;
-    dispatch(authenticate(username, email, password, formName));
+    dispatch(authenticate(username, email, password, formName, navigate));
   };
 
   return (
