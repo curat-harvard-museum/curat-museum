@@ -12,7 +12,6 @@ const SET_AUTH = "SET_AUTH";
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
-
 /**
  * THUNK CREATORS
  */
@@ -29,7 +28,7 @@ export const me = () => async (dispatch) => {
 };
 
 export const authenticate =
-  (username, email, password, method) => async (dispatch) => {
+  (username, email, password, method, navigate) => async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, {
         username,
@@ -38,6 +37,7 @@ export const authenticate =
       });
       window.localStorage.setItem(TOKEN, res.data.token);
       dispatch(me());
+      navigate("/");
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
     }
@@ -45,12 +45,13 @@ export const authenticate =
 
 export const updateUser = (artwork) => {
   return async (dispatch, getState) => {
-    const {data} = await axios.put(`/api/users/${getState().auth.id}`,
-    artwork
+    const { data } = await axios.put(
+      `/api/users/${getState().auth.id}`,
+      artwork
     );
-    return dispatch(setAuth(data))
-  }
-}
+    return dispatch(setAuth(data));
+  };
+};
 
 export const logout = (navigate) => {
   window.localStorage.removeItem(TOKEN);
@@ -67,7 +68,7 @@ export const logout = (navigate) => {
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
-      return action.auth; 
+      return action.auth;
     default:
       return state;
   }
