@@ -71,16 +71,18 @@ function SingleObjectView({ makeFavorite, auth }) {
             templateRows="5rem"
             gap="0.5rem"
           >
-            {data?.data.colors.map((color) => (
-              <Box>
-                <Circle
-                  key={color.color}
-                  w="100%"
-                  h="100%"
-                  bg={`${color.color}`}
-                ></Circle>
-              </Box>
-            ))}
+            {data?.data.colors
+              ? data?.data.colors.map((color) => (
+                  <Box>
+                    <Circle
+                      key={color.color}
+                      w="100%"
+                      h="100%"
+                      bg={`${color.color}`}
+                    ></Circle>
+                  </Box>
+                ))
+              : null}
           </Grid>
         </GridItem>
 
