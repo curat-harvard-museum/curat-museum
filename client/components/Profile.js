@@ -1,12 +1,26 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Heading, Text, Divider, Image, Box, Badge, Button } from '@chakra-ui/react'
+import React from "react";
+import { useDispatch, useSelector, connect } from "react-redux";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
+import apiClient from "../../http-common";
+import { Heading, Image, Box, Badge, Button } from '@chakra-ui/react'
+import { deleteArtwork } from "../store/auth";
 
-const Profile = (props) => {
+
+const Profile = ({removeFavorite }) => {
   const username = useSelector((state) => state.auth.username);
   const favorites = useSelector((state) => state.auth.objects);
-  // console.log('favorites', favorites)
-
+const dispatch = useDispatch()
+  const { id } = useParams();
+  // const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
+  // console.log(isFavorite);
+  // console.log('auth.objects[0].objectid', auth.objects[0].objectid)
+  const { data } = useQuery(["query-single-object"], async () => {
+    return await apiClient.get(
+      `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
+    );
+  });
+  
   return (
     <>
       <Heading as='h4' size='md'>Welcome, {username}</Heading>
@@ -63,7 +77,7 @@ const Profile = (props) => {
           </Box>
         </Box>
 <Box display='flex' mt='2' alignItems='center'>
-<Button>Unlike</Button>
+<Button onClick={() => removeFavorite(favorite.objectid)}>Unlike</Button>
 </Box>
         {/* <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
@@ -87,4 +101,14 @@ const Profile = (props) => {
   );
 };
 
-export default Profile;
+// export default Profile;
+const mapDispatch = (dispatch) => {
+  return {
+    removeFavorite: (favoriteId) => {
+      dispatch(deleteArtwork(favoriteId));
+    },
+  };
+};
+
+export default connect((state) => state, mapDispatch)(Profile);
+
