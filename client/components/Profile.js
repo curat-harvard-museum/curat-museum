@@ -3,7 +3,7 @@ import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import apiClient from "../../http-common";
-import { Heading, Image, Box, Badge, Button, Checkbox, CheckboxGroup, useCheckboxGroup, Tab, Tabs, TabList, TabPanels, TabPanel, Flex} from '@chakra-ui/react'
+import { Heading, Image, Box, Badge, Button, Checkbox, CheckboxGroup, useCheckboxGroup, useCheckbox, Tab, Tabs, TabList, TabPanels, TabPanel, Flex} from '@chakra-ui/react'
 import { deleteArtwork } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
 
@@ -21,6 +21,11 @@ const dispatch = useDispatch()
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
+
+  // const { state, getCheckboxProps, getInputProps, getLabelProps, htmlProps } =
+  //     useCheckbox(props)
+  // console.log("checkbox state", useCheckbox(props.state))
+  console.log("remove Favorite", removeFavorite)
   
   return (
     <>
