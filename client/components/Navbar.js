@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Flex, Image, Box } from "@chakra-ui/react";
+import { Flex, Spacer, Image, Box } from "@chakra-ui/react";
 
 const Navbar = ({ handleClick, isLoggedIn, auth }) => (
   <Flex align="center" justify="space-between">
