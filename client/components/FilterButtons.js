@@ -19,8 +19,6 @@ const FilterButtons = ({ filterType }) => {
   }
   let { data } = useQuery(["filterType", filterType], fetchObjects);
 
-  console.log(data?.records.map((record) => record.name));
-
   return (
     <>
       <div>
