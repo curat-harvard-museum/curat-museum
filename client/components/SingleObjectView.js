@@ -6,7 +6,6 @@ import { updateUser, deleteArtwork } from "../store/auth";
 import { Button } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-// import "@splidejs/react-splide/css";
 
 import {
   Box,
