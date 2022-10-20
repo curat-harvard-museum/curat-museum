@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Routes, Outlet, useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { me, logout } from "./store";
-import { Show, Hide } from "@chakra-ui/react";
+import { Show, Box, Flex } from "@chakra-ui/react";
 
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -46,19 +46,25 @@ const Layout = () => {
     dispatch(logout(navigate));
   };
   return (
-    <div>
-      <Show breakpoint="(min-width: 823px)">
-        <Navbar handleClick={handleClick} isLoggedIn={isLoggedIn} auth={auth} />
-      </Show>
-      <Show breakpoint="(max-width: 823px)">
-        <NavbarMobile
-          handleClick={handleClick}
-          isLoggedIn={isLoggedIn}
-          auth={auth}
-        />
-      </Show>
-      <Outlet />
-    </div>
+    <Flex justifyContent="center">
+      <Box maxWidth="1440px" px="2rem" marginBottom="4rem">
+        <Show breakpoint="(min-width: 823px)">
+          <Navbar
+            handleClick={handleClick}
+            isLoggedIn={isLoggedIn}
+            auth={auth}
+          />
+        </Show>
+        <Show breakpoint="(max-width: 823px)">
+          <NavbarMobile
+            handleClick={handleClick}
+            isLoggedIn={isLoggedIn}
+            auth={auth}
+          />
+        </Show>
+        <Outlet />
+      </Box>
+    </Flex>
   );
 };
 

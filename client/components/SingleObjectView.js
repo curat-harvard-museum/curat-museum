@@ -25,56 +25,47 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
-  // const { auth } = useSelector(state => state);
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
-
-  // console.log(isFavorite);
-
-  // const user = useSelector((state) => state.auth);
-  // const [username] = user
 
   return (
     <>
       <Grid
         h="100%"
-        templateAreas={`
-        "main main"
-        "colors colors"
-        "additional content"
-        "additional content"`}
+        // templateAreas={`
+        // "main main"
+        // "colors colors"
+        // "content content"
+        // `}
         justifyContent="center"
-        templateRows="repeat(2, 1fr)"
-        templateColumns="repeat(2, 1fr)"
+        templateRows="repeat(3, 1fr)"
+        templateColumns="repeat(1, 1fr)"
         gap="1"
       >
-        <GridItem
-          marginTop="5rem"
-          marginLeft="2rem"
-          marginRight="2rem"
-          rowSpan={2}
-          area={"main"}
-        >
-          <Box display="flex" flexWrap="wrap" justifyContent="center">
+        <GridItem marginTop="2rem" rowSpan={1}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="1rem"
+          >
             <Image
-              marginTop="2rem"
               className="single-image"
+              maxH="100vh"
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
             ></Image>
             {auth.username ? (
               isFavorite ? (
                 <Button
-                  alignSelf="flex-end"
-                  marginBottom="8rem"
+                  marginBottom="1rem"
                   onClick={() => removeFavorite(data.data.objectid)}
                 >
                   Unlike
                 </Button>
               ) : (
                 <Button
-                  alignSelf="flex-end"
-                  marginBottom="8rem"
+                  marginBottom="1rem"
                   onClick={() => makeFavorite(data.data)}
                 >
                   Like
@@ -88,58 +79,38 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
           </Box>
         </GridItem>
 
-        <GridItem rowSpan={1} colSpan={2} area={"colors"}>
-          <Grid
-            width="100%"
-            autoFlow="column"
-            templateColumns="repeat(auto-fit, minmax(0px, 1fr))"
-            templateRows="5rem"
-            gap="0.5rem"
-            marginTop="2rem"
-            marginBottom="2rem"
-          >
+        <GridItem colSpan={2}>
+          <Flex justifyContent="space-between" flexWrap="wrap" gap="0.5rem">
             {data?.data.colors
               ? data?.data.colors.map((color) => (
-                  <Box key={color.color}>
-                    <Circle w="100%" h="100%" bg={`${color.color}`}></Circle>
-                  </Box>
+                  <Circle
+                    key={color.color}
+                    width="6rem"
+                    height="6rem"
+                    bg={`${color.color}`}
+                  ></Circle>
                 ))
               : null}
-          </Grid>
+          </Flex>
         </GridItem>
 
-        <GridItem rowSpan={2} columnspan={2} area={"additional"}>
+        {/* <GridItem rowSpan={2} columnspan={2} area={"additional"}>
           <Box>
-            {/* {data?.data.images.map((image) => ( */}
-            {data?.data.images[1] ? (
-              <Image
-                marginLeft="auto"
-                marginRight="auto"
-                marginTop="2rem"
-                w="25rem"
-                h="auto"
-                src={`https://ids.lib.harvard.edu/ids/iiif/${data?.data.images[1]?.idsid}/full/full/0/default.jpg`}
-              ></Image>
+            {data?.data.images ? (
+                {data?.data.images.map((image) => (
+                  <Image
+                    key={image.imageid}
+                    // w="auto"
+                    // h="30rem"
+                    src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
+                  />
+                ))}
             ) : null}
-            {/* ))} */}
           </Box>
-        </GridItem>
+        </GridItem> */}
 
-        <GridItem rowSpan={2} colSpan={1} area={"content"}>
-          <VStack marginLeft="5rem" spacing={1} align="stretch">
-            {data?.data.title ? (
-              <>
-                <Text as="b" color="gray.300" fontSize="1.25rem">
-                  Title
-                </Text>
-                <Divider />
-
-                <Text>{data?.data.titles[0]?.title}</Text>
-              </>
-            ) : null}
-
-            <Box height="1rem" />
-
+        <GridItem rowSpan={1} colSpan={2}>
+          <VStack spacing={1} align="stretch">
             {data?.data.people ? (
               <>
                 <Text as="b" color="gray.300" fontSize="1.25rem">
@@ -150,7 +121,18 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 <Text>{data?.data.people[0]?.name}</Text>
               </>
             ) : null}
+            <Box height="1rem" />
 
+            {data?.data.title ? (
+              <>
+                <Text as="b" color="gray.300" fontSize="1.25rem">
+                  Title
+                </Text>
+                <Divider />
+
+                <Text>{data?.data.titles[0]?.title}</Text>
+              </>
+            ) : null}
             <Box height="1rem" />
 
             {data?.data.century ? (
@@ -173,7 +155,6 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 <Text>{data?.data.dated}</Text>
               </>
             ) : null}
-
             <Box height="1rem" />
 
             {data?.data.culture ? (
@@ -185,7 +166,6 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 <Text>{data?.data.culture ? data?.data.culture : null}</Text>
               </>
             ) : null}
-
             <Box height="1rem" />
 
             {data?.data.classification ? (
@@ -197,7 +177,6 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 <Text>{data?.data.classification}</Text>
               </>
             ) : null}
-
             <Box height="1rem" />
 
             {data?.data.medium ? (
@@ -241,20 +220,6 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
             ) : null}
 
             <Box height="1rem" />
-
-            {/* {data?.data.related ? (
-              <>
-                <Text as="b" color="gray.300" fontSize="1.25rem">
-                  Related Works
-                </Text>
-                <Divider />
-                {data?.data.related.map((work) => (
-                  <Link to={`/object/${work.objectid}`}>
-                    <Box>{`${work.relationship} to this work`}</Box>
-                  </Link>
-                ))}
-              </>
-            ) : null} */}
           </VStack>
         </GridItem>
       </Grid>
