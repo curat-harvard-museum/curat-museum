@@ -3,7 +3,7 @@ import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import apiClient from "../../http-common";
-import { Heading, Image, Box, Badge, Button } from '@chakra-ui/react'
+import { Heading, Image, Box, Badge, Button, Checkbox, CheckboxGroup, useCheckboxGroup, Tab, Tabs, TabList, TabPanels, TabPanel } from '@chakra-ui/react'
 import { deleteArtwork } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
 
@@ -25,6 +25,13 @@ const dispatch = useDispatch()
   return (
     <>
       <Heading as='h4' size='md'>Welcome, {username}</Heading>
+      <Tabs variant='soft-rounded' colorScheme='gray'>
+  <TabList>
+    <Tab>To Visit</Tab>
+    <Tab>Visited</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
       <div>
         {favorites?.map((favorite) => (
   //         <div key={favorite.objectid}>
@@ -79,6 +86,9 @@ const dispatch = useDispatch()
 <Box display='flex' mt='2' alignItems='center'>
 <Button onClick={() => removeFavorite(favorite.objectid)}>Unlike</Button>
 </Box>
+<Box display='flex' mt='2' alignItems='right'>
+<Checkbox colorScheme='facebook' defaultChecked>Visited</Checkbox>
+</Box>
         {/* <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
             .fill('')
@@ -97,6 +107,12 @@ const dispatch = useDispatch()
     </div>
         ))}
       </div>
+    </TabPanel>
+    <TabPanel>
+      <p>two!</p>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
         <BackToTopButton />
     </>
   );
