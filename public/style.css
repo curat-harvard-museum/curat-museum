@@ -21,30 +21,6 @@ form div {
   display: inline-block;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-}
-
-.single-grid-image {
-  max-width: 100%;
-  grid-column: 1 / 4;
-  grid-row: 1;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.caption-text {
-  line-height: 22px;
-  margin-bottom: 0.25rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  text-align: left;
-  width: 75%;
-}
-
 .exhibition-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
@@ -64,17 +40,9 @@ form div {
   overflow: hidden;
 }
 
-.logo-navbar {
-  width: 100%;
-  display:flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: baseline;
-}
 
-.logo {
-  width: 11rem;
-}
+
+
 
 .reference-header {
   padding: 1rem;
@@ -173,10 +141,4 @@ iframe {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-}
-
-.navbar {
-  font-size: 18px;
-  padding-right: 5rem;
-  float: right;
 }

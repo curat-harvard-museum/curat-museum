@@ -13,30 +13,23 @@ import {
   Image,
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   Text,
   useDisclosure,
   Flex,
-  Spacer,
-  Wrap,
-  WrapItem,
+  Button,
 } from "@chakra-ui/react";
 
 const validApiParams = [
   "century",
   "culture",
-  // "gallery",
   "classification",
   "medium",
   "period",
   "place",
   "technique",
-  "person",
-  "gallery",
 ];
 
 function AllObjects() {
@@ -141,16 +134,17 @@ function AllObjects() {
         w="100%"
         justify="center"
       >
-        <Box
+        <Button
           onClick={onOpen}
           borderBottomWidth="1px"
-          marginTop="75px"
+          marginTop="2 rem"
           marginBottom="30px"
           display="flex"
           paddingBottom="2px"
+          variant="unstyled"
         >
           Collection Filters
-        </Box>
+        </Button>
         <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
           <DrawerContent overflowY="auto">
@@ -174,11 +168,9 @@ function AllObjects() {
       </Flex>
 
       <SimpleGrid
-        columns={[1, null, 2, null, 4]}
+        columns={[1, null, 2, null, 3, null, 4]}
         spacingX="5rem"
         spacingY="5rem"
-        marginLeft="85px"
-        marginRight="85px"
       >
         {data?.pages.map((collection) =>
           collection.records
@@ -199,10 +191,10 @@ function AllObjects() {
                   <Text color="black" fontSize="1rem">
                     {record.people ? record.people[0].name : null}
                   </Text>
-                  <Text color="gray.500" noOfLines={2} fontSize="1rem">
+                  <Text color="gray.600" noOfLines={2} fontSize="1rem">
                     {record.title}
                   </Text>
-                  <Text as="b" color="gray.400" fontSize="1rem">
+                  <Text as="b" color="gray.600" fontSize="1rem">
                     {record.classification}
                   </Text>
                 </Box>
