@@ -38,7 +38,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
         // "content content"
         // `}
         justifyContent="center"
-        templateRows="repeat(3, 1fr)"
+        // templateRows="repeat(3, 1fr)"
         templateColumns="repeat(1, 1fr)"
         gap="1"
       >
