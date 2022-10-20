@@ -3,7 +3,7 @@ import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import apiClient from "../../http-common";
-import { Heading, Image, Box, Badge, Button, Checkbox, CheckboxGroup, useCheckboxGroup, Tab, Tabs, TabList, TabPanels, TabPanel } from '@chakra-ui/react'
+import { Heading, Image, Box, Badge, Button, Checkbox, CheckboxGroup, useCheckboxGroup, Tab, Tabs, TabList, TabPanels, TabPanel, Flex} from '@chakra-ui/react'
 import { deleteArtwork } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
 
@@ -36,7 +36,9 @@ const dispatch = useDispatch()
         <div>
         {favorites?.map((favorite) => (
   <div key={favorite.objectid}>
-  <Box maxW='sm' borderWidth='1px' overflow='hidden'>
+  <Flex flexWrap="wrap">
+
+  <Box boxSize="auto" minW="auto" maxW='auto' mx="auto" borderWidth='1px' overflow='hidden' alignItems="center" justifySelf="center">
       <Image src={favorite.primaryimageurl} alt={favorite.title} 
       margin-left="auto"
       margin-right="auto"
@@ -85,16 +87,17 @@ const dispatch = useDispatch()
             .fill('')
             .map((_, i) => (
               <StarIcon
-                key={i}
-                color={i < property.rating ? 'teal.500' : 'gray.300'}
+              key={i}
+              color={i < property.rating ? 'teal.500' : 'gray.300'}
               />
-            ))}
-          <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-            {property.reviewCount} reviews
-          </Box>
-        </Box> */}
+              ))}
+              <Box as='span' ml='2' color='gray.600' fontSize='sm'>
+              {property.reviewCount} reviews
+              </Box>
+            </Box> */}
       </Box>
     </Box>
+            </Flex>
     </div>
         ))} 
       </div>
@@ -105,7 +108,9 @@ const dispatch = useDispatch()
   </TabPanels>
 </Tabs>)
         :
-          (<p>Your favorited objects to visit will appear here once you add them.</p>)
+          (
+            <p>Your favorited objects to visit will appear here once you add them.</p>
+    )
       }
         <BackToTopButton />
     </>
@@ -119,6 +124,7 @@ const mapDispatch = (dispatch) => {
     },
   };
 };
+
 
 export default connect((state) => state, mapDispatch)(Profile);
 
