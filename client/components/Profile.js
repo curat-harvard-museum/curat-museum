@@ -25,31 +25,22 @@ const dispatch = useDispatch()
   return (
     <>
       <Heading as='h4' size='md'>Welcome, {username}</Heading>
-      <Tabs variant='soft-rounded' colorScheme='gray'>
+        {favorites?.length > 0 ? 
+      (<Tabs variant='soft-rounded' colorScheme='gray'>
   <TabList>
     <Tab>To Visit</Tab>
     <Tab>Visited</Tab>
   </TabList>
   <TabPanels>
     <TabPanel>
-      <div>
+        <div>
         {favorites?.map((favorite) => (
-  //         <div key={favorite.objectid}>
-  //           <div><Heading as='h5' size='sm'>Title: {favorite.title}</Heading></div>
-  //           <div><Heading as='h5' size='sm'>Artist: {favorite.artist}</Heading></div>
-  //           <AspectRatio maxW='400px' ratio={4 / 3}>
-  // <Image boxSize='400px' src={favorite.primaryimageurl} alt='Favorite Primary Image URL' />
-  //           </AspectRatio>
-  //           <div><Text fontSize='sm'>Description: {favorite.description}</Text></div>
-  //           <Divider />
-  //         </div>
   <div key={favorite.objectid}>
   <Box maxW='sm' borderWidth='1px' overflow='hidden'>
       <Image src={favorite.primaryimageurl} alt={favorite.title} 
       margin-left="auto"
       margin-right="auto"
       width="100%"/>
-
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
           <Badge borderRadius='full' px='2' colorScheme='gray'>
@@ -87,7 +78,7 @@ const dispatch = useDispatch()
 <Button onClick={() => removeFavorite(favorite.objectid)}>Unlike</Button>
 </Box>
 <Box display='flex' mt='2' alignItems='right'>
-<Checkbox colorScheme='facebook' defaultChecked>Visited</Checkbox>
+<Checkbox colorScheme='facebook' defaultunchecked>Visited</Checkbox>
 </Box>
         {/* <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
@@ -105,20 +96,22 @@ const dispatch = useDispatch()
       </Box>
     </Box>
     </div>
-        ))}
+        ))} 
       </div>
     </TabPanel>
     <TabPanel>
-      <p>two!</p>
+      <p>The objects you visited will appear here after you check them off.</p>
     </TabPanel>
   </TabPanels>
-</Tabs>
+</Tabs>)
+        :
+          (<p>Your favorited objects to visit will appear here once you add them.</p>)
+      }
         <BackToTopButton />
     </>
   );
 };
 
-// export default Profile;
 const mapDispatch = (dispatch) => {
   return {
     removeFavorite: (favoriteId) => {
