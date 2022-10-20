@@ -11,11 +11,6 @@ label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
 form div {
   margin: 1em;
   display: inline-block;
@@ -40,9 +35,9 @@ form div {
   overflow: hidden;
 } */
 
-/* .reference-header {
+.reference-header {
   padding: 1rem;
-} */
+}
 
 .video-box {
   width: 80vw;
