@@ -8,7 +8,7 @@ import { deleteArtwork } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
 
 
-const Profile = ({removeFavorite }) => {
+const Profile = ({removeFavorite, isVisited }) => {
   const username = useSelector((state) => state.auth.username);
   const favorites = useSelector((state) => state.auth.objects);
 const dispatch = useDispatch()
@@ -37,9 +37,8 @@ const dispatch = useDispatch()
   //           <Divider />
   //         </div>
   <div key={favorite.objectid}>
-  <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+  <Box maxW='sm' borderWidth='1px' overflow='hidden'>
       <Image src={favorite.primaryimageurl} alt={favorite.title} 
-      borderRadius="md"
       margin-left="auto"
       margin-right="auto"
       width="100%"/>
