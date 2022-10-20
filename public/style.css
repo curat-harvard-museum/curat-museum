@@ -16,7 +16,7 @@ form div {
   display: inline-block;
 }
 
-.exhibition-container {
+/* .exhibition-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
   gap: 10px;
@@ -33,7 +33,7 @@ form div {
   max-height: 15rem;
   max-width: 15rem;
   overflow: hidden;
-}
+} */
 
 .reference-header {
   padding: 1rem;
@@ -79,7 +79,6 @@ iframe {
 .audio-box {
   width: 80vw;
   padding: 2rem;
-  /* background-color: #f4f1ea; */
   height: auto;
   display: flex;
   flex-wrap: wrap;
@@ -132,4 +131,29 @@ iframe {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1020px) {
+  .graph-chart {
+    width: 80%;
+    height: 400px;
+  }
+}
+
+.bg-container {
+  position: relative;
+}
+
+.bg-text {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  bottom: .5rem;
+  margin: 2rem;
+  background-color: rgb(255, 255, 255, 0.6);
+  color: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

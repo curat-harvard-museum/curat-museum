@@ -47,9 +47,9 @@ const NavbarMobile = ({ handleClick, isLoggedIn, auth }) => (
             </MenuItem>
           </MenuList>
         </Menu>
-        <Box marginTop="2rem" as={Link} to={"home"}>
+        <Box marginTop="1rem" as={Link} to={"home"}>
           <Image
-            boxSize="50px"
+            boxSize="80px"
             className="logo"
             src="/assets/images/logo.png"
           />
@@ -95,9 +95,9 @@ const NavbarMobile = ({ handleClick, isLoggedIn, auth }) => (
             </MenuItem>
           </MenuList>
         </Menu>
-        <Box marginTop="2rem" as={Link} to={"home"}>
+        <Box marginTop="1rem" as={Link} to={"home"}>
           <Image
-            boxSize="50px"
+            boxSize="80px"
             className="logo"
             src="/assets/images/logo.png"
           />
