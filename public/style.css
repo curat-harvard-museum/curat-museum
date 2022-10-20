@@ -11,11 +11,6 @@ label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
 form div {
   margin: 1em;
   display: inline-block;
@@ -39,10 +34,6 @@ form div {
   max-width: 15rem;
   overflow: hidden;
 }
-
-
-
-
 
 .reference-header {
   padding: 1rem;

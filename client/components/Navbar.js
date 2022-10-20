@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image, Box } from "@chakra-ui/react";
 
 const Navbar = ({ handleClick, isLoggedIn, auth }) => (
-  <Flex align="center">
+  <Flex align="center" justify="space-between">
     <Link to="home">
       <Image
         marginBottom="2rem"
@@ -14,34 +14,31 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
         src="/assets/images/logo.png"
       />
     </Link>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links when user is logged in */}
-          <Link to="home">Home</Link>
-          <Link to="collection">View Collection</Link>
-          <Link to="visualizations">Visualizations</Link>
-          {/* <input type="text" placeholder="Search the collection" /> */}
-          <Link to="references">References</Link>
-          <Link to="profile">Profile({auth.objects.length})</Link>
-          <Link to="#" onClick={handleClick}>
-            Logout
-          </Link>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links when user is !loggedin */}
-          <Link to="home">Home</Link>
-          <Link to="collection">View Collection</Link>
-          <Link to="visualizations">Visualizations</Link>
-          {/* <input type="text" placeholder="Search the collection" /> */}
-          <Link to="references">References</Link>
-          <Link to="login">Login</Link>
-          <Link to="register">Register</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
+    {isLoggedIn ? (
+      <Flex justify="space-between">
+        {/* The navbar will show these links when user is logged in */}
+        <Link to="home">Home</Link>
+        <Link to="collection">View Collection</Link>
+        <Link to="visualizations">Visualizations</Link>
+        {/* <input type="text" placeholder="Search the collection" /> */}
+        <Link to="references">References</Link>
+        <Link to="profile">Profile({auth.objects.length})</Link>
+        <Link to="#" onClick={handleClick}>
+          Logout
+        </Link>
+      </Flex>
+    ) : (
+      <Box>
+        {/* The navbar will show these links when user is !loggedin */}
+        <Link to="home">Home</Link>
+        <Link to="collection">View Collection</Link>
+        <Link to="visualizations">Visualizations</Link>
+        {/* <input type="text" placeholder="Search the collection" /> */}
+        <Link to="references">References</Link>
+        <Link to="login">Login</Link>
+        <Link to="register">Register</Link>
+      </Box>
+    )}
   </Flex>
 );
 

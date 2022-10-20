@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { updateUser, deleteArtwork } from "../store/auth";
 import { Button } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import {
   Box,
@@ -32,17 +33,14 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
     <>
       <Grid
         h="100%"
-        // templateAreas={`
-        // "main main"
-        // "colors colors"
-        // "content content"
-        // `}
+        templateAreas={`"main main"
+      "colors colors"
+    "additional content"`}
         justifyContent="center"
-        templateRows="repeat(3, 1fr)"
         templateColumns="repeat(1, 1fr)"
         gap="1"
       >
-        <GridItem marginTop="2rem" rowSpan={1}>
+        <GridItem marginTop="2rem" rowSpan={1} area={"main"}>
           <Box
             display="flex"
             flexDirection="column"
@@ -79,7 +77,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
           </Box>
         </GridItem>
 
-        <GridItem colSpan={2}>
+        <GridItem area={"colors"}>
           <Flex justifyContent="space-between" flexWrap="wrap" gap="0.5rem">
             {data?.data.colors
               ? data?.data.colors.map((color) => (
@@ -94,22 +92,35 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
           </Flex>
         </GridItem>
 
-        {/* <GridItem rowSpan={2} columnspan={2} area={"additional"}>
-          <Box>
-            {data?.data.images ? (
-                {data?.data.images.map((image) => (
-                  <Image
-                    key={image.imageid}
-                    // w="auto"
-                    // h="30rem"
-                    src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
-                  />
-                ))}
-            ) : null}
-          </Box>
-        </GridItem> */}
+        <GridItem
+          area={"additional"}
+          justifySelf="center"
+          alignSelf="center"
+          paddingRight="5rem"
+        >
+          <Splide
+            aria-label="Related Images"
+            options={{
+              perPage: 1,
+              type: "loop",
+              width: "35rem",
+              height: "auto",
+              speed: 2000,
+            }}
+          >
+            {data?.data.images
+              ? data?.data.images.map((image) => (
+                  <SplideSlide key={image.idsid}>
+                    <Image
+                      src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
+                    />
+                  </SplideSlide>
+                ))
+              : null}
+          </Splide>
+        </GridItem>
 
-        <GridItem rowSpan={1} colSpan={2}>
+        <GridItem area={"content"} justifySelf="center" alignSelf="center">
           <VStack spacing={1} align="stretch">
             {data?.data.people ? (
               <>
