@@ -51,7 +51,8 @@ const Profile = ({ removeFavorite, isVisited }) => {
               <div>
                 {favorites?.map((favorite) => (
                   <div key={favorite.objectid}>
-                    <Flex flexWrap="wrap">
+                    <Flex flexWrap="wrap"
+                    >
                       <Box
                         boxSize="auto"
                         minW="auto"
@@ -61,6 +62,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
                         overflow="hidden"
                         alignItems="center"
                         justifySelf="center"
+                        flexDirection="row"
                       >
                         <Image
                           src={favorite.primaryimageurl}
