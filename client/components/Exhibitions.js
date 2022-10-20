@@ -25,14 +25,13 @@ function Exhibitions() {
             <>
               <Box
                 maxW="sm"
-                // borderWidth="1px"
-                // borderRadius="md"
                 overflow="hidden"
                 height="400px"
+                alignItems="center"
+                justifySelf="center"
               >
                 {record.primaryimageurl ? (
                   <Image
-                    borderRadius="md"
                     margin-left="auto"
                     margin-right="auto"
                     width="100%"

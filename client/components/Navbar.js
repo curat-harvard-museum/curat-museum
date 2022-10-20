@@ -9,7 +9,9 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
         marginBottom="2rem"
         marginTop="2rem"
         marginLeft="3rem"
-        boxSize="130px"
+        width="130px"
+        height="auto"
+        // boxSize="130px"
         className="logo"
         src="/assets/images/logo.png"
       />
