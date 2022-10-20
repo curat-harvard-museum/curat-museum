@@ -28,19 +28,21 @@ const FilterButtons = ({ filterType }) => {
     <>
       <div>
         <Wrap spacing={4}>
-          {data?.records.map((record) => (
-            <WrapItem key={record.id}>
-              <Button
-                colorScheme="gray"
-                size="sm"
-                variant="ghost"
-                onClick={handleClick}
-                value={record.name}
-              >
-                {capitalizeFirstLetter(record.name)}
-              </Button>
-            </WrapItem>
-          ))}
+          {data?.records
+            .sort((a, b) => (a.name > b.name ? 1 : -1))
+            .map((record) => (
+              <WrapItem key={record.id}>
+                <Button
+                  colorScheme="gray"
+                  size="sm"
+                  variant="ghost"
+                  onClick={handleClick}
+                  value={record.name}
+                >
+                  {capitalizeFirstLetter(record.name)}
+                </Button>
+              </WrapItem>
+            ))}
         </Wrap>
       </div>
     </>
