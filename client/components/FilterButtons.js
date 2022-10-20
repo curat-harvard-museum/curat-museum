@@ -19,6 +19,11 @@ const FilterButtons = ({ filterType }) => {
   }
   let { data } = useQuery(["filterType", filterType], fetchObjects);
 
+  function capitalizeFirstLetter(str) {
+    const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+    return capitalized;
+  }
+
   return (
     <>
       <div>
@@ -32,7 +37,7 @@ const FilterButtons = ({ filterType }) => {
                 onClick={handleClick}
                 value={record.name}
               >
-                {record.name}
+                {capitalizeFirstLetter(record.name)}
               </Button>
             </WrapItem>
           ))}

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { updateUser, deleteArtwork } from "../store/auth";
 import { Button } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
-// import Slider from "react-slick";
 
 import {
   Box,
@@ -26,23 +25,8 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
-  // const { auth } = useSelector(state => state);
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
-
-  // console.log(isFavorite);
-
-  // const user = useSelector((state) => state.auth);
-  // const [username] = user
-
-  // const settings = {
-  //   dots: true,
-  //   fade: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  // };
 
   return (
     <>
@@ -96,12 +80,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
         </GridItem>
 
         <GridItem colSpan={2}>
-          <Flex
-            justifyContent="space-between"
-            flexWrap="wrap"
-            // py="2rem"
-            gap="0.5rem"
-          >
+          <Flex justifyContent="space-between" flexWrap="wrap" gap="0.5rem">
             {data?.data.colors
               ? data?.data.colors.map((color) => (
                   <Circle
@@ -118,7 +97,6 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
         {/* <GridItem rowSpan={2} columnspan={2} area={"additional"}>
           <Box>
             {data?.data.images ? (
-              <Slider {...settings}>
                 {data?.data.images.map((image) => (
                   <Image
                     key={image.imageid}
@@ -127,7 +105,6 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                     src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
                   />
                 ))}
-              </Slider>
             ) : null}
           </Box>
         </GridItem> */}
