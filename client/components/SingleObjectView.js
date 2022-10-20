@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { updateUser, deleteArtwork } from "../store/auth";
 import { Button } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+// import "@splidejs/react-splide/css";
 
 import {
   Box,
@@ -32,13 +34,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
     <>
       <Grid
         h="100%"
-        // templateAreas={`
-        // "main main"
-        // "colors colors"
-        // "content content"
-        // `}
         justifyContent="center"
-        // templateRows="repeat(3, 1fr)"
         templateColumns="repeat(1, 1fr)"
         gap="1"
       >
@@ -94,20 +90,24 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
           </Flex>
         </GridItem>
 
-        {/* <GridItem rowSpan={2} columnspan={2} area={"additional"}>
-          <Box>
-            {data?.data.images ? (
-                {data?.data.images.map((image) => (
-                  <Image
-                    key={image.imageid}
-                    // w="auto"
-                    // h="30rem"
-                    src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
-                  />
-                ))}
-            ) : null}
-          </Box>
-        </GridItem> */}
+        <GridItem rowSpan={2} columnspan={2} area={"additional"}>
+          <Splide
+            aria-label="Related Images"
+            options={{
+              perPage: 1,
+            }}
+          >
+            {data?.data.images.map((image) => (
+              <SplideSlide key={image.idsid}>
+                <Image
+                  // w="auto"
+                  // h="30rem"
+                  src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
+                />
+              </SplideSlide>
+            ))}
+          </Splide>
+        </GridItem>
 
         <GridItem rowSpan={1} colSpan={2}>
           <VStack spacing={1} align="stretch">
