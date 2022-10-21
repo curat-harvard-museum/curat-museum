@@ -35,7 +35,16 @@ const Profile = ({ removeFavorite, isVisited }) => {
     );
   });
 
-  const [checkedItems, setCheckedItems] = useState([false, false])
+  const [checkedItem, setCheckedItem] = useState([false, false])
+
+  const { value, onChange, setValue, getCheckboxProps } = useCheckboxGroup({
+    defaultValue: [false],
+  })
+
+  useEffect(() => {
+    // storing input value
+    localStorage.setItem(value, JSON.stringify(value));
+  }, [value]);
 
   return (
     <>
@@ -117,7 +126,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
                             </Button>
                           </Box>
                           <Box display="flex" mt="2" alignItems="right">
-                            <Checkbox colorScheme="blackAlpha" defaultunchecked size="lg">
+                            <Checkbox colorScheme="blackAlpha" defaultunchecked size="lg" onChange={(e) => setCheckedItem(!checkedItem)}>
                               Visited
                             </Checkbox>
                           </Box>
