@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -34,6 +34,8 @@ const Profile = ({ removeFavorite, isVisited }) => {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
+
+  const [checkedItems, setCheckedItems] = useState([false, false])
 
   return (
     <>
@@ -115,7 +117,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
                             </Button>
                           </Box>
                           <Box display="flex" mt="2" alignItems="right">
-                            <Checkbox colorScheme="facebook" defaultunchecked>
+                            <Checkbox colorScheme="blackAlpha" defaultunchecked size="lg">
                               Visited
                             </Checkbox>
                           </Box>
