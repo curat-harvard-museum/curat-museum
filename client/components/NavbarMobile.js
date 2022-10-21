@@ -58,7 +58,7 @@ const NavbarMobile = ({ handleClick, isLoggedIn, auth }) => (
           marginTop="2rem"
           size="sm"
           as={Link}
-          to="#"
+          to="home"
           onClick={handleClick}
         >
           Logout
