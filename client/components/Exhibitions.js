@@ -75,8 +75,8 @@ function Exhibitions() {
                         textTransform="uppercase"
                         ml="2"
                       >
-                        Floor: {gallery.floor} &bull; Gallery Location:{" "}
-                        {gallery.name} ({gallery.gallerynumber})
+                        Floor: {gallery.floor} &bull; {gallery.name} (
+                        {gallery.gallerynumber})
                       </Box>
                       <Box as="span" ml="2" color="gray.600" fontSize="sm">
                         End Date: {record.enddate}
