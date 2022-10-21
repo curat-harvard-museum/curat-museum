@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -10,24 +10,20 @@ import {
   Badge,
   Button,
   Checkbox,
-  CheckboxGroup,
-  useCheckboxGroup,
-  useCheckbox,
-  Tab,
   Tabs,
   TabList,
+  Tab,
   TabPanels,
   TabPanel,
   Flex,
   Divider,
-  SimpleGrid,
-  Center
+  SimpleGrid
 } from "@chakra-ui/react";
 import { deleteArtwork, updateVisit } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
 import Footer from "./Footer";
 
-const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
+const Profile = ({ removeFavorite, updateVisit }) => {
   const username = useSelector((state) => state.auth.username);
   const favorites = useSelector((state) => state.auth.objects);
   const dispatch = useDispatch();
@@ -38,27 +34,6 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
       `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
     );
   });
-
-  // const [checkedItem, setCheckedItem] = useState(false)
-  // const [filter, setFilter] = useState("all")
-  // const handleSelectChange = evt => {
-  //   setFilter(evt.target.value)
-  // }
-
-// const artworks = favorites.filter(favorite => {
-//   if(filter === "all") return favorite
-//   if(filter === isVisited) return favorite.isVisited
-//   if(filter === !isVisited) return !favorite.isVisited
-// })
-
-  // const { value, onChange, setValue, getCheckboxProps } = useCheckboxGroup({
-  //   defaultValue: [false],
-  // })
-
-  // useEffect(() => {
-  //   // storing input value
-  //   localStorage.setItem(value, JSON.stringify(value));
-  // }, [value]);
 
   return (
     <>
@@ -233,10 +208,6 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
                 ))}
                 </SimpleGrid>
               </div>
-              {/* <p>
-                The objects you visited will appear here after you check them
-                off.
-              </p> */}
             </TabPanel>
           </TabPanels>
         </Tabs>

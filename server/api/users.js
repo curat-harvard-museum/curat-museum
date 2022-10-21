@@ -28,8 +28,6 @@ router.get('/:id', async(req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const artwork = req.body;
-    // console.log("user id", user.id)
-    // console.log("artwork", artwork)
     const [object, created] = await Object.findOrCreate({
       where: {
         objectid: artwork.objectid,
@@ -42,7 +40,6 @@ router.put("/:id", async (req, res, next) => {
     const user = await User.findByPk(req.params.id, {include: Object})
     await user.addObject(object)
     await user.reload()
-    // console.log("user updated", user)
     res.json(user);
   } catch (error) {
     next(error);
@@ -74,17 +71,12 @@ router.put("/visited/:userId/:artworkId", async(req, res, next) => {
 router.delete("/:userId/:artworkId", async(req, res, next) => {
   try {
     const {userId, artworkId} = req.params
-    // console.log("artworkId", artworkId)
-    // console.log("userId", userId)
     const user = await User.findByPk(userId, {include: Object})
-    // console.log("user id", user.id)
-    // console.log("user", user)
     const object = await Object.findOne({
       where: {
         objectid: artworkId
       },
     })
-    // console.log("object", object)
     await object.destroy()
     await user.reload()
     res.send(user)
