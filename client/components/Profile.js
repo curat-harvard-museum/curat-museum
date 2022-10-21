@@ -23,11 +23,11 @@ import {
   SimpleGrid,
   Center
 } from "@chakra-ui/react";
-import { deleteArtwork } from "../store/auth";
+import { deleteArtwork, updateVisit } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
 import Footer from "./Footer";
 
-const Profile = ({ removeFavorite, isVisited }) => {
+const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
   const username = useSelector((state) => state.auth.username);
   const favorites = useSelector((state) => state.auth.objects);
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
     );
   });
 
-  const [checkedItem, setCheckedItem] = useState(false)
+  // const [checkedItem, setCheckedItem] = useState(false)
   const [filter, setFilter] = useState("all")
   const handleSelectChange = evt => {
     setFilter(evt.target.value)
@@ -151,7 +151,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
                             </Button>
                           </Box>
                           <Box mt="2" >
-                            <Checkbox colorScheme="blackAlpha" defaultunchecked="true" size="lg" onClick={() => setCheckedItem(!checkedItem)}>
+                            <Checkbox colorScheme="blackAlpha" defaultunchecked="true" size="lg" onChange={() => updateVisit(favorite.id)}>
                               Visited
                             </Checkbox>
                           </Box>
@@ -191,6 +191,9 @@ const mapDispatch = (dispatch) => {
     removeFavorite: (favoriteId) => {
       dispatch(deleteArtwork(favoriteId));
     },
+    updateVisit: (artworkId) => {
+      dispatch(updateVisit(artworkId));
+    }
   };
 };
 

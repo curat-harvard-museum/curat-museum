@@ -56,6 +56,15 @@ export const updateUser = (artwork) => {
   };
 };
 
+
+  export const updateVisit = (artworkId) => {
+    return async(dispatch, getState) => {
+      console.log("artworkId", artworkId)
+      const {data} = await axios.put(`/api/users/visited/${getState().auth.id}/${artworkId}`)
+      return dispatch(setAuth(data));
+    }
+  }
+
 export const deleteArtwork = (artworkId) => {
   return async(dispatch, getState) => {
     const {data} = await axios.delete(`/api/users/${getState().auth.id}/${artworkId}`)

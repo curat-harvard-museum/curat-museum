@@ -58,9 +58,14 @@ router.put("/visited/:userId/:artworkId", async(req, res, next) => {
         objectId: artworkId
       }
     })
-    await userObject.update({isVisited : true})
-    await userObject.reload()
-    res.send(userObject)
+    if(!userObject.isVisited){
+      await userObject.update({isVisited : true})
+    } 
+    else {
+      await userObject.update({isVisited: false})
+    }
+    const user = await User.findByPk(userId, {include: Object})
+    res.send(user)
   } catch(error){
     next(error)
   }
@@ -69,8 +74,8 @@ router.put("/visited/:userId/:artworkId", async(req, res, next) => {
 router.delete("/:userId/:artworkId", async(req, res, next) => {
   try {
     const {userId, artworkId} = req.params
-    console.log("artworkId", artworkId)
-    console.log("userId", userId)
+    // console.log("artworkId", artworkId)
+    // console.log("userId", userId)
     const user = await User.findByPk(userId, {include: Object})
     // console.log("user id", user.id)
     // console.log("user", user)
