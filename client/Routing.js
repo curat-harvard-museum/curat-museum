@@ -48,14 +48,14 @@ const Layout = () => {
   return (
     <Flex justifyContent="center">
       <Box maxWidth="1440px" px="2rem" marginBottom="4rem">
-        <Show breakpoint="(min-width: 823px)">
+        <Show breakpoint="(min-width: 1033px)">
           <Navbar
             handleClick={handleClick}
             isLoggedIn={isLoggedIn}
             auth={auth}
           />
         </Show>
-        <Show breakpoint="(max-width: 823px)">
+        <Show breakpoint="(max-width: 1033px)">
           <NavbarMobile
             handleClick={handleClick}
             isLoggedIn={isLoggedIn}
