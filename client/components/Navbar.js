@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Flex, Spacer, Image, Box } from "@chakra-ui/react";
+import { Flex, Grid, Spacer, Image, Box, GridItem } from "@chakra-ui/react";
 
 const Navbar = ({ handleClick, isLoggedIn, auth }) => (
   <Flex align="center" justify="space-between">
@@ -15,18 +15,30 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
       />
     </Link>
     {isLoggedIn ? (
-      <Flex justify="space-between">
+      <Grid templateColumns="repeat(12, 1fr)" gap={6}>
         {/* The navbar will show these links when user is logged in */}
-        <Link to="home">Home</Link>
-        <Link to="collection">View Collection</Link>
-        <Link to="visualizations">Visualizations</Link>
+        <GridItem pl="50%" colSpan={2}>
+          <Link to="home">Home</Link>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Link to="collection">View Collection</Link>
+        </GridItem>
+        <GridItem pl="10%" colSpan={2}>
+          <Link to="visualizations">Visualizations</Link>
+        </GridItem>
         {/* <input type="text" placeholder="Search the collection" /> */}
-        <Link to="references">References</Link>
-        <Link to="profile">Profile({auth.objects.length})</Link>
-        <Link to="#" onClick={handleClick}>
-          Logout
-        </Link>
-      </Flex>
+        <GridItem pl="10%" colSpan={2}>
+          <Link to="references">References</Link>
+        </GridItem>
+        <GridItem pl="10%" colSpan={2}>
+          <Link to="profile">Profile({auth.objects.length})</Link>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Link to="#" onClick={handleClick}>
+            Logout
+          </Link>
+        </GridItem>
+      </Grid>
     ) : (
       <Box>
         {/* The navbar will show these links when user is !loggedin */}
