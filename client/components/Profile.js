@@ -40,6 +40,16 @@ const Profile = ({ removeFavorite, isVisited }) => {
   });
 
   const [checkedItem, setCheckedItem] = useState(false)
+  const [filter, setFilter] = useState("all")
+  const handleSelectChange = evt => {
+    setFilter(evt.target.value)
+  }
+
+// const artworks = favorites.filter(favorite => {
+//   if(filter === "all") return favorite
+//   if(filter === isVisited) return favorite.isVisited
+//   if(filter === !isVisited) return !favorite.isVisited
+// })
 
   const { value, onChange, setValue, getCheckboxProps } = useCheckboxGroup({
     defaultValue: [false],
@@ -63,6 +73,14 @@ const Profile = ({ removeFavorite, isVisited }) => {
           </TabList>
           <TabPanels>
             <TabPanel>
+              {/* <div>
+                <label htmlFor="vistedFilter">Filter by status:</label>
+                <select onChange={handleSelectChange} name="visitedFilter">
+                  <option>all</option>
+                  <option>isVisited</option>
+                  <option>!isVisited</option>
+                </select>
+              </div> */}
               <div>
           <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
                 {favorites?.map((favorite) => (
@@ -133,7 +151,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
                             </Button>
                           </Box>
                           <Box mt="2" >
-                            <Checkbox colorScheme="blackAlpha" defaultunchecked size="lg" onChange={(e) => setCheckedItem(!checkedItem)}>
+                            <Checkbox colorScheme="blackAlpha" defaultunchecked="true" size="lg" onClick={() => setCheckedItem(!checkedItem)}>
                               Visited
                             </Checkbox>
                           </Box>
