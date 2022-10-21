@@ -4,17 +4,7 @@ import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { Badge, Box, Image, SimpleGrid, Center } from "@chakra-ui/react";
 
-const validApiParams = ["6177", "6194", "5820", "6243", "5995"];
-
 function SingleExhibition() {
-  //   const [searchParams] = useSearchParams();
-
-  //   const onlyValidParams = [...searchParams].filter(
-  //     ([key, value]) => validApiParams.includes(key) && Boolean(value)
-  //   );
-
-  //   const formattedParamsString = new URLSearchParams(onlyValidParams).toString();
-
   const { id } = useParams();
 
   const { data, refetch: getExhibition } = useQuery(
@@ -25,7 +15,7 @@ function SingleExhibition() {
       );
     }
   );
-  console.log("Single: ", data);
+
   function handleGetExhibition() {
     getAllExhibition();
   }

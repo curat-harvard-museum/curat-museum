@@ -17,14 +17,7 @@ function Exhibitions() {
   function handleGetExhibitions() {
     getAllExhibitions();
   }
-  // console.log(
-  //   "exhibitions: ",
-  //   data?.data.records.map((record) =>
-  //     record.venues.map((venue) =>
-  //       venue.galleries.map((gallery) => gallery.name)
-  //     )
-  //   )
-  // );
+
   return (
     <>
       <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
