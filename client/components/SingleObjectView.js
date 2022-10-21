@@ -362,8 +362,8 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                   </Text>
                   <Divider />
                   <Text key={data?.data.gallery.id}>
-                    Level {data?.data.gallery.floor}, {data?.data.gallery.name}
-                    {data?.data.gallery.number}
+                    Floor {data?.data.gallery.floor} &bull;
+                    {data?.data.gallery.name}({data?.data.gallery.number})
                   </Text>
                 </>
               ) : null}
