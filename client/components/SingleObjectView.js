@@ -94,32 +94,36 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
 
         <Show breakpoint="(max-width: 1368px)">
           <VStack spacing={1} align="stretch">
-            <GridItem
-              area={"additional"}
-              justifySelf="center"
-              alignSelf="center"
-            >
-              <Splide
-                aria-label="Related Images"
-                options={{
-                  perPage: 1,
-                  type: "loop",
-                  width: "50rem",
-                  height: "auto",
-                  speed: 2000,
-                }}
-              >
-                {data?.data.images
-                  ? data?.data.images.map((image) => (
-                      <SplideSlide key={image.idsid}>
-                        <Image
-                          src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
-                        />
-                      </SplideSlide>
-                    ))
-                  : null}
-              </Splide>
-            </GridItem>
+            {data?.data.images ? (
+              <>
+                <GridItem
+                  area={"additional"}
+                  justifySelf="center"
+                  alignSelf="center"
+                >
+                  <Splide
+                    aria-label="Related Images"
+                    options={{
+                      perPage: 1,
+                      type: "loop",
+                      width: "50rem",
+                      height: "auto",
+                      speed: 2000,
+                    }}
+                  >
+                    {data?.data.images
+                      ? data?.data.images.map((image) => (
+                          <SplideSlide key={image.idsid}>
+                            <Image
+                              src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
+                            />
+                          </SplideSlide>
+                        ))
+                      : null}
+                  </Splide>
+                </GridItem>
+              </>
+            ) : null}
 
             <GridItem area={"content"} justifySelf="center" alignSelf="center">
               {data?.data.people ? (
@@ -238,33 +242,35 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
         </Show>
 
         <Show breakpoint="(min-width: 1368px)">
-          <GridItem
-            area={"additional"}
-            justifySelf="center"
-            alignSelf="center"
-            paddingRight="5rem"
-          >
-            <Splide
-              aria-label="Related Images"
-              options={{
-                perPage: 1,
-                type: "loop",
-                width: "35rem",
-                height: "auto",
-                speed: 2000,
-              }}
+          {data?.data.images ? (
+            <GridItem
+              area={"additional"}
+              justifySelf="center"
+              alignSelf="center"
+              paddingRight="5rem"
             >
-              {data?.data.images
-                ? data?.data.images.map((image) => (
-                    <SplideSlide key={image.idsid}>
-                      <Image
-                        src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
-                      />
-                    </SplideSlide>
-                  ))
-                : null}
-            </Splide>
-          </GridItem>
+              <Splide
+                aria-label="Related Images"
+                options={{
+                  perPage: 1,
+                  type: "loop",
+                  width: "35rem",
+                  height: "auto",
+                  speed: 2000,
+                }}
+              >
+                {data?.data.images
+                  ? data?.data.images.map((image) => (
+                      <SplideSlide key={image.idsid}>
+                        <Image
+                          src={`https://ids.lib.harvard.edu/ids/iiif/${image.idsid}/full/full/0/default.jpg`}
+                        />
+                      </SplideSlide>
+                    ))
+                  : null}
+              </Splide>
+            </GridItem>
+          ) : null}
 
           <GridItem area={"content"} justifySelf="center" alignSelf="center">
             <VStack spacing={1} align="stretch">
