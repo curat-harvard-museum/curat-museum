@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { User, Object }} = require('../db')
+const { models: { User, Object, UserObject }} = require('../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -36,8 +36,7 @@ router.put("/:id", async (req, res, next) => {
         primaryimageurl: artwork.primaryimageurl,
         title: artwork.title,
         description: artwork.description,
-        artist: artwork.people ? artwork.people[0].name : null,
-        isVisited: false
+        artist: artwork.people ? artwork.people[0].name : null
       },
     });
     const user = await User.findByPk(req.params.id, {include: Object})
@@ -49,6 +48,23 @@ router.put("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+router.put("/visited/:userId/:artworkId", async(req, res, next) => {
+  try {
+    const {userId, artworkId} = req.params
+    const userObject = await UserObject.findOne({
+      where: {
+        userId: userId,
+        objectId: artworkId
+      }
+    })
+    await userObject.update({isVisited : true})
+    await userObject.reload()
+    res.send(userObject)
+  } catch(error){
+    next(error)
+  }
+})
 
 router.delete("/:userId/:artworkId", async(req, res, next) => {
   try {

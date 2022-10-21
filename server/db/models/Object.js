@@ -21,10 +21,6 @@ const Object = db.define("object", {
   },
   artist: {
       type: Sequelize.STRING
-  },
-  isVisited: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
   }
 });
 

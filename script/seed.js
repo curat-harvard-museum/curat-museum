@@ -63,7 +63,7 @@ async function fetchObjects() {
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
-// console.log("User magic methods", User.prototype);
+console.log("User magic methods", User.prototype);
 //setObjects(), addObject(), addObjects(), removeObject(), removeObjects()
 // console.log("Object magic methods", Object.prototype);
 //setUsers(), addUsers(), addUser()
@@ -100,8 +100,7 @@ async function seed() {
           primaryimageurl: obj.primaryimageurl,
           title: obj.title,
           description: obj.description,
-          artist: obj.people[0].name,
-          isVisited: false
+          artist: obj.people[0].name
         });
       })
     );

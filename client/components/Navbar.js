@@ -34,6 +34,8 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
         </GridItem>
         <GridItem pl="10%" colSpan={1}>
           <Link to="profile">Profile({auth.objects.length})</Link>
+        </GridItem>
+        <GridItem  colSpan={1}>
           <Link to="home" onClick={handleClick}>
             Logout
           </Link>
