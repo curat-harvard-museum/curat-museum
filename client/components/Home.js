@@ -2,6 +2,7 @@ import React from "react";
 import Exhibitions from "./Exhibitions";
 import BackToTopButton from "./BackToTopButton";
 import { Divider, Image, Show, Text } from "@chakra-ui/react";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -25,6 +26,10 @@ const Home = () => {
       <Divider />
       <br></br>
       <Exhibitions />
+      <br></br>
+      <Divider />
+      <br></br>
+      <Footer />
       <Show breakpoint="(max-width: 658px)">
         <BackToTopButton />
       </Show>
