@@ -101,6 +101,7 @@ async function seed() {
           title: obj.title,
           description: obj.description,
           artist: obj.people[0].name,
+          isVisited: false
         });
       })
     );

@@ -37,6 +37,7 @@ router.put("/:id", async (req, res, next) => {
         title: artwork.title,
         description: artwork.description,
         artist: artwork.people ? artwork.people[0].name : null,
+        isVisited: false
       },
     });
     const user = await User.findByPk(req.params.id, {include: Object})
@@ -56,7 +57,7 @@ router.delete("/:userId/:artworkId", async(req, res, next) => {
     console.log("userId", userId)
     const user = await User.findByPk(userId, {include: Object})
     // console.log("user id", user.id)
-    console.log("user", user)
+    // console.log("user", user)
     const object = await Object.findOne({
       where: {
         objectid: artworkId

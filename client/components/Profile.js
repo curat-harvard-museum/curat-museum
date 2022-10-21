@@ -20,6 +20,8 @@ import {
   TabPanel,
   Flex,
   Divider,
+  SimpleGrid,
+  Center
 } from "@chakra-ui/react";
 import { deleteArtwork } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
@@ -62,6 +64,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
           <TabPanels>
             <TabPanel>
               <div>
+          <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
                 {favorites?.map((favorite) => (
                   <div key={favorite.objectid}>
                     <Flex flexWrap="wrap">
@@ -72,9 +75,9 @@ const Profile = ({ removeFavorite, isVisited }) => {
                         mx="auto"
                         borderWidth="1px"
                         overflow="hidden"
-                        alignItems="center"
-                        justifySelf="center"
-                        flexDirection="row"
+                        // alignItems="center"
+                        // justifySelf="center"
+                        // flexDirection="row"
                       >
                         <Image
                           src={favorite.primaryimageurl}
@@ -84,7 +87,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
                           width="100%"
                         />
                         <Box p="6">
-                          <Box display="flex" alignItems="baseline">
+                          <Box alignItems="baseline">
                             <Badge
                               borderRadius="full"
                               px="2"
@@ -119,23 +122,28 @@ const Profile = ({ removeFavorite, isVisited }) => {
                             {favorite.description}
                             <Box as="span" color="gray.600" fontSize="sm"></Box>
                           </Box>
-                          <Box display="flex" mt="2" alignItems="center">
+                          <br />
+          
+                          <Flex flexWrap="nowrap" justifyContent="space-between" alignItems="center">
+                          <Box mt="2">
                             <Button
                               onClick={() => removeFavorite(favorite.objectid)}
                             >
                               Unlike
                             </Button>
                           </Box>
-                          <Box display="flex" mt="2" alignItems="right">
+                          <Box mt="2" >
                             <Checkbox colorScheme="blackAlpha" defaultunchecked size="lg" onChange={(e) => setCheckedItem(!checkedItem)}>
                               Visited
                             </Checkbox>
                           </Box>
+                          </Flex>
                         </Box>
                       </Box>
                     </Flex>
                   </div>
                 ))}
+                </SimpleGrid>
               </div>
             </TabPanel>
             <TabPanel>

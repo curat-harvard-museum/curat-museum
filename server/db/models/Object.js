@@ -1,3 +1,4 @@
+const { BOOLEAN } = require("sequelize");
 const Sequelize = require("sequelize");
 const db = require("../db");
 
@@ -20,6 +21,10 @@ const Object = db.define("object", {
   },
   artist: {
       type: Sequelize.STRING
+  },
+  isVisited: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
   }
 });
 
