@@ -147,7 +147,7 @@ function AllObjects() {
           Collection Filters
         </Button>
 
-        <Show>
+        <Show breakpoint="(min-width: 770px)">
           <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent overflowY="auto">
@@ -170,8 +170,8 @@ function AllObjects() {
           </Drawer>
         </Show>
 
-        <Show>
-          <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+        <Show breakpoint="(max-width: 770px)">
+          <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent overflowY="auto">
               <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
