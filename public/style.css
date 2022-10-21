@@ -24,12 +24,11 @@ form div {
 }
 
 .video-box {
-  width: 80vw;
   padding: 2rem;
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  margin: 2rem auto 4rem auto;
+  /* margin: 2rem auto 4rem auto; */
   justify-content: space-evenly;
   border-radius: 5px;
 }
