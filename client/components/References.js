@@ -3,6 +3,8 @@ import React from "react";
 import Videos from "./Videos";
 // import Audios from "./Audios";
 import BackToTopButton from "./BackToTopButton";
+import Footer from "./Footer";
+import { Divider } from "@chakra-ui/react";
 
 const References = (props) => {
   return (
@@ -33,6 +35,10 @@ const References = (props) => {
       <Videos />
       {/* <Audios /> */}
       <BackToTopButton />
+      <br></br>
+      <Divider />
+      <br></br>
+      <Footer />
     </div>
   );
 };
