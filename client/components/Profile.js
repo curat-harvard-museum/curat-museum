@@ -40,10 +40,10 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
   });
 
   // const [checkedItem, setCheckedItem] = useState(false)
-  const [filter, setFilter] = useState("all")
-  const handleSelectChange = evt => {
-    setFilter(evt.target.value)
-  }
+  // const [filter, setFilter] = useState("all")
+  // const handleSelectChange = evt => {
+  //   setFilter(evt.target.value)
+  // }
 
 // const artworks = favorites.filter(favorite => {
 //   if(filter === "all") return favorite
@@ -51,14 +51,14 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
 //   if(filter === !isVisited) return !favorite.isVisited
 // })
 
-  const { value, onChange, setValue, getCheckboxProps } = useCheckboxGroup({
-    defaultValue: [false],
-  })
+  // const { value, onChange, setValue, getCheckboxProps } = useCheckboxGroup({
+  //   defaultValue: [false],
+  // })
 
-  useEffect(() => {
-    // storing input value
-    localStorage.setItem(value, JSON.stringify(value));
-  }, [value]);
+  // useEffect(() => {
+  //   // storing input value
+  //   localStorage.setItem(value, JSON.stringify(value));
+  // }, [value]);
 
   return (
     <>
@@ -73,14 +73,6 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
           </TabList>
           <TabPanels>
             <TabPanel>
-              {/* <div>
-                <label htmlFor="vistedFilter">Filter by status:</label>
-                <select onChange={handleSelectChange} name="visitedFilter">
-                  <option>all</option>
-                  <option>isVisited</option>
-                  <option>!isVisited</option>
-                </select>
-              </div> */}
               <div>
           <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
                 {favorites?.filter(favorite => favorite["user-object"].isVisited === false).map((favorite) => (
@@ -93,9 +85,6 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
                         mx="auto"
                         borderWidth="1px"
                         overflow="hidden"
-                        // alignItems="center"
-                        // justifySelf="center"
-                        // flexDirection="row"
                       >
                         <Image
                           src={favorite.primaryimageurl}
@@ -165,10 +154,89 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
               </div>
             </TabPanel>
             <TabPanel>
-              <p>
+            <div>
+          <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
+                {favorites?.filter(favorite => favorite["user-object"].isVisited === true).map((favorite) => (
+                  <div key={favorite.objectid}>
+                    <Flex flexWrap="wrap">
+                      <Box
+                        boxSize="auto"
+                        minW="auto"
+                        maxW="auto"
+                        mx="auto"
+                        borderWidth="1px"
+                        overflow="hidden"
+                      >
+                        <Image
+                          src={favorite.primaryimageurl}
+                          alt={favorite.title}
+                          margin-left="auto"
+                          margin-right="auto"
+                          width="100%"
+                        />
+                        <Box p="6">
+                          <Box alignItems="baseline">
+                            <Badge
+                              borderRadius="full"
+                              px="2"
+                              colorScheme="gray"
+                            >
+                              Favorite
+                            </Badge>
+                            <Box
+                              maxW="sm"
+                              color="gray.500"
+                              fontWeight="semibold"
+                              letterSpacing="wide"
+                              fontSize="xs"
+                              textTransform="uppercase"
+                              ml="2"
+                            >
+                              Artist: {favorite.artist}
+                            </Box>
+                          </Box>
+
+                          <Box
+                            mt="1"
+                            fontWeight="semibold"
+                            as="h4"
+                            lineHeight="tight"
+                            noOfLines={1}
+                          >
+                            Title: {favorite.title}
+                          </Box>
+
+                          <Box>
+                            {favorite.description}
+                            <Box as="span" color="gray.600" fontSize="sm"></Box>
+                          </Box>
+                          <br />
+          
+                          <Flex flexWrap="nowrap" justifyContent="space-between" alignItems="center">
+                          <Box mt="2">
+                            <Button
+                              onClick={() => removeFavorite(favorite.objectid)}
+                            >
+                              Unlike
+                            </Button>
+                          </Box>
+                          <Box mt="2" >
+                            <Checkbox colorScheme="blackAlpha" defaultunchecked="true" size="lg" onChange={() => updateVisit(favorite.id)}>
+                              Visited
+                            </Checkbox>
+                          </Box>
+                          </Flex>
+                        </Box>
+                      </Box>
+                    </Flex>
+                  </div>
+                ))}
+                </SimpleGrid>
+              </div>
+              {/* <p>
                 The objects you visited will appear here after you check them
                 off.
-              </p>
+              </p> */}
             </TabPanel>
           </TabPanels>
         </Tabs>
