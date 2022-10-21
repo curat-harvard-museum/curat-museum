@@ -26,7 +26,7 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
           {/* <input type="text" placeholder="Search the collection" /> */}
           <Link to="references">References</Link>
           <Link to="profile">Profile({auth.objects.length})</Link>
-          <Link to="#" onClick={handleClick}>
+          <Link to="home" onClick={handleClick}>
             Logout
           </Link>
         </div>
