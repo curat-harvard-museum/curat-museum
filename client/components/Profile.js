@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -19,9 +19,11 @@ import {
   TabPanels,
   TabPanel,
   Flex,
+  Divider,
 } from "@chakra-ui/react";
 import { deleteArtwork } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
+import Footer from "./Footer";
 
 const Profile = ({ removeFavorite, isVisited }) => {
   const username = useSelector((state) => state.auth.username);
@@ -35,7 +37,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
     );
   });
 
-  const [checkedItem, setCheckedItem] = useState([false, false])
+  const [checkedItem, setCheckedItem] = useState(false)
 
   const { value, onChange, setValue, getCheckboxProps } = useCheckboxGroup({
     defaultValue: [false],
@@ -62,8 +64,7 @@ const Profile = ({ removeFavorite, isVisited }) => {
               <div>
                 {favorites?.map((favorite) => (
                   <div key={favorite.objectid}>
-                    <Flex flexWrap="wrap"
-                    >
+                    <Flex flexWrap="wrap">
                       <Box
                         boxSize="auto"
                         minW="auto"
@@ -150,6 +151,10 @@ const Profile = ({ removeFavorite, isVisited }) => {
           Your favorited objects to visit will appear here once you add them.
         </p>
       )}
+      <br></br>
+      <Divider />
+      <br></br>
+      <Footer />
       <BackToTopButton />
     </>
   );
