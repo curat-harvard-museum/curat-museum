@@ -11,13 +11,13 @@ const Home = () => {
         <Image src="/assets/images/curat-background.png" alt="" w="100%" />
         <div className="bg-text">
           <Text as="b" fontSize="2xl">
-            Curat your next museum trip with us and discover artwork more
+            Curāt your next museum trip with us and discover artwork more
             deeply.
           </Text>
         </div>
         <Show breakpoint="(max-width: 695px)">
           <Text as="b" fontSize="md">
-            Curat your next museum trip with us and discover artwork more
+            Curāt your next museum trip with us and discover artwork more
             deeply.
           </Text>
         </Show>
