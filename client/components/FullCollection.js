@@ -11,6 +11,7 @@ import {
   SimpleGrid,
   Box,
   Image,
+  Show,
   Drawer,
   DrawerBody,
   DrawerHeader,
@@ -145,26 +146,52 @@ function AllObjects() {
         >
           Collection Filters
         </Button>
-        <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
-          <DrawerOverlay />
-          <DrawerContent overflowY="auto">
-            <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
-            <Accordion allowToggle>
-              {validApiParams.map((param) => (
-                <DrawerBody key={param}>
-                  <AccordionItem>
-                    <AccordionButton>
-                      {capitalizeFirstLetter(param)}
-                    </AccordionButton>
-                    <AccordionPanel>
-                      <FilterButtons filterType={param} />
-                    </AccordionPanel>
-                  </AccordionItem>
-                </DrawerBody>
-              ))}
-            </Accordion>
-          </DrawerContent>
-        </Drawer>
+
+        <Show>
+          <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+            <DrawerOverlay />
+            <DrawerContent overflowY="auto">
+              <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+              <Accordion allowToggle>
+                {validApiParams.map((param) => (
+                  <DrawerBody key={param}>
+                    <AccordionItem>
+                      <AccordionButton>
+                        {capitalizeFirstLetter(param)}
+                      </AccordionButton>
+                      <AccordionPanel>
+                        <FilterButtons filterType={param} />
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </DrawerBody>
+                ))}
+              </Accordion>
+            </DrawerContent>
+          </Drawer>
+        </Show>
+
+        <Show>
+          <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+            <DrawerOverlay />
+            <DrawerContent overflowY="auto">
+              <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+              <Accordion allowToggle>
+                {validApiParams.map((param) => (
+                  <DrawerBody key={param}>
+                    <AccordionItem>
+                      <AccordionButton>
+                        {capitalizeFirstLetter(param)}
+                      </AccordionButton>
+                      <AccordionPanel>
+                        <FilterButtons filterType={param} />
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </DrawerBody>
+                ))}
+              </Accordion>
+            </DrawerContent>
+          </Drawer>
+        </Show>
       </Flex>
 
       <SimpleGrid
