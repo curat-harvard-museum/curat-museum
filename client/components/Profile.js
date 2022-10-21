@@ -83,7 +83,7 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
               </div> */}
               <div>
           <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
-                {favorites?.map((favorite) => (
+                {favorites?.filter(favorite => favorite["user-object"].isVisited === false).map((favorite) => (
                   <div key={favorite.objectid}>
                     <Flex flexWrap="wrap">
                       <Box
@@ -154,6 +154,9 @@ const Profile = ({ removeFavorite, isVisited, updateVisit }) => {
                             <Checkbox colorScheme="blackAlpha" defaultunchecked="true" size="lg" onChange={() => updateVisit(favorite.id)}>
                               Visited
                             </Checkbox>
+                            <Button onClick={() => console.log("favorite", favorite)}>
+                              Console
+                            </Button>
                           </Box>
                           </Flex>
                         </Box>
