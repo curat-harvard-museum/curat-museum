@@ -11,7 +11,9 @@ import {
   Box,
   Avatar,
   Text,
+  Divider,
 } from "@chakra-ui/react";
+import Footer from "./Footer";
 
 const AuthForm = (props) => {
   const location = useLocation().pathname;
@@ -93,6 +95,10 @@ const AuthForm = (props) => {
           </form>
         </Box>
       </Stack>
+      <br></br>
+      <Divider />
+      <br></br>
+      <Footer />
     </Flex>
   );
 };

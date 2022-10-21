@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
-import { Badge, Box, Image } from "@chakra-ui/react";
+import { Badge, Box, Image, SimpleGrid, Center } from "@chakra-ui/react";
 
 function Exhibitions() {
   const { data, refetch: getExhibitions } = useQuery(
@@ -19,55 +19,59 @@ function Exhibitions() {
 
   return (
     <>
-      <div className="exhibition-container">
+      <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
         {data?.data.records.map((record) => (
           <div key={record.id}>
             <>
-              <Box
-                maxW="sm"
-                // borderWidth="1px"
-                // borderRadius="md"
-                overflow="hidden"
-                height="400px"
-              >
-                {record.primaryimageurl ? (
-                  <Image
-                    borderRadius="md"
-                    margin-left="auto"
-                    margin-right="auto"
-                    width="100%"
-                    className="exhibition-image"
-                    key={record.id}
-                    src={record.primaryimageurl}
-                    alt="{record.title} by {record.people[0].name}"
-                  ></Image>
-                ) : null}
-                <Badge borderRadius="full" px="2" colorScheme="gray">
-                  Current Exhibition
-                </Badge>
-                <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
-                  {record.title}
-                </Box>
+              <Center>
                 <Box
-                  color="gray.500"
-                  fontWeight="semibold"
-                  letterSpacing="wide"
-                  fontSize="xs"
-                  textTransform="uppercase"
-                  ml="2"
+                  maxW="sm"
+                  overflow="hidden"
+                  height="auto"
+                  alignItems="center"
+                  justifySelf="center"
                 >
-                  Floor: {record.venues[0].galleries[0].floor} &bull; Gallery
-                  Location: {record.venues[0].galleries[0].name} (
-                  {record.venues[0].galleries[0].gallerynumber})
+                  {record.primaryimageurl ? (
+                    <Image
+                      margin-left="auto"
+                      margin-right="auto"
+                      width="100%"
+                      className="exhibition-image"
+                      key={record.id}
+                      src={record.primaryimageurl}
+                      alt="{record.title} by {record.people[0].name}"
+                    ></Image>
+                  ) : null}
+                  <Center>
+                    <Badge borderRadius="full" colorScheme="gray">
+                      Current Exhibition
+                    </Badge>
+                  </Center>
+                  <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
+                    {record.title}
+                  </Box>
+                  <Box
+                    color="gray.500"
+                    fontWeight="semibold"
+                    letterSpacing="wide"
+                    fontSize="xs"
+                    textTransform="uppercase"
+                    ml="2"
+                  >
+                    Floor: {record.venues[0].galleries[0].floor} &bull; Gallery
+                    Location: {record.venues[0].galleries[0].name} (
+                    {record.venues[0].galleries[0].gallerynumber})
+                  </Box>
+                  <Box as="span" ml="2" color="gray.600" fontSize="sm">
+                    End Date: {record.enddate}
+                  </Box>
                 </Box>
-                <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                  End Date: {record.enddate}
-                </Box>
-              </Box>
+                <br></br>
+              </Center>
             </>
           </div>
         ))}
-      </div>
+      </SimpleGrid>
     </>
   );
 }

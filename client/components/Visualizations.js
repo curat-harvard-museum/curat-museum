@@ -3,6 +3,8 @@ import BackToTopButton from "./BackToTopButton";
 import Century from "./Century";
 import Classification from "./Classification";
 import Hues from "./Hues";
+import { Show, Divider } from "@chakra-ui/react";
+import Footer from "./Footer";
 
 const Visualizations = (props) => {
   return (
@@ -13,7 +15,12 @@ const Visualizations = (props) => {
       <br></br>
       <Hues />
       <br></br>
-      <BackToTopButton />
+      <Divider />
+      <br></br>
+      <Footer />
+      <Show breakpoint="(max-width: 658px)">
+        <BackToTopButton />
+      </Show>
     </div>
   );
 };
