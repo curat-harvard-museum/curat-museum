@@ -26,6 +26,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Stack
 } from "@chakra-ui/react";
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
   
@@ -105,15 +106,15 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
             </Link> */}
             Please register to add artwork to your profile.
           </ModalBody>
-
           <ModalFooter>
-            {/* <Button variant='ghost'>Secondary Action</Button> */}
+            <Stack spacing={20} direction='row' align='center'>
             <Button variant='ghost' onClick={onClose}>
               Close
             </Button>
             <Link to="/register">
-              <Button colorScheme='blue' mr={3}>Register to Like</Button>
+              <Button colorScheme='gray' mr={3}>Register to Like</Button>
             </Link>
+            </Stack>
           </ModalFooter>
         </ModalContent>
       </Modal>
