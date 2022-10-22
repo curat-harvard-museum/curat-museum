@@ -92,7 +92,9 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
       <Icon as={MdFavoriteBorder} w={8} h={8} color='red.500' onClick={onOpen}/>
 
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
+        <ModalOverlay 
+          bg='blackAlpha.300'
+          backdropFilter='blur(10px)'/>
         <ModalContent>
           <ModalHeader>Sign Up</ModalHeader>
           <ModalCloseButton />
