@@ -17,17 +17,28 @@ import {
   VStack,
   Flex,
   Divider,
-  Icon
+  Icon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
+  
+  function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
+    const { id } = useParams();
+    const { data } = useQuery(["query-single-object"], async () => {
+      return await apiClient.get(
+        `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
+        );
+      });
+      const { isOpen, onOpen, onClose } = useDisclosure()
+  
 
-function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
-  const { id } = useParams();
-  const { data } = useQuery(["query-single-object"], async () => {
-    return await apiClient.get(
-      `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
-    );
-  });
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
 
@@ -74,9 +85,37 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 <Icon as={MdFavoriteBorder} w={8} h={8} color='red.500' onClick={() => makeFavorite(data.data)}/>
               )
             ) : (
-              <Link to="/register">
-                <Button>Register to Like</Button>
-              </Link>
+              // <Link to="/register">
+                // <Button>Register to Like</Button>
+              // </Link>
+              <>
+      <Icon as={MdFavoriteBorder} w={8} h={8} color='red.500' onClick={onOpen}/>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Sign Up</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {/* <Lorem count={2} /> */}
+            {/* <Link to="/register">
+              <Button>Register to Like</Button>
+            </Link> */}
+            Please register to add artwork to your profile.
+          </ModalBody>
+
+          <ModalFooter>
+            {/* <Button variant='ghost'>Secondary Action</Button> */}
+            <Button variant='ghost' onClick={onClose}>
+              Close
+            </Button>
+            <Link to="/register">
+              <Button colorScheme='blue' mr={3}>Register to Like</Button>
+            </Link>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
             )}
           </Box>
         </GridItem>
