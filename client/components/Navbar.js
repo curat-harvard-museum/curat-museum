@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Flex, Grid, Image, Box, GridItem, Button } from "@chakra-ui/react";
+import { Flex, Grid, Image, GridItem, Button } from "@chakra-ui/react";
 
 const Navbar = ({ handleClick, isLoggedIn, auth }) => (
   <Flex align="center" justify="space-between">
@@ -35,7 +35,7 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
         <GridItem pl="10%" colSpan={1}>
           <Link to="profile">Profile({auth.objects.length})</Link>
         </GridItem>
-        <GridItem  colSpan={1}>
+        <GridItem colSpan={1}>
           <Link to="home" onClick={handleClick}>
             Logout
           </Link>
@@ -61,9 +61,9 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
           <Link to="login">Login</Link>
         </GridItem>
         <GridItem colSpan={1}>
-          <Button size="sm" as={Link} to="register">
+          {/* <Button size="sm" as={Link} to="register">
             Register
-          </Button>
+          </Button> */}
         </GridItem>
       </Grid>
     )}

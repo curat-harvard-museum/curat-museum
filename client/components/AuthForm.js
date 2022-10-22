@@ -7,6 +7,7 @@ import {
   Heading,
   Input,
   Button,
+  Link,
   Stack,
   Box,
   Avatar,
@@ -90,6 +91,10 @@ const AuthForm = (props) => {
                   {location === "/login" ? "Login" : "Register"}
                 </Button>
               </div>
+
+              <Link to="register" size="sm">
+                Don't have an account? Create one here!
+              </Link>
               {error && error.response && <div> {error.response.data} </div>}
             </Stack>
           </form>

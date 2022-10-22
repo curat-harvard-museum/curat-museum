@@ -31,6 +31,7 @@ const validApiParams = [
   "period",
   "place",
   "technique",
+  "worktype",
 ];
 
 function AllObjects() {
