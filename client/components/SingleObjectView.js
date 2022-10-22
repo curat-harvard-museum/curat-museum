@@ -17,7 +17,9 @@ import {
   VStack,
   Flex,
   Divider,
+  Icon
 } from "@chakra-ui/react";
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
 
 function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
   const { id } = useParams();
@@ -55,19 +57,21 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
             ></Image>
             {auth.username ? (
               isFavorite ? (
-                <Button
-                  marginBottom="1rem"
-                  onClick={() => removeFavorite(data.data.objectid)}
-                >
-                  Unlike
-                </Button>
+                // <Button
+                //   marginBottom="1rem"
+                //   onClick={() => removeFavorite(data.data.objectid)}
+                // >
+                //   Unlike
+                // </Button>
+                <Icon as={MdFavorite} w={8} h={8} color='red.500' onClick={() => removeFavorite(data.data.objectid)}/>
               ) : (
-                <Button
-                  marginBottom="1rem"
-                  onClick={() => makeFavorite(data.data)}
-                >
-                  Like
-                </Button>
+                // <Button
+                //   marginBottom="1rem"
+                //   onClick={() => makeFavorite(data.data)}
+                // >
+                //   Like
+                // </Button>
+                <Icon as={MdFavoriteBorder} w={8} h={8} color='red.500' onClick={() => makeFavorite(data.data)}/>
               )
             ) : (
               <Link to="/register">
