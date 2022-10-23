@@ -129,7 +129,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                   >
                                     Unlike
                                   </Button> */}
-                                  <Icon as={MdFavorite} w={8} h={8} color='red.500' onClick={() => removeFavorite(favorite.objectid)}/>
+                                  <Icon as={MdFavorite} w={10} h={10} color='pink.400' onClick={() => removeFavorite(favorite.objectid)}/>
                                 </Box>
                                 <Box mt="2">
                                   <Checkbox
@@ -228,7 +228,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                             >
                               Unlike
                             </Button> */}
-                                  <Icon as={MdFavorite} w={8} h={8} color='red.500' onClick={() => removeFavorite(favorite.objectid)}/>
+                                  <Icon as={MdFavorite} w={10} h={10} color='pink.400' onClick={() => removeFavorite(favorite.objectid)}/>
                                 </Box>
                                 <Box mt="2">
                                   <Checkbox

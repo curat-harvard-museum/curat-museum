@@ -75,7 +75,7 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
                 // >
                 //   Unlike
                 // </Button>
-                <Icon as={MdFavorite} w={8} h={8} color='red.500' onClick={() => removeFavorite(data.data.objectid)}/>
+                <Icon as={MdFavorite} w={10} h={10} color='pink.400' onClick={() => removeFavorite(data.data.objectid)}/>
               ) : (
                 // <Button
                 //   marginBottom="1rem"
@@ -83,14 +83,14 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
                 // >
                 //   Like
                 // </Button>
-                <Icon as={MdFavoriteBorder} w={8} h={8} color='red.500' onClick={() => makeFavorite(data.data)}/>
+                <Icon as={MdFavoriteBorder} w={10} h={10} color='pink.400' onClick={() => makeFavorite(data.data)}/>
               )
             ) : (
               // <Link to="/register">
                 // <Button>Register to Like</Button>
               // </Link>
               <>
-      <Icon as={MdFavoriteBorder} w={8} h={8} color='red.500' onClick={onOpen}/>
+      <Icon as={MdFavoriteBorder} w={10} h={10} color='pink.400' onClick={onOpen}/>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay 
