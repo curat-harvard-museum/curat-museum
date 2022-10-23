@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { authenticate } from "../store";
 import {
   Flex,
   Heading,
   Input,
   Button,
-  Link,
   Stack,
   Box,
   Avatar,
@@ -49,7 +48,10 @@ const AuthForm = (props) => {
         alignItems="center"
       >
         <Avatar bg="gray.500" />
-        <Heading color="black.400">Welcome</Heading>
+        <Heading color="black.400">
+          {" "}
+          {location === "/login" ? "Login" : "Create an Account"}
+        </Heading>
         <Box minW={{ base: "90%", md: "500px" }}>
           <form onSubmit={handleSubmit} name={location?.slice(1)}>
             <Stack
@@ -92,7 +94,7 @@ const AuthForm = (props) => {
                 </Button>
               </div>
 
-              <Link to="register" size="sm">
+              <Link to="/register">
                 Don't have an account? Create one here!
               </Link>
               {error && error.response && <div> {error.response.data} </div>}

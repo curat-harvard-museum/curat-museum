@@ -60,11 +60,6 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
         <GridItem colSpan={1}>
           <Link to="login">Login</Link>
         </GridItem>
-        <GridItem colSpan={1}>
-          {/* <Button size="sm" as={Link} to="register">
-            Register
-          </Button> */}
-        </GridItem>
       </Grid>
     )}
   </Flex>
