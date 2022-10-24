@@ -17,15 +17,29 @@ import {
   VStack,
   Flex,
   Divider,
+  Icon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Stack
 } from "@chakra-ui/react";
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
+  
+  function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
+    const { id } = useParams();
+    const { data } = useQuery(["query-single-object"], async () => {
+      return await apiClient.get(
+        `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
+        );
+      });
+      const { isOpen, onOpen, onClose } = useDisclosure()
+  
 
-function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
-  const { id } = useParams();
-  const { data } = useQuery(["query-single-object"], async () => {
-    return await apiClient.get(
-      `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
-    );
-  });
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
 
@@ -55,24 +69,37 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
             ></Image>
             {auth.username ? (
               isFavorite ? (
-                <Button
-                  marginBottom="1rem"
-                  onClick={() => removeFavorite(data.data.objectid)}
-                >
-                  Unlike
-                </Button>
+                <Icon as={MdFavorite} w={12} h={12} color='red.200' onClick={() => removeFavorite(data.data.objectid)}/>
               ) : (
-                <Button
-                  marginBottom="1rem"
-                  onClick={() => makeFavorite(data.data)}
-                >
-                  Like
-                </Button>
+                <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={() => makeFavorite(data.data)}/>
               )
             ) : (
-              <Link to="/register">
-                <Button>Register to Like</Button>
-              </Link>
+              <>
+      <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={onOpen}/>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay 
+          bg='blackAlpha.300'
+          backdropFilter='blur(10px)'/>
+        <ModalContent>
+          <ModalHeader>Sign Up</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            Please register to add artwork to your profile.
+          </ModalBody>
+          <ModalFooter>
+            <Stack spacing={20} direction='row' align='center'>
+            <Button variant='ghost' onClick={onClose}>
+              Close
+            </Button>
+            <Link to="/login">
+              <Button colorScheme='gray' mr={3}>Log In to Like</Button>
+            </Link>
+            </Stack>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
             )}
           </Box>
         </GridItem>
