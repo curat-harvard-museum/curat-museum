@@ -24,7 +24,6 @@ const FilterButtons = ({ filterType }) => {
     return capitalized;
   }
 
-  console.log(data?.records[0].objectcount);
   return (
     <>
       <div>
