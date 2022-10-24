@@ -5,6 +5,7 @@ import Classification from "./Classification";
 import Hues from "./Hues";
 import { Show, Divider } from "@chakra-ui/react";
 import Footer from "./Footer";
+// import Gender from "./Gender";
 
 const Visualizations = (props) => {
   return (
@@ -15,6 +16,8 @@ const Visualizations = (props) => {
       <br></br>
       <Hues />
       <br></br>
+      {/* <Gender />
+      <br></br> */}
       <Divider />
       <br></br>
       <Footer />
