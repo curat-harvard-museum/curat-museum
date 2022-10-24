@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <div className="bg-container">
         <Image src="/assets/images/curat-background.png" alt="" w="100%" />
         <div className="bg-text">
@@ -33,7 +33,7 @@ const Home = () => {
       <Show breakpoint="(max-width: 658px)">
         <BackToTopButton />
       </Show>
-    </div>
+    </>
   );
 };
 

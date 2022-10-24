@@ -15,9 +15,9 @@ const Visualizations = (props) => {
       <Classification />
       <br></br>
       <Hues />
+      {/* <br></br>
+      <Gender /> */}
       <br></br>
-      {/* <Gender />
-      <br></br> */}
       <Divider />
       <br></br>
       <Footer />
