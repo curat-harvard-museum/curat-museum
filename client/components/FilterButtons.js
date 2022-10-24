@@ -24,6 +24,7 @@ const FilterButtons = ({ filterType }) => {
     return capitalized;
   }
 
+  console.log(data?.records[0].objectcount);
   return (
     <>
       <div>
@@ -39,7 +40,9 @@ const FilterButtons = ({ filterType }) => {
                   onClick={handleClick}
                   value={record.name}
                 >
-                  {capitalizeFirstLetter(record.name)}
+                  {record.objectcount > 0
+                    ? capitalizeFirstLetter(record.name)
+                    : null}
                 </Button>
               </WrapItem>
             ))}
