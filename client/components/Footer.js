@@ -1,25 +1,25 @@
 import React from "react";
-import { Box, Center, Text, Icon, Link } from "@chakra-ui/react";
+import { Box, Center, Text, Icon, Link, Flex } from "@chakra-ui/react";
 import { AiFillLinkedin, AiFillGithub, AiFillYoutube } from "react-icons/ai";
 
 const Footer = () => {
   return (
     <div>
       <Center>
-        <Text fontSize="lg">
-          ©2022 Fullstack Academy Capstone Project created by Jasmine
+        <Flex as={Text} fontSize="md">
+          ☺2022 Fullstack Academy Capstone Project created by Jasmine
           <Link href="https://www.linkedin.com/in/cheungjasmine/">
             <Icon as={AiFillLinkedin} w="25px" h="25px" />
           </Link>
-          , Jordyn
+          | Jordyn
           <Link href="https://www.linkedin.com/in/jordynrector/">
             <Icon as={AiFillLinkedin} w="25px" h="25px" />
           </Link>
-          , and Joyce
+          | Joyce
           <Link href="https://www.linkedin.com/in/joyce-k-wong/">
             <Icon as={AiFillLinkedin} w="25px" h="25px" />
           </Link>
-        </Text>
+        </Flex>
       </Center>
       <br></br>
       <Center>
