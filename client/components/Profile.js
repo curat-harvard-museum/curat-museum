@@ -92,7 +92,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                   textTransform="uppercase"
                                   ml="2"
                                 >
-                                  Artist: {favorite.artist}
+                                  {favorite.artist}
                                 </Box>
                               </Box>
 
@@ -101,9 +101,8 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                 fontWeight="semibold"
                                 as="h4"
                                 lineHeight="tight"
-                                noOfLines={1}
                               >
-                                Title: {favorite.title}
+                                {favorite.title}
                               </Box>
 
                               <Box>
