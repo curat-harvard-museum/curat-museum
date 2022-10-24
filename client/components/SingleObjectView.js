@@ -6,7 +6,6 @@ import { updateUser, deleteArtwork } from "../store/auth";
 import { Button, Show } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-
 import {
   Box,
   Text,
@@ -65,76 +64,21 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
               src={`${data?.data.primaryimageurl}`}
               alt={`${data?.data.title}`}
             ></Image>
-            {auth.username ? (
-              isFavorite ? (
-                <Icon
-                  as={MdFavorite}
-                  w={12}
-                  h={12}
-                  color="red.200"
-                  onClick={() => removeFavorite(data.data.objectid)}
-                />
-              ) : (
-                <Icon
-                  as={MdFavoriteBorder}
-                  w={12}
-                  h={12}
-                  color="red.200"
-                  onClick={() => makeFavorite(data.data)}
-                />
-              )
-            ) : (
-              <>
-                <Icon
-                  as={MdFavoriteBorder}
-                  w={12}
-                  h={12}
-                  color="red.200"
-                  onClick={onOpen}
-                />
-
-                <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay
-                    bg="blackAlpha.300"
-                    backdropFilter="blur(10px)"
-                  />
-                  <ModalContent>
-                    <ModalHeader>Log in</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      Please log in to add artwork to your profile.
-                    </ModalBody>
-                    <ModalFooter>
-                      <Stack spacing={20} direction="row" align="center">
-                        <Button variant="ghost" onClick={onClose}>
-                          Close
-                        </Button>
-                        <Link to="/login">
-                          <Button colorScheme="gray" mr={3}>
-                            Log in to Like
-                          </Button>
-                        </Link>
-                      </Stack>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
-              </>
-            )}
-            <Show breakpoint="(max-width: 400px)">
+            <Show breakpoint="(min-width: 400px)">
               {auth.username ? (
                 isFavorite ? (
                   <Icon
                     as={MdFavorite}
-                    w={8}
-                    h={8}
+                    w={12}
+                    h={12}
                     color="red.200"
                     onClick={() => removeFavorite(data.data.objectid)}
                   />
                 ) : (
                   <Icon
                     as={MdFavoriteBorder}
-                    w={8}
-                    h={8}
+                    w={12}
+                    h={12}
                     color="red.200"
                     onClick={() => makeFavorite(data.data)}
                   />
@@ -143,8 +87,8 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 <>
                   <Icon
                     as={MdFavoriteBorder}
-                    w={8}
-                    h={8}
+                    w={12}
+                    h={12}
                     color="red.200"
                     onClick={onOpen}
                   />
@@ -177,21 +121,21 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 </>
               )}
             </Show>
-            <Show breakpoint="(min-width: 400px)">
+            <Show breakpoint="(max-width: 400px)">
               {auth.username ? (
                 isFavorite ? (
                   <Icon
                     as={MdFavorite}
-                    w={12}
-                    h={12}
+                    w={8}
+                    h={8}
                     color="red.200"
                     onClick={() => removeFavorite(data.data.objectid)}
                   />
                 ) : (
                   <Icon
                     as={MdFavoriteBorder}
-                    w={12}
-                    h={12}
+                    w={8}
+                    h={8}
                     color="red.200"
                     onClick={() => makeFavorite(data.data)}
                   />
@@ -200,8 +144,8 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 <>
                   <Icon
                     as={MdFavoriteBorder}
-                    w={12}
-                    h={12}
+                    w={8}
+                    h={8}
                     color="red.200"
                     onClick={onOpen}
                   />
