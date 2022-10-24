@@ -111,7 +111,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                         </Button>
                         <Link to="/login">
                           <Button colorScheme="gray" mr={3}>
-                            Log In to Like
+                            Log in to Like
                           </Button>
                         </Link>
                       </Stack>
