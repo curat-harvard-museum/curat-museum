@@ -6,10 +6,10 @@ const {
   models: { User, Object, Comment },
 } = require("../server/db");
 // if (process.env.NODE_ENV !== "production") require("../secrets");
-if(process.env.NODE_ENV !== 'production') require('../secrets');
+// if(process.env.NODE_ENV !== 'production') require('../secrets');
 // console.log('log my environment variables', process.env);
 
-const API_KEY = process.env.API_KEY
+// const API_KEY = process.env.API_KEY
 // console.log("API_KEY", API_KEY)
 
 const users2 = [
@@ -52,7 +52,7 @@ const users2 = [
 
 async function fetchObjects() {
   const { data } = await axios.get(
-    `https://api.harvardartmuseums.org/object?q=peoplecount:1&person?&apikey=${API_KEY}&size=100`
+    `https://api.harvardartmuseums.org/object?q=peoplecount:1&person?&apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7&size=100`
   );
   return data.records;
 }

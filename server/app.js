@@ -4,10 +4,10 @@ const morgan = require('morgan')
 const app = express()
 module.exports = app
 
-if(process.env.NODE_ENV !== 'production') require('../secrets');
+// if(process.env.NODE_ENV !== 'production') require('../secrets');
 // console.log('log my environment variables', process.env);
 
-const API_KEY = process.env.API_KEY
+// const API_KEY = process.env.API_KEY
 // console.log("API_KEY", API_KEY)
 
 // logging middleware
