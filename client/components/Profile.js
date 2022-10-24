@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import apiClient from "../../http-common";
 import {
   Heading,
@@ -67,22 +67,27 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                             borderWidth="1px"
                             overflow="hidden"
                           >
+                            <Link to={`/object/${favorite.objectid}`}>
                             <Image
-                              src={favorite.primaryimageurl}
-                              alt={favorite.title}
-                              margin-left="auto"
-                              margin-right="auto"
-                              width="100%"
+                            src={favorite.primaryimageurl}
+                            alt={favorite.title}
+                            margin-left="auto"
+                            margin-right="auto"
+                            width="100%"
+                            // as={Link}
+                            // to={`/object/${favorite.objectid}`}
                             />
+                            </Link>
                             <Box p="6">
                               <Box alignItems="baseline">
                                 <Badge
                                   borderRadius="full"
                                   px="2"
                                   colorScheme="gray"
-                                >
+                                  >
                                   Favorite
                                 </Badge>
+                                <Link to={`/object/${favorite.objectid}`}>
                                 <Box
                                   maxW="sm"
                                   color="gray.500"
@@ -91,35 +96,39 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                   fontSize="xs"
                                   textTransform="uppercase"
                                   ml="2"
-                                >
+                                  >
                                   {favorite.artist}
                                 </Box>
+                                </Link>
                               </Box>
-
+                              <Link to={`/object/${favorite.objectid}`}>
                               <Box
                                 mt="1"
                                 fontWeight="semibold"
                                 as="h4"
                                 lineHeight="tight"
-                              >
+                                >
                                 {favorite.title}
                               </Box>
-
+                              </Link>
+                              <Link>
                               <Box>
                                 {favorite.description}
                                 <Box
                                   as="span"
                                   color="gray.600"
                                   fontSize="sm"
-                                ></Box>
+                                  ></Box>
                               </Box>
+                              </Link>
                               <br />
+                            
 
                               <Flex
                                 flexWrap="nowrap"
                                 justifyContent="space-between"
                                 alignItems="center"
-                              >
+                                >
                                 <Box mt="2">
                                   <Icon as={MdFavorite} w={10} h={10} color='red.200' onClick={() => removeFavorite(favorite.objectid)}/>
                                 </Box>
@@ -159,7 +168,10 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                             mx="auto"
                             borderWidth="1px"
                             overflow="hidden"
+                            as={Link}
+                            to={`/object/${favorite.objectid}`}
                           >
+                            <Link to={`/object/${favorite.objectid}`}>
                             <Image
                               src={favorite.primaryimageurl}
                               alt={favorite.title}
@@ -167,6 +179,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                               margin-right="auto"
                               width="100%"
                             />
+                            </Link>
                             <Box p="6">
                               <Box alignItems="baseline">
                                 <Badge
@@ -176,6 +189,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                 >
                                   Favorite
                                 </Badge>
+                                <Link to={`/object/${favorite.objectid}`}>
                                 <Box
                                   maxW="sm"
                                   color="gray.500"
@@ -187,8 +201,9 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                 >
                                   Artist: {favorite.artist}
                                 </Box>
+                                </Link>
                               </Box>
-
+                              <Link to={`/object/${favorite.objectid}`}>
                               <Box
                                 mt="1"
                                 fontWeight="semibold"
@@ -198,7 +213,8 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                               >
                                 Title: {favorite.title}
                               </Box>
-
+                              </Link>
+                              <Link to={`/object/${favorite.objectid}`}>
                               <Box>
                                 {favorite.description}
                                 <Box
@@ -207,6 +223,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                   fontSize="sm"
                                 ></Box>
                               </Box>
+                              </Link>
                               <br />
 
                               <Flex
