@@ -26,20 +26,18 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Stack
+  Stack,
 } from "@chakra-ui/react";
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
-  
-  function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
-    const { id } = useParams();
-    const { data } = useQuery(["query-single-object"], async () => {
-      return await apiClient.get(
-        `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
-        );
-      });
-      const { isOpen, onOpen, onClose } = useDisclosure()
-  
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
+function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
+  const { id } = useParams();
+  const { data } = useQuery(["query-single-object"], async () => {
+    return await apiClient.get(
+      `/object/${id}?apikey=a58b1ca8-7853-40e4-8734-f634a87b9be7`
+    );
+  });
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isFavorite = !!(auth.objects || []).find((o) => o.objectid === id * 1);
 
@@ -69,37 +67,58 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
             ></Image>
             {auth.username ? (
               isFavorite ? (
-                <Icon as={MdFavorite} w={12} h={12} color='red.200' onClick={() => removeFavorite(data.data.objectid)}/>
+                <Icon
+                  as={MdFavorite}
+                  w={12}
+                  h={12}
+                  color="red.200"
+                  onClick={() => removeFavorite(data.data.objectid)}
+                />
               ) : (
-                <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={() => makeFavorite(data.data)}/>
+                <Icon
+                  as={MdFavoriteBorder}
+                  w={12}
+                  h={12}
+                  color="red.200"
+                  onClick={() => makeFavorite(data.data)}
+                />
               )
             ) : (
               <>
-      <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={onOpen}/>
+                <Icon
+                  as={MdFavoriteBorder}
+                  w={12}
+                  h={12}
+                  color="red.200"
+                  onClick={onOpen}
+                />
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay 
-          bg='blackAlpha.300'
-          backdropFilter='blur(10px)'/>
-        <ModalContent>
-          <ModalHeader>Log In</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            Please log in to add artwork to your profile.
-          </ModalBody>
-          <ModalFooter>
-            <Stack spacing={20} direction='row' align='center'>
-            <Button variant='ghost' onClick={onClose}>
-              Close
-            </Button>
-            <Link to="/login">
-              <Button colorScheme='gray' mr={3}>Log In to Like</Button>
-            </Link>
-            </Stack>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay
+                    bg="blackAlpha.300"
+                    backdropFilter="blur(10px)"
+                  />
+                  <ModalContent>
+                    <ModalHeader>Log In</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      Please log in to add artwork to your profile.
+                    </ModalBody>
+                    <ModalFooter>
+                      <Stack spacing={20} direction="row" align="center">
+                        <Button variant="ghost" onClick={onClose}>
+                          Close
+                        </Button>
+                        <Link to="/login">
+                          <Button colorScheme="gray" mr={3}>
+                            Log In to Like
+                          </Button>
+                        </Link>
+                      </Stack>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </>
             )}
           </Box>
         </GridItem>

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+
 import apiClient from "../../http-common";
 import {
   Heading,
@@ -18,12 +19,12 @@ import {
   Divider,
   SimpleGrid,
   Icon,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { deleteArtwork, updateVisit } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
 import Footer from "./Footer";
-import { MdFavorite } from 'react-icons/md'
+import { MdFavorite } from "react-icons/md";
 
 const Profile = ({ removeFavorite, updateVisit }) => {
   const username = useSelector((state) => state.auth.username);
@@ -122,7 +123,15 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                 alignItems="center"
                               >
                                 <Box mt="2">
-                                  <Icon as={MdFavorite} w={10} h={10} color='red.200' onClick={() => removeFavorite(favorite.objectid)}/>
+                                  <Icon
+                                    as={MdFavorite}
+                                    w={10}
+                                    h={10}
+                                    color="red.200"
+                                    onClick={() =>
+                                      removeFavorite(favorite.objectid)
+                                    }
+                                  />
                                 </Box>
                                 <Box mt="2">
                                   <Checkbox
@@ -216,7 +225,15 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                 alignItems="center"
                               >
                                 <Box mt="2">
-                                  <Icon as={MdFavorite} w={10} h={10} color='red.200' onClick={() => removeFavorite(favorite.objectid)}/>
+                                  <Icon
+                                    as={MdFavorite}
+                                    w={10}
+                                    h={10}
+                                    color="red.200"
+                                    onClick={() =>
+                                      removeFavorite(favorite.objectid)
+                                    }
+                                  />
                                 </Box>
                                 <Box mt="2">
                                   <Checkbox

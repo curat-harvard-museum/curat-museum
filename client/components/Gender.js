@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from "react";
 // import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-// import { Pie } from "react-chartjs-2";
+// import { Bar } from "react-chartjs-2";
 // import { Heading, Text } from "@chakra-ui/react";
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
@@ -75,7 +75,7 @@
 //       <Text textAlign={"center"} size="sm"></Text>
 //       <br></br>
 //       <div className="graph-chart">
-//         <Pie options={options} data={data} />
+//         <Bar options={options} data={data} />
 //       </div>
 //     </div>
 //   );

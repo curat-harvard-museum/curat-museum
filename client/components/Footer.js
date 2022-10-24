@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center, Text, Icon, Link, Flex, Show } from "@chakra-ui/react";
+import { Center, Text, Icon, Link, Flex, Show } from "@chakra-ui/react";
 import {
   AiFillLinkedin,
   AiFillGithub,
@@ -9,10 +9,10 @@ import {
 
 const Footer = () => {
   return (
-    <div>
-      <Show breakpoint="(min-width: 865px)">
+    <>
+      <Show breakpoint="(min-width: 973px)">
         <Center>
-          <Flex as={Text} fontSize="md">
+          <Flex>
             <Flex alignItems="center">
               <Icon as={AiOutlineSmile} w="16px" h="16px" />
               2022 Fullstack Academy Capstone Project created by&nbsp;
@@ -41,10 +41,11 @@ const Footer = () => {
           <Icon as={AiFillYoutube} w="35px" h="35px" />
         </Center>
       </Show>
-      <Show breakpoint="(max-width: 865px)">
+
+      <Show breakpoint="(max-width: 973px)">
         <Center>
-          <Flex as={Text} fontSize="xs" flexDirection="column">
-            <div>☺2022 Fullstack Academy Capstone Project created by</div>
+          <Flex flexDirection="column">
+            ☺2022 Fullstack Academy Capstone Project created by
             <Flex>
               Jasmine Cheung
               <Link href="https://www.linkedin.com/in/cheungjasmine/">
@@ -70,7 +71,7 @@ const Footer = () => {
           <Icon as={AiFillYoutube} w="35px" h="35px" />
         </Center>
       </Show>
-    </div>
+    </>
   );
 };
 
