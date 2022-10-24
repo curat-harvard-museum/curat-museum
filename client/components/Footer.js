@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center, Text, Icon, Link } from "@chakra-ui/react";
+import { Center, Text, Icon, Link } from "@chakra-ui/react";
 import { AiFillLinkedin, AiFillGithub, AiFillYoutube } from "react-icons/ai";
 
 const Footer = () => {
@@ -7,15 +7,15 @@ const Footer = () => {
     <div>
       <Center>
         <Text fontSize="lg">
-          ©2022 Fullstack Academy Capstone Project created by Jasmine
+          ©2022 Fullstack Academy Capstone Project created by Jasmine Cheung
           <Link href="https://www.linkedin.com/in/cheungjasmine/">
             <Icon as={AiFillLinkedin} w="25px" h="25px" />
           </Link>
-          , Jordyn
+          , Jordyn Rector
           <Link href="https://www.linkedin.com/in/jordynrector/">
             <Icon as={AiFillLinkedin} w="25px" h="25px" />
           </Link>
-          , and Joyce
+          , and Joyce Wong
           <Link href="https://www.linkedin.com/in/joyce-k-wong/">
             <Icon as={AiFillLinkedin} w="25px" h="25px" />
           </Link>

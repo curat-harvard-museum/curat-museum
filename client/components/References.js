@@ -1,10 +1,10 @@
 import React from "react";
-// import { Button, Flex } from "@chakra-ui/react";
 import Videos from "./Videos";
-// import Audios from "./Audios";
 import BackToTopButton from "./BackToTopButton";
 import Footer from "./Footer";
 import { Divider } from "@chakra-ui/react";
+// import { Button, Flex } from "@chakra-ui/react";
+// import Audios from "./Audios";
 
 const References = (props) => {
   return (
@@ -31,7 +31,6 @@ const References = (props) => {
           <a href="#audios">Audios</a>
         </Button>
       </Flex> */}
-
       <Videos />
       {/* <Audios /> */}
       <BackToTopButton />
