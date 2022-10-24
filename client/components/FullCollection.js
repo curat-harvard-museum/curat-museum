@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useInfiniteQuery } from "react-query";
+
 import { Link, useSearchParams } from "react-router-dom";
 import FilterButtons from "./FilterButtons";
 import BackToTopButton from "./BackToTopButton";
 import {
   Accordion,
+  Input,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   SimpleGrid,
   Box,
   Image,
+  CloseButton,
   Show,
   Drawer,
   DrawerBody,
@@ -23,7 +26,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const validApiParams = [
+const collectionFilters = [
   "century",
   "culture",
   "classification",
@@ -31,13 +34,20 @@ const validApiParams = [
   "period",
   "place",
   "technique",
+  "worktype",
+];
+
+const validApiParams = [
+  ...collectionFilters,
+  "person",
+  // "title",
 ];
 
 function AllObjects() {
   const observerElem = useRef(null);
-  const [searchParams] = useSearchParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [placement, setPlacement] = React.useState("left");
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const onlyValidParams = [...searchParams]
     .filter(([key, value]) => validApiParams.includes(key) && Boolean(value))
@@ -120,40 +130,85 @@ function AllObjects() {
     return capitalized;
   }
 
+  useEffect(() => {
+    const currentParams = Object.fromEntries([...searchParams]);
+  }, [searchParams]);
+
+  const searchHandler = (event) => {
+    const title = searchParams.get("title");
+    const person = searchParams.get("person");
+
+    let search;
+    if (event.target.value) {
+      search = {
+        // title: event.target.value,
+        person: event.target.value,
+      };
+    } else {
+      search = undefined;
+    }
+
+    setSearchParams(search, { replace: true });
+  };
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    let params = serializeFormQuery(event.target);
+    setSearchParams(params);
+  }
+
   return (
     <>
       {/* <Search /> */}
-      <Flex
-        sx={{
-          position: "-webkit-sticky",
-          /* Safari */ position: "sticky",
-          top: "0",
-        }}
-        backgroundColor="rgba(255, 
+      <Box>
+        <Flex flexDirection="column">
+          <Input
+            margin="auto"
+            width="80%"
+            variant="filled"
+            value={searchParams.keyword}
+            onChange={searchHandler}
+            placeholder="Search by Artist"
+          />
+
+          <Box
+            sx={{
+              position: "-webkit-sticky",
+              /* Safari */ position: "sticky",
+              top: "0",
+            }}
+            backgroundColor="rgba(255, 
  255, 255, 0.8)"
-        backdropFilter="saturate(180%) blur(5px)"
-        w="100%"
-        justify="center"
-      >
-        <Button
-          onClick={onOpen}
-          borderBottomWidth="1px"
-          marginTop="2 rem"
-          marginBottom="30px"
-          display="flex"
-          paddingBottom="2px"
-          variant="unstyled"
-        >
-          Collection Filters
-        </Button>
+            backdropFilter="saturate(180%) blur(5px)"
+            w="100%"
+            justify="center"
+          >
+            <Button
+              margin="auto"
+              onClick={onOpen}
+              borderBottomWidth="1px"
+              marginTop="2 rem"
+              marginBottom="30px"
+              display="flex"
+              paddingBottom="2px"
+              variant="unstyled"
+            >
+              Collection Filters
+            </Button>
+          </Box>
+        </Flex>
 
         <Show breakpoint="(min-width: 770px)">
           <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent overflowY="auto">
-              <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+              <Flex alignContent="flex-end" justifyContent="space-between">
+                <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+                <CloseButton onClick={onClose} size="lg" />
+              </Flex>
+
               <Accordion allowToggle>
-                {validApiParams.map((param) => (
+                {collectionFilters.map((param) => (
                   <DrawerBody key={param}>
                     <AccordionItem>
                       <AccordionButton>
@@ -176,7 +231,7 @@ function AllObjects() {
             <DrawerContent overflowY="auto">
               <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
               <Accordion allowToggle>
-                {validApiParams.map((param) => (
+                {collectionFilters.map((param) => (
                   <DrawerBody key={param}>
                     <AccordionItem>
                       <AccordionButton>
@@ -192,7 +247,7 @@ function AllObjects() {
             </DrawerContent>
           </Drawer>
         </Show>
-      </Flex>
+      </Box>
 
       <SimpleGrid
         columns={[1, null, 2, null, 3, null, 4]}

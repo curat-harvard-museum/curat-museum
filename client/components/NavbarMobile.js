@@ -90,9 +90,6 @@ const NavbarMobile = ({ handleClick, isLoggedIn, auth }) => (
             <MenuItem as={Link} to={"references"}>
               References
             </MenuItem>
-            <MenuItem as={Link} to={"register"}>
-              Register
-            </MenuItem>
           </MenuList>
         </Menu>
         <Box marginTop="1rem" as={Link} to={"home"}>

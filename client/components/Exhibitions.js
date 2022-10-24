@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
 import { Badge, Box, Image, SimpleGrid, Center } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Exhibitions() {
   const { data, refetch: getExhibitions } = useQuery(

@@ -104,20 +104,39 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
           </Box>
         </GridItem>
 
-        <GridItem area={"colors"}>
-          <Flex justifyContent="space-between" flexWrap="wrap" gap="0.5rem">
-            {data?.data.colors
-              ? data?.data.colors.map((color) => (
-                  <Circle
-                    key={color.color}
-                    width="6rem"
-                    height="6rem"
-                    bg={`${color.color}`}
-                  ></Circle>
-                ))
-              : null}
-          </Flex>
-        </GridItem>
+        <Show breakpoint="(min-width: 406px)">
+          <GridItem area={"colors"}>
+            <Flex justifyContent="space-between" flexWrap="wrap" gap="0.25rem">
+              {data?.data.colors
+                ? data?.data.colors.map((color) => (
+                    <Circle
+                      key={color.color}
+                      width="4rem"
+                      height="4rem"
+                      bg={`${color.color}`}
+                    ></Circle>
+                  ))
+                : null}
+            </Flex>
+          </GridItem>
+        </Show>
+
+        <Show breakpoint="(max-width: 406px)">
+          <GridItem area={"colors"}>
+            <Flex justifyContent="space-between" flexWrap="wrap" gap="0.2rem">
+              {data?.data.colors
+                ? data?.data.colors.map((color) => (
+                    <Circle
+                      key={color.color}
+                      width="1.25rem"
+                      height="1.25rem"
+                      bg={`${color.color}`}
+                    ></Circle>
+                  ))
+                : null}
+            </Flex>
+          </GridItem>
+        </Show>
 
         <Show breakpoint="(max-width: 1368px)">
           <VStack spacing={1} align="stretch">
@@ -133,9 +152,9 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
                     options={{
                       perPage: 1,
                       type: "loop",
-                      width: "50rem",
+                      width: "30rem",
                       height: "auto",
-                      speed: 2000,
+                      speed: 2500,
                     }}
                   >
                     {data?.data.images
@@ -389,8 +408,8 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
                   </Text>
                   <Divider />
                   <Text key={data?.data.gallery.id}>
-                    Level {data?.data.gallery.floor}, {data?.data.gallery.name}
-                    {data?.data.gallery.number}
+                    Floor {data?.data.gallery.floor} &bull;
+                    {data?.data.gallery.name}({data?.data.gallery.number})
                   </Text>
                 </>
               ) : null}
