@@ -120,6 +120,121 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 </Modal>
               </>
             )}
+            <Show breakpoint="(max-width: 400px)">
+              {auth.username ? (
+                isFavorite ? (
+                  <Icon
+                    as={MdFavorite}
+                    w={8}
+                    h={8}
+                    color="red.200"
+                    onClick={() => removeFavorite(data.data.objectid)}
+                  />
+                ) : (
+                  <Icon
+                    as={MdFavoriteBorder}
+                    w={8}
+                    h={8}
+                    color="red.200"
+                    onClick={() => makeFavorite(data.data)}
+                  />
+                )
+              ) : (
+                <>
+                  <Icon
+                    as={MdFavoriteBorder}
+                    w={8}
+                    h={8}
+                    color="red.200"
+                    onClick={onOpen}
+                  />
+
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay
+                      bg="blackAlpha.300"
+                      backdropFilter="blur(10px)"
+                    />
+                    <ModalContent>
+                      <ModalHeader>Log In</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        Please log in to add artwork to your profile.
+                      </ModalBody>
+                      <ModalFooter>
+                        <Stack spacing={20} direction="row" align="center">
+                          <Button variant="ghost" onClick={onClose}>
+                            Close
+                          </Button>
+                          <Link to="/login">
+                            <Button colorScheme="gray" mr={3}>
+                              Log In to Like
+                            </Button>
+                          </Link>
+                        </Stack>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </>
+              )}
+            </Show>
+            <Show breakpoint="(min-width: 400px)">
+              {auth.username ? (
+                isFavorite ? (
+                  <Icon
+                    as={MdFavorite}
+                    w={12}
+                    h={12}
+                    color="red.200"
+                    onClick={() => removeFavorite(data.data.objectid)}
+                  />
+                ) : (
+                  <Icon
+                    as={MdFavoriteBorder}
+                    w={12}
+                    h={12}
+                    color="red.200"
+                    onClick={() => makeFavorite(data.data)}
+                  />
+                )
+              ) : (
+                <>
+                  <Icon
+                    as={MdFavoriteBorder}
+                    w={12}
+                    h={12}
+                    color="red.200"
+                    onClick={onOpen}
+                  />
+
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay
+                      bg="blackAlpha.300"
+                      backdropFilter="blur(10px)"
+                    />
+                    <ModalContent>
+                      <ModalHeader>Log In</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        Please log in to add artwork to your profile.
+                      </ModalBody>
+                      <ModalFooter>
+                        <Stack spacing={20} direction="row" align="center">
+                          <Button variant="ghost" onClick={onClose}>
+                            Close
+                          </Button>
+                          <Link to="/login">
+                            <Button colorScheme="gray" mr={3}>
+                              Log In to Like
+                            </Button>
+                          </Link>
+                        </Stack>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </>
+              )}
+            </Show>
+            >>>>>>> main
           </Box>
         </GridItem>
 
