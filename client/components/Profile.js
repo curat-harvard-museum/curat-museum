@@ -166,8 +166,6 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                             mx="auto"
                             borderWidth="1px"
                             overflow="hidden"
-                            as={Link}
-                            to={`/object/${favorite.objectid}`}
                           >
                             <Link to={`/object/${favorite.objectid}`}>
                             <Image
