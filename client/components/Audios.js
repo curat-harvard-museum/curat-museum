@@ -38,103 +38,71 @@
 //   return (
 //     <div className="audio" id="audios">
 //       <Heading textAlign={"center"}>Artwork Audio Descriptions</Heading>
-//       <div className="audio-box">
+//       <Center py={6}>
 //         <div className="audio-container">
 //           {!isLoading ? (
 //             audio.map((record) => (
 //               <div key={record.sound.fileid}>
-//                 <img
-//                   src={record.image?.baseimageurl}
-//                   className="audio-image"
-//                   key={record.image?.id}
-//                   alt="art piece"
-//                 />
-//                 <div className="sound-box">
-//                   <div className="audio-controls">
+//                 <Stack
+//                   borderWidth="1px"
+//                   borderRadius="lg"
+//                   w={{ sm: "100%", md: "700px" }}
+//                   height={{ sm: "750px", md: "20rem" }}
+//                   direction={{ base: "column", md: "row" }}
+//                   bg={useColorModeValue("white", "gray.900")}
+//                   boxShadow={"2xl"}
+//                   padding={4}
+//                 >
+//                   <Flex>
+//                     <Image
+//                       margin-left="auto"
+//                       margin-right="auto"
+//                       width="100%"
+//                       src={record.image?.baseimageurl}
+//                       className="audio-image"
+//                       key={record.image?.id}
+//                       alt="art piece"
+//                     />
+//                   </Flex>
+//                   <Stack
+//                     flex={1}
+//                     flexDirection="column"
+//                     justifyContent="center"
+//                     alignItems="center"
+//                     p={1}
+//                     pt={2}
+//                   >
+//                     <Stack>
+//                       <Text
+//                         fontWeight={600}
+//                         textAlign={"center"}
+//                         size="sm"
+//                         mb={4}
+//                       >
+//                         Title: {record.image?.title}
+//                       </Text>
+//                       <Text
+//                         className="audio-transcript"
+//                         textAlign={"center"}
+//                         px={3}
+//                       >
+//                         {record.sound.description}
+//                       </Text>
+//                     </Stack>
+//                     <br></br>
 //                     <audio controls>
 //                       <source src={record.sound.primaryurl} type="audio/mpeg" />
 //                       Your browser does not support the audio element.
 //                     </audio>
-//                   </div>
-//                   <p className="transcript">{record.sound.description}</p>
-//                 </div>
+//                   </Stack>
+//                 </Stack>
 //               </div>
 //             ))
 //           ) : (
-//             <Text>Loading....</Text>
+//             <h1>Loading....</h1>
 //           )}
 //         </div>
-//       </div>
+//       </Center>
 //     </div>
-//     // <div className="audio" id="audios">
-//     //   <Heading textAlign={"center"}>Artwork Audio Descriptions</Heading>
-//     //   <Center py={6}>
-//     //     <div className="audio-container">
-//     //       {!isLoading ? (
-//     //         audio.map((record) => (
-//     //           <div key={record.sound.fileid}>
-//     //             <Stack
-//     //               borderWidth="1px"
-//     //               borderRadius="lg"
-//     //               w={{ sm: "100%", md: "700px" }}
-//     //               height={{ sm: "750px", md: "20rem" }}
-//     //               direction={{ base: "column", md: "row" }}
-//     //               bg={useColorModeValue("white", "gray.900")}
-//     //               boxShadow={"2xl"}
-//     //               padding={4}
-//     //             >
-//     //               <Flex>
-//     //                 <Image
-//     //                   //   objectFit="cover"
-//     //                   //   boxSize="100%"
-//     //                   margin-left="auto"
-//     //                   margin-right="auto"
-//     //                   width="100%"
-//     //                   src={record.image?.baseimageurl}
-//     //                   className="audio-image"
-//     //                   key={record.image?.id}
-//     //                   alt="art piece"
-//     //                 />
-//     //               </Flex>
-//     //               <Stack
-//     //                 flex={1}
-//     //                 flexDirection="column"
-//     //                 justifyContent="center"
-//     //                 alignItems="center"
-//     //                 p={1}
-//     //                 pt={2}
-//     //               >
-//     //                 <Stack>
-//     //                   <Text
-//     //                     fontWeight={600}
-//     //                     textAlign={"center"}
-//     //                     size="sm"
-//     //                     mb={4}
-//     //                   >
-//     //                     Title: {record.image?.title}
-//     //                   </Text>
-//     //                   <Text
-//     //                     className="audio-transcript"
-//     //                     textAlign={"center"}
-//     //                     px={3}
-//     //                   >
-//     //                     {record.sound.description}
-//     //                   </Text>
-//     //                 </Stack>
-//     //                 <br></br>
-//     //                 <audio controls>
-//     //                   <source src={record.sound.primaryurl} type="audio/mpeg" />
-//     //                   Your browser does not support the audio element.
-//     //                 </audio>
-//     //               </Stack>
-//     //             </Stack>
-//     //           </div>
-//     //         ))
-//     //       ) : (
-//     //         <h1>Loading....</h1>
-//     //       )}
-//     //     </div>
-//     //   </Center>
-//     // </div>
 //   );
 // }

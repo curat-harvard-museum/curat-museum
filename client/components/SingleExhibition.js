@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useSearchParams, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import apiClient from "../../http-common";
-import { Badge, Box, Image, SimpleGrid, Center } from "@chakra-ui/react";
+import { Box, Image, SimpleGrid, Heading, Text } from "@chakra-ui/react";
 
 function SingleExhibition() {
   const { id } = useParams();
@@ -22,65 +22,35 @@ function SingleExhibition() {
 
   return (
     <>
-      <SimpleGrid columns={{ base: 1, md: 2, md: 3 }} gap={5}>
+      <Heading textAlign={"center"}>Exhibition On View</Heading>
+      <br></br>
+      <SimpleGrid
+        columns={[1, null, 2, null, 3, null, 4]}
+        spacingX="5rem"
+        spacingY="5rem"
+      >
         {data?.data.records
           .filter((record) => record.primaryimageurl)
           .map((record) => (
             <div key={record.id}>
-              <>
-                <Center>
-                  <Box
-                    maxW="sm"
-                    overflow="hidden"
-                    height="auto"
-                    alignItems="center"
-                    justifySelf="center"
-                    as={Link}
-                    to={`/object/${record.id}`}
-                  >
-                    {record.primaryimageurl ? (
-                      <Image
-                        margin-left="auto"
-                        margin-right="auto"
-                        width="100%"
-                        className="exhibition-image"
-                        key={record.id}
-                        src={record.primaryimageurl}
-                        alt="{record.title} by {record.people[0].name}"
-                      ></Image>
-                    ) : null}
-                    {/* <Center>
-                    <Badge borderRadius="full" colorScheme="gray">
-                      Current Exhibition
-                    </Badge>
-                  </Center> */}
-                    <Box
-                      mt="1"
-                      fontWeight="semibold"
-                      as="h4"
-                      lineHeight="tight"
-                    >
-                      {record.title}
-                    </Box>
-                    {/* <Box
-                    color="gray.500"
-                    fontWeight="semibold"
-                    letterSpacing="wide"
-                    fontSize="xs"
-                    textTransform="uppercase"
-                    ml="2"
-                  >
-                    Floor: {record.venues[0].galleries[0].floor} &bull; Gallery
-                    Location: {record.venues[0].galleries[0].name} (
-                    {record.venues[0].galleries[0].gallerynumber})
-                  </Box> */}
-                    {/* <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                    End Date: {record.enddate}
-                  </Box> */}
-                  </Box>
-                  <br></br>
-                </Center>
-              </>
+              <Box as={Link} to={`/object/${record.id}`} w="100%">
+                {record.primaryimageurl ? (
+                  <Image
+                    w="100%"
+                    src={record.primaryimageurl}
+                    alt="{record.title} by {record.people[0].name}"
+                  ></Image>
+                ) : null}
+                <Text color="black" fontSize="1rem">
+                  {record.people ? record.people[0].name : null}
+                </Text>
+                <Text color="gray.600" noOfLines={2} fontSize="1rem">
+                  {record.title}
+                </Text>
+                <Text as="b" color="gray.600" fontSize="1rem">
+                  {record.classification}
+                </Text>
+              </Box>
             </div>
           ))}
       </SimpleGrid>

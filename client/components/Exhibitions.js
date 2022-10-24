@@ -38,20 +38,16 @@ function Exhibitions() {
                     >
                       {record.primaryimageurl ? (
                         <Image
-                          margin-left="auto"
-                          margin-right="auto"
-                          width="100%"
-                          className="exhibition-image"
-                          key={record.id}
+                          w="100%"
                           src={record.primaryimageurl}
-                          alt="{record.title} by {record?.people[0]?.name}"
+                          alt="{record.title} by {record.people[0].name}"
                         ></Image>
                       ) : null}
-                      <Center>
-                        <Badge borderRadius="full" colorScheme="gray">
+                      <Box p="1">
+                        <Badge borderRadius="full" px="2" colorScheme="gray">
                           Current Exhibition
                         </Badge>
-                      </Center>
+                      </Box>
                       <Box
                         mt="1"
                         fontWeight="semibold"
@@ -66,12 +62,11 @@ function Exhibitions() {
                         letterSpacing="wide"
                         fontSize="xs"
                         textTransform="uppercase"
-                        ml="2"
                       >
                         Floor: {gallery.floor} &bull; {gallery.name} (
                         {gallery.gallerynumber})
                       </Box>
-                      <Box as="span" ml="2" color="gray.600" fontSize="sm">
+                      <Box as="span" color="gray.600" fontSize="sm">
                         End Date: {record.enddate}
                       </Box>
                     </Box>

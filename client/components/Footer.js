@@ -8,15 +8,15 @@ const Footer = () => {
       <Show breakpoint="(min-width: 714px)">
         <Center>
           <Flex as={Text} fontSize="md">
-            ☺2022 Fullstack Academy Capstone Project created by Jasmine
+            ☺2022 Fullstack Academy Capstone Project created by Jasmine Cheung
             <Link href="https://www.linkedin.com/in/cheungjasmine/">
               <Icon as={AiFillLinkedin} w="25px" h="25px" />
             </Link>
-            | Jordyn
+            | Jordyn Rector
             <Link href="https://www.linkedin.com/in/jordynrector/">
               <Icon as={AiFillLinkedin} w="25px" h="25px" />
             </Link>
-            | Joyce
+            | Joyce Wong
             <Link href="https://www.linkedin.com/in/joyce-k-wong/">
               <Icon as={AiFillLinkedin} w="25px" h="25px" />
             </Link>
@@ -36,15 +36,15 @@ const Footer = () => {
           <Flex as={Text} fontSize="xs" flexDirection="column">
             <div>☺2022 Fullstack Academy Capstone Project </div>
             <Flex>
-              created by Jasmine
+              created by Jasmine Cheung
               <Link href="https://www.linkedin.com/in/cheungjasmine/">
                 <Icon as={AiFillLinkedin} w="25px" h="25px" />
               </Link>
-              | Jordyn
+              | Jordyn Rector
               <Link href="https://www.linkedin.com/in/jordynrector/">
                 <Icon as={AiFillLinkedin} w="25px" h="25px" />
               </Link>
-              | Joyce
+              | Joyce Wong
               <Link href="https://www.linkedin.com/in/joyce-k-wong/">
                 <Icon as={AiFillLinkedin} w="25px" h="25px" />
               </Link>
