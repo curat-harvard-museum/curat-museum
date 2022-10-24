@@ -6,6 +6,7 @@ import FilterButtons from "./FilterButtons";
 import BackToTopButton from "./BackToTopButton";
 import {
   Accordion,
+  Input,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
@@ -159,37 +160,42 @@ function AllObjects() {
   return (
     <>
       {/* <Search /> */}
-      <Flex flexDirection="column" justifyContent="center">
-        <input
-          justifySelf="center"
-          value={searchParams.keyword}
-          onChange={searchHandler}
-          placeholder="Search by Artist"
-        />
+      <Box>
+        <Flex flexDirection="column">
+          <Input
+            margin="auto"
+            width="80%"
+            variant="filled"
+            value={searchParams.keyword}
+            onChange={searchHandler}
+            placeholder="Search by Artist"
+          />
 
-        <Flex
-          sx={{
-            position: "-webkit-sticky",
-            /* Safari */ position: "sticky",
-            top: "0",
-          }}
-          backgroundColor="rgba(255, 
+          <Box
+            sx={{
+              position: "-webkit-sticky",
+              /* Safari */ position: "sticky",
+              top: "0",
+            }}
+            backgroundColor="rgba(255, 
  255, 255, 0.8)"
-          backdropFilter="saturate(180%) blur(5px)"
-          w="100%"
-          justify="center"
-        >
-          <Button
-            onClick={onOpen}
-            borderBottomWidth="1px"
-            marginTop="2 rem"
-            marginBottom="30px"
-            display="flex"
-            paddingBottom="2px"
-            variant="unstyled"
+            backdropFilter="saturate(180%) blur(5px)"
+            w="100%"
+            justify="center"
           >
-            Collection Filters
-          </Button>
+            <Button
+              margin="auto"
+              onClick={onOpen}
+              borderBottomWidth="1px"
+              marginTop="2 rem"
+              marginBottom="30px"
+              display="flex"
+              paddingBottom="2px"
+              variant="unstyled"
+            >
+              Collection Filters
+            </Button>
+          </Box>
         </Flex>
 
         <Show breakpoint="(min-width: 770px)">
@@ -241,7 +247,7 @@ function AllObjects() {
             </DrawerContent>
           </Drawer>
         </Show>
-      </Flex>
+      </Box>
 
       <SimpleGrid
         columns={[1, null, 2, null, 3, null, 4]}
