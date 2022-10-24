@@ -8,7 +8,6 @@ import {
   Image,
   Box,
   Badge,
-  Button,
   Checkbox,
   Tabs,
   TabList,
@@ -18,7 +17,8 @@ import {
   Flex,
   Divider,
   SimpleGrid,
-  Icon
+  Icon,
+  Text
 } from "@chakra-ui/react";
 import { deleteArtwork, updateVisit } from "../store/auth";
 import BackToTopButton from "./BackToTopButton";
@@ -122,14 +122,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                 alignItems="center"
                               >
                                 <Box mt="2">
-                                  {/* <Button
-                                    onClick={() =>
-                                      removeFavorite(favorite.objectid)
-                                    }
-                                  >
-                                    Unlike
-                                  </Button> */}
-                                  <Icon as={MdFavorite} w={10} h={10} color='pink.400' onClick={() => removeFavorite(favorite.objectid)}/>
+                                  <Icon as={MdFavorite} w={10} h={10} color='red.200' onClick={() => removeFavorite(favorite.objectid)}/>
                                 </Box>
                                 <Box mt="2">
                                   <Checkbox
@@ -223,12 +216,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                 alignItems="center"
                               >
                                 <Box mt="2">
-                                  {/* <Button
-                              onClick={() => removeFavorite(favorite.objectid)}
-                            >
-                              Unlike
-                            </Button> */}
-                                  <Icon as={MdFavorite} w={10} h={10} color='pink.400' onClick={() => removeFavorite(favorite.objectid)}/>
+                                  <Icon as={MdFavorite} w={10} h={10} color='red.200' onClick={() => removeFavorite(favorite.objectid)}/>
                                 </Box>
                                 <Box mt="2">
                                   <Checkbox
@@ -252,9 +240,9 @@ const Profile = ({ removeFavorite, updateVisit }) => {
           </TabPanels>
         </Tabs>
       ) : (
-        <p>
+        <Text>
           Your favorited objects to visit will appear here once you add them.
-        </p>
+        </Text>
       )}
       <br></br>
       <Divider />

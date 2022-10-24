@@ -69,28 +69,13 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
             ></Image>
             {auth.username ? (
               isFavorite ? (
-                // <Button
-                //   marginBottom="1rem"
-                //   onClick={() => removeFavorite(data.data.objectid)}
-                // >
-                //   Unlike
-                // </Button>
-                <Icon as={MdFavorite} w={10} h={10} color='pink.400' onClick={() => removeFavorite(data.data.objectid)}/>
+                <Icon as={MdFavorite} w={12} h={12} color='red.200' onClick={() => removeFavorite(data.data.objectid)}/>
               ) : (
-                // <Button
-                //   marginBottom="1rem"
-                //   onClick={() => makeFavorite(data.data)}
-                // >
-                //   Like
-                // </Button>
-                <Icon as={MdFavoriteBorder} w={10} h={10} color='pink.400' onClick={() => makeFavorite(data.data)}/>
+                <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={() => makeFavorite(data.data)}/>
               )
             ) : (
-              // <Link to="/register">
-                // <Button>Register to Like</Button>
-              // </Link>
               <>
-      <Icon as={MdFavoriteBorder} w={10} h={10} color='pink.400' onClick={onOpen}/>
+      <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={onOpen}/>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay 
@@ -100,10 +85,6 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
           <ModalHeader>Sign Up</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* <Lorem count={2} /> */}
-            {/* <Link to="/register">
-              <Button>Register to Like</Button>
-            </Link> */}
             Please register to add artwork to your profile.
           </ModalBody>
           <ModalFooter>
