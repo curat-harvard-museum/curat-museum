@@ -5,21 +5,24 @@ import { AiFillLinkedin, AiFillGithub, AiFillYoutube } from "react-icons/ai";
 const Footer = () => {
   return (
     <div>
-      <Show breakpoint="(min-width: 714px)">
+      <Show breakpoint="(min-width: 865px)">
         <Center>
           <Flex as={Text} fontSize="md">
-            ☺2022 Fullstack Academy Capstone Project created by Jasmine Cheung
-            <Link href="https://www.linkedin.com/in/cheungjasmine/">
-              <Icon as={AiFillLinkedin} w="25px" h="25px" />
-            </Link>
-            | Jordyn Rector
-            <Link href="https://www.linkedin.com/in/jordynrector/">
-              <Icon as={AiFillLinkedin} w="25px" h="25px" />
-            </Link>
-            | Joyce Wong
-            <Link href="https://www.linkedin.com/in/joyce-k-wong/">
-              <Icon as={AiFillLinkedin} w="25px" h="25px" />
-            </Link>
+            <div>☺2022 Fullstack Academy Capstone Project created by</div>
+            <Flex>
+              Jasmine Cheung
+              <Link href="https://www.linkedin.com/in/cheungjasmine/">
+                <Icon as={AiFillLinkedin} w="25px" h="25px" />
+              </Link>
+              | Jordyn Rector
+              <Link href="https://www.linkedin.com/in/jordynrector/">
+                <Icon as={AiFillLinkedin} w="25px" h="25px" />
+              </Link>
+              | Joyce Wong
+              <Link href="https://www.linkedin.com/in/joyce-k-wong/">
+                <Icon as={AiFillLinkedin} w="25px" h="25px" />
+              </Link>
+            </Flex>
           </Flex>
         </Center>
         <br></br>
@@ -30,20 +33,20 @@ const Footer = () => {
           <Icon as={AiFillYoutube} w="35px" h="35px" />
         </Center>
       </Show>
-      <Show breakpoint="(max-width: 714px)">
+      <Show breakpoint="(max-width: 865px)">
         <Center>
           <Flex as={Text} fontSize="xs" flexDirection="column">
-            <div>☺2022 Fullstack Academy Capstone Project </div>
+            <div>☺2022 Fullstack Academy Capstone Project created by</div>
             <Flex>
-              created by Jasmine Cheung
+              Jasmine Cheung
               <Link href="https://www.linkedin.com/in/cheungjasmine/">
                 <Icon as={AiFillLinkedin} w="20px" h="20px" />
               </Link>
-              | Jordyn Rector
+              Jordyn Rector
               <Link href="https://www.linkedin.com/in/jordynrector/">
                 <Icon as={AiFillLinkedin} w="20px" h="20px" />
               </Link>
-              | Joyce Wong
+              Joyce Wong
               <Link href="https://www.linkedin.com/in/joyce-k-wong/">
                 <Icon as={AiFillLinkedin} w="20px" h="20px" />
               </Link>
