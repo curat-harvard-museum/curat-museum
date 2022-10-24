@@ -92,8 +92,8 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
             <Button variant='ghost' onClick={onClose}>
               Close
             </Button>
-            <Link to="/register">
-              <Button colorScheme='gray' mr={3}>Register to Like</Button>
+            <Link to="/login">
+              <Button colorScheme='gray' mr={3}>Log In to Like</Button>
             </Link>
             </Stack>
           </ModalFooter>
