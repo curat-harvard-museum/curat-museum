@@ -99,7 +99,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                     backdropFilter="blur(10px)"
                   />
                   <ModalContent>
-                    <ModalHeader>Log In</ModalHeader>
+                    <ModalHeader>Log in</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                       Please log in to add artwork to your profile.
@@ -155,7 +155,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                       backdropFilter="blur(10px)"
                     />
                     <ModalContent>
-                      <ModalHeader>Log In</ModalHeader>
+                      <ModalHeader>Log in</ModalHeader>
                       <ModalCloseButton />
                       <ModalBody>
                         Please log in to add artwork to your profile.
@@ -167,7 +167,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                           </Button>
                           <Link to="/login">
                             <Button colorScheme="gray" mr={3}>
-                              Log In to Like
+                              Log in to Like
                             </Button>
                           </Link>
                         </Stack>
@@ -212,7 +212,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                       backdropFilter="blur(10px)"
                     />
                     <ModalContent>
-                      <ModalHeader>Log In</ModalHeader>
+                      <ModalHeader>Log in</ModalHeader>
                       <ModalCloseButton />
                       <ModalBody>
                         Please log in to add artwork to your profile.
@@ -224,7 +224,7 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                           </Button>
                           <Link to="/login">
                             <Button colorScheme="gray" mr={3}>
-                              Log In to Like
+                              Log in to Like
                             </Button>
                           </Link>
                         </Stack>
@@ -234,7 +234,6 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                 </>
               )}
             </Show>
-            >>>>>>> main
           </Box>
         </GridItem>
 

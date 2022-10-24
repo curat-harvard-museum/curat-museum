@@ -110,7 +110,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                   {favorite.title}
                                 </Box>
                               </Link>
-                              <Link>
+                              <Link to={`/object/${favorite.objectid}`}>
                                 <Box>
                                   {favorite.description}
                                   <Box
@@ -203,7 +203,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                     textTransform="uppercase"
                                     ml="2"
                                   >
-                                    Artist: {favorite.artist}
+                                    {favorite.artist}
                                   </Box>
                                 </Link>
                               </Box>
@@ -215,7 +215,7 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                   lineHeight="tight"
                                   noOfLines={1}
                                 >
-                                  Title: {favorite.title}
+                                  {favorite.title}
                                 </Box>
                               </Link>
                               <Link to={`/object/${favorite.objectid}`}>
