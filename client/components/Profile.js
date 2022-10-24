@@ -74,8 +74,6 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                             margin-left="auto"
                             margin-right="auto"
                             width="100%"
-                            // as={Link}
-                            // to={`/object/${favorite.objectid}`}
                             />
                             </Link>
                             <Box p="6">
