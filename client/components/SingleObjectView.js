@@ -125,9 +125,9 @@ function SingleObjectView({ makeFavorite, auth, removeFavorite }) {
                     options={{
                       perPage: 1,
                       type: "loop",
-                      width: "50rem",
+                      width: "30rem",
                       height: "auto",
-                      speed: 2000,
+                      speed: 2500,
                     }}
                   >
                     {data?.data.images
