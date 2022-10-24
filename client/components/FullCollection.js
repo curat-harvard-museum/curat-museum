@@ -34,7 +34,6 @@ const collectionFilters = [
   "period",
   "place",
   "technique",
-  "worktype",
 ];
 
 const validApiParams = [
@@ -229,7 +228,10 @@ function AllObjects() {
           <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent overflowY="auto">
-              <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+              <Flex justifyContent="space-between">
+                <DrawerHeader borderBottomWidth="1px">Filters</DrawerHeader>
+                <CloseButton onClick={onClose} size="md" />
+              </Flex>
               <Accordion allowToggle>
                 {collectionFilters.map((param) => (
                   <DrawerBody key={param}>
