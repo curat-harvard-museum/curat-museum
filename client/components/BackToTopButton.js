@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { BsArrowUpSquare } from "react-icons/bs";
+import { Icon } from "@chakra-ui/react";
 
 function BackToTopButton() {
   const [backToTopButton, setBackToTopButton] = useState(false);
@@ -35,7 +37,7 @@ function BackToTopButton() {
           }}
           onClick={scrollUp}
         >
-          🔝
+          <Icon as={BsArrowUpSquare} />
         </button>
       )}
     </div>

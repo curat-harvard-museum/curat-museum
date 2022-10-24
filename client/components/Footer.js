@@ -1,6 +1,11 @@
 import React from "react";
 import { Box, Center, Text, Icon, Link, Flex, Show } from "@chakra-ui/react";
-import { AiFillLinkedin, AiFillGithub, AiFillYoutube } from "react-icons/ai";
+import {
+  AiFillLinkedin,
+  AiFillGithub,
+  AiFillYoutube,
+  AiOutlineSmile,
+} from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -8,8 +13,11 @@ const Footer = () => {
       <Show breakpoint="(min-width: 865px)">
         <Center>
           <Flex as={Text} fontSize="md">
-            <div>☺2022 Fullstack Academy Capstone Project created by</div>
-            <Flex>
+            <Flex alignItems="center">
+              <Icon as={AiOutlineSmile} w="16px" h="16px" />
+              2022 Fullstack Academy Capstone Project created by&nbsp;
+            </Flex>
+            <Flex alignItems="center">
               Jasmine Cheung
               <Link href="https://www.linkedin.com/in/cheungjasmine/">
                 <Icon as={AiFillLinkedin} w="25px" h="25px" />
