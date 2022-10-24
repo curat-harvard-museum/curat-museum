@@ -69,13 +69,13 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
             ></Image>
             {auth.username ? (
               isFavorite ? (
-                <Icon as={MdFavorite} w={12} h={12} color='red.200' onClick={() => removeFavorite(data.data.objectid)}/>
+                <Icon as={MdFavorite} w={10} h={10} color='red.200' onClick={() => removeFavorite(data.data.objectid)}/>
               ) : (
-                <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={() => makeFavorite(data.data)}/>
+                <Icon as={MdFavoriteBorder} w={10} h={10} color='red.200' onClick={() => makeFavorite(data.data)}/>
               )
             ) : (
               <>
-      <Icon as={MdFavoriteBorder} w={12} h={12} color='red.200' onClick={onOpen}/>
+      <Icon as={MdFavoriteBorder} w={10} h={10} color='red.200' onClick={onOpen}/>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay 
