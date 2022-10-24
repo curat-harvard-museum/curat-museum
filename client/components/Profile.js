@@ -213,7 +213,6 @@ const Profile = ({ removeFavorite, updateVisit }) => {
                                   fontWeight="semibold"
                                   as="h4"
                                   lineHeight="tight"
-                                  noOfLines={1}
                                 >
                                   {favorite.title}
                                 </Box>
