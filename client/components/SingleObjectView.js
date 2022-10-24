@@ -82,10 +82,10 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
           bg='blackAlpha.300'
           backdropFilter='blur(10px)'/>
         <ModalContent>
-          <ModalHeader>Sign Up</ModalHeader>
+          <ModalHeader>Log In</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            Please register to add artwork to your profile.
+            Please log in to add artwork to your profile.
           </ModalBody>
           <ModalFooter>
             <Stack spacing={20} direction='row' align='center'>
