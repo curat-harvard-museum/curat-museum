@@ -95,7 +95,9 @@ const AuthForm = (props) => {
               </div>
 
               <Link to="/register">
-                Don't have an account? Create one here!
+                {location === "/login"
+                  ? "Don't have an account? Create one here!"
+                  : null}
               </Link>
               {error && error.response && <div> {error.response.data} </div>}
             </Stack>

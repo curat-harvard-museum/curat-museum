@@ -27,7 +27,6 @@ const Footer = () => {
           <Link href="https://github.com/curat-harvard-museum/curat-museum">
             <Icon as={AiFillGithub} w="35px" h="35px" />
           </Link>
-
           <Icon as={AiFillYoutube} w="35px" h="35px" />
         </Center>
       </Show>
@@ -38,15 +37,15 @@ const Footer = () => {
             <Flex>
               created by Jasmine Cheung
               <Link href="https://www.linkedin.com/in/cheungjasmine/">
-                <Icon as={AiFillLinkedin} w="25px" h="25px" />
+                <Icon as={AiFillLinkedin} w="20px" h="20px" />
               </Link>
               | Jordyn Rector
               <Link href="https://www.linkedin.com/in/jordynrector/">
-                <Icon as={AiFillLinkedin} w="25px" h="25px" />
+                <Icon as={AiFillLinkedin} w="20px" h="20px" />
               </Link>
               | Joyce Wong
               <Link href="https://www.linkedin.com/in/joyce-k-wong/">
-                <Icon as={AiFillLinkedin} w="25px" h="25px" />
+                <Icon as={AiFillLinkedin} w="20px" h="20px" />
               </Link>
             </Flex>
           </Flex>
