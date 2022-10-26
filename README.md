@@ -1,6 +1,6 @@
 # Curāt Museum
 
-An application that allows users to plan their trip to the Harvard Art Museum. Users can view details about artworks, current exhibitions and create an account to store liked, visited, and curate their next visit.
+An application that allows users to curate their trip to the Harvard Art Museum. Visitors can view details about artworks and current exhibitions. They can also create a user account to mark artworks as "liked" and "visited".
 
 Technologies used:
 
