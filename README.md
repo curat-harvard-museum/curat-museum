@@ -1,39 +1,40 @@
-# Curat Museum
+# Curāt Museum
 
-## Start
+An application that allows users to curate their trip to the Harvard Art Museum. Visitors can view details about artworks and current exhibitions. They can also create a user account to mark artworks as "liked" and "visited".
 
-Sync and seed your database by running `npm run seed`. Running `npm run start:dev` will make great things happen!
+Technologies used:
 
-- start:dev will both start your server and build your client side files using webpack
-- start:dev:logger is the same as start:dev, but you will see your SQL queries (can be helpful for debugging)
-- start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
+- [PostgreSQL](https://www.postgresql.org)
+- [Sequelize](https://sequelize.org)
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com)
+- [JSON Web Token](https://jwt.io)
+- BCrypt
+- [Figma](https://www.figma.com/)
+- [React](https://reactjs.org)
+- [Redux](https://redux.js.org)
+- [Harvard Art Museum's API](https://harvardartmuseums.org/collections/api)
+- [Chakra UI](https://chakra-ui.com)
+- [Chart.js](https://www.chartjs.org)
+- [Heroku](https://www.heroku.com/)
 
-### Heroku
+## Installation
 
-1.  Set up the [Heroku command line tools][heroku-cli]
-2.  `heroku login`
-3.  Add a git remote for heroku:
+In the project directory, you will need to:
 
-[heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
+1. Request an API key from [Harvard Art Museum](https://harvardartmuseums.org/collections/api)
+2. Install NPM packages `npm install`
+3. Create database `createdb curat-museum` and seed file `npm run seed`
+4. Start server `npm start` and open [http://localhost:8080](http://localhost:8080) to view it in your browser
 
-- **If you are creating a new app...**
+## Application
 
-  1.  `heroku create` or `heroku create your-app-name` if you have a
-      name in mind.
-  2.  `heroku config:set JWT=<your secret here!>` to set a secret for JWT signing
+Deployed link: [Curāt Museum](https://curat-museum-heroku.herokuapp.com/home)
 
-Database Setup
+<img src="https://github.com/curat-harvard-museum/curat-museum/blob/main/public/assets/images/Curat-Mobile.gif" width="150" height="300"/>
 
-3.  `heroku addons:create heroku-postgresql:hobby-dev` to add
-    ("provision") a postgres database to your heroku dyno (This creates your production database)
+## Meet the Team
 
-4.  `heroku config:set SEED=true` to get heroku to sync and seed your database
-
-5.  note everytime your app restarts, the database tables will be dropped and re-created. To avoid this you can `config:unset SEED`
-
-- **If you already have a Heroku app...**
-
-  1.  `heroku git:remote your-app-name` You'll need to be a
-      collaborator on the app.
-
-Now, you should be deployed!
+[Jasmine Cheung](https://github.com/cheungjasmine) <br />
+[Jordyn Rector](https://github.com/jordyy) <br />
+[Joyce Wong](https://github.com/joyce-wong)

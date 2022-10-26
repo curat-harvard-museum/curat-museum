@@ -67,8 +67,9 @@ const Footer = () => {
           <Link href="https://github.com/curat-harvard-museum/curat-museum">
             <Icon as={AiFillGithub} w="35px" h="35px" />
           </Link>
-
-          <Icon as={AiFillYoutube} w="35px" h="35px" />
+          <Link href="https://www.youtube.com/watch?v=ZquYFxI1TxA">
+            <Icon as={AiFillYoutube} w="35px" h="35px" />
+          </Link>
         </Center>
       </Show>
     </>
