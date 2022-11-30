@@ -11,11 +11,11 @@ services:
     envVars:
       - key: JWT # Imported from Heroku app
         value: private-key
-      - key: DATABASE_URL # Render PostgreSQL database
-        fromDatabase:
-          name: postgresql-vertical-89905
-          property: connectionString
+      # - key: DATABASE_URL # Render PostgreSQL database
+      #   fromDatabase:
+      #     name: postgresql-vertical-89905
+      #     property: connectionString
 
 databases: # Render PostgreSQL database
-  - name: postgresql-vertical-89905
-    ipAllowList: [] # only allow internal connections
+  # - name: postgresql-vertical-89905
+  #   ipAllowList: [] # only allow internal connections
