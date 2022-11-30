@@ -37,4 +37,4 @@ Deployed link: [Curāt Museum](https://curat-museum-heroku.herokuapp.com/home)
 
 [Jasmine Cheung](https://github.com/cheungjasmine) <br />
 [Jordyn Rector](https://github.com/jordyy) <br />
-[Joyce Wong](https://github.com/joyce-wong)
+[Joyce Wong](https://github.com/joyce-wong) <br />
