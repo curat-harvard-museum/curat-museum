@@ -29,7 +29,7 @@ In the project directory, you will need to:
 
 ## Application
 
-Deployed link: [Curāt Museum](https://curat-museum-heroku.herokuapp.com/home)
+Deployed link: [Curāt Museum](https://curat-museum.onrender.com/home)
 
 <img src="https://github.com/curat-harvard-museum/curat-museum/blob/main/public/assets/images/Curat-Mobile.gif" width="150" height="300"/>
 
